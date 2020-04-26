@@ -1,6 +1,6 @@
 {
   "name": "aditor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Aditor made with React, ProseMirror, and create-react-library",
   "author": "Ya-Che <mymislife@gmail.com>",
   "license": "MIT",
@@ -51,7 +51,6 @@
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
-    "react-scripts": "3.4.1",
     "rollup-plugin-babel": "^4.4.0",
     "styled-components": "^5.1.0"
   },
