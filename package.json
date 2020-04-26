@@ -1,0 +1,82 @@
+{
+  "name": "aditor",
+  "version": "1.0.1",
+  "description": "Aditor made with React, ProseMirror, and create-react-library",
+  "author": "Ya-Che <mymislife@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YacheLee/Aditor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YacheLee/Aditor/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prepublish": "run-s build",
+    "test": "run-s test:unit test:lint test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.11",
+    "lodash": "^4.17.15",
+    "prop-types": "^15.6.2",
+    "prosemirror-commands": "^1.1.4",
+    "prosemirror-dropcursor": "^1.3.2",
+    "prosemirror-gapcursor": "^1.1.5",
+    "prosemirror-history": "^1.1.3",
+    "prosemirror-keymap": "^1.1.3",
+    "prosemirror-model": "^1.9.1",
+    "prosemirror-state": "^1.3.3",
+    "prosemirror-transform": "^1.2.5",
+    "prosemirror-view": "^1.14.6",
+    "react": "^16.13.1",
+    "react-color": "^2.18.0",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "react-scripts": "3.4.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "styled-components": "^5.1.0"
+  },
+  "devDependencies": {
+    "microbundle-crl": "^0.13.8",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
+  },
+  "files": [
+    "dist"
+  ]
+}
