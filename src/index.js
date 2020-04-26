@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import EditorViewContext from './contexts/EditorViewContext';
+import EditorStateContext from './contexts/EditorStateContext';
 import Editor from './components/Editor';
 import Toolbar from './components/Toolbar';
 import normaliseValue from './normaliseValue';
@@ -14,16 +15,19 @@ const PaperWrapper = styled(Paper)`
 
 function Aditor({ defaultValue, onChange }) {
   const [editorView, setEditorView] = useState(null);
+  const [editorState, setEditorState] = useState(null);
 
   return (
     <EditorViewContext.Provider value={{ editorView, setEditorView }}>
-      <PaperWrapper elevation={3}>
-        {editorView && <Toolbar />}
-        <Divider light />
-        <div style={{ margin: 12, overflow: 'auto' }}>
-          <Editor value={normaliseValue(defaultValue)} onChange={onChange} />
-        </div>
-      </PaperWrapper>
+        <EditorStateContext.Provider value={{ editorState, setEditorState }}>
+            <PaperWrapper elevation={3}>
+                {editorView && <Toolbar />}
+                <Divider light />
+                <div style={{ margin: 12, overflow: 'auto' }}>
+                    <Editor value={normaliseValue(defaultValue)} onChange={onChange} />
+                </div>
+            </PaperWrapper>
+        </EditorStateContext.Provider>
     </EditorViewContext.Provider>
   );
 }

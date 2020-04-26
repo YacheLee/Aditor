@@ -12,6 +12,7 @@ import {baseKeymap} from 'prosemirror-commands';
 import {EditorView} from 'prosemirror-view';
 import EditorViewContext from '../../contexts/EditorViewContext';
 import LinkPlugin from './plugins/LinkPlugin';
+import EditorStateContext from "../../contexts/EditorStateContext";
 
 const Root = styled.div`
   position: relative;
@@ -77,6 +78,7 @@ export let setPopoverContent = null;
 
 function Editor({ value, onChange }) {
   const { editorView, setEditorView } = useContext(EditorViewContext);
+  const { setEditorState } = useContext(EditorStateContext);
   const [anchorEl, _setAnchorEl] = useState(null);
   const [popoverContent, _setPopoverContent] = useState(null);
   setAnchorEl = _setAnchorEl;
@@ -206,10 +208,12 @@ function Editor({ value, onChange }) {
         dispatchTransaction(transaction) {
           const newState = editorView.state.apply(transaction);
           editorView.updateState(newState);
+          setEditorState(editorView.state);
           onChange(newState.toJSON().doc.content);
         }
       });
       setEditorView(editorView);
+      setEditorState(editorView.state);
     }
   }, [editorView, setEditorView, value, onChange]);
 
