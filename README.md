@@ -1,6 +1,6 @@
 # Aditor
 
-> Made with create-react-library
+> An React-based component made by ProseMirror
 
 [![NPM](https://img.shields.io/npm/v/Aditor.svg)](https://www.npmjs.com/package/aditor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
