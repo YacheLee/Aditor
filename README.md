@@ -13,7 +13,7 @@ npm install --save aditor
 
 ## Demo
 
-<img src="https://yachelee.github.io/Aditor/demo.png" data-canonical-src="https://yachelee.github.io/Aditor/demo.png" width="200" />
+<img src="https://yachelee.github.io/Aditor/demo.png" data-canonical-src="https://yachelee.github.io/Aditor/demo.png" width="500" />
 [**Live Demo**](https://yachelee.github.io/Aditor)
 
 ## Features
