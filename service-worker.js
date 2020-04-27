@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/YacheLee/Aditor/precache-manifest.084eac1f90eca1e663ee6a83fdc46ee0.js"
+  "/YacheLee/Aditor/precache-manifest.4031ad136b9023742f5259e5859b56aa.js"
 );
 
 self.addEventListener('message', (event) => {

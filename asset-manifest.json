@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/YacheLee/Aditor/static/css/main.d498bfb3.chunk.css",
-    "main.js": "/YacheLee/Aditor/static/js/main.c288c7d0.chunk.js",
-    "main.js.map": "/YacheLee/Aditor/static/js/main.c288c7d0.chunk.js.map",
+    "main.js": "/YacheLee/Aditor/static/js/main.e483191f.chunk.js",
+    "main.js.map": "/YacheLee/Aditor/static/js/main.e483191f.chunk.js.map",
     "runtime-main.js": "/YacheLee/Aditor/static/js/runtime-main.6d9410c3.js",
     "runtime-main.js.map": "/YacheLee/Aditor/static/js/runtime-main.6d9410c3.js.map",
-    "static/js/2.3c41252a.chunk.js": "/YacheLee/Aditor/static/js/2.3c41252a.chunk.js",
-    "static/js/2.3c41252a.chunk.js.map": "/YacheLee/Aditor/static/js/2.3c41252a.chunk.js.map",
+    "static/js/2.be1f3a96.chunk.js": "/YacheLee/Aditor/static/js/2.be1f3a96.chunk.js",
+    "static/js/2.be1f3a96.chunk.js.map": "/YacheLee/Aditor/static/js/2.be1f3a96.chunk.js.map",
     "index.html": "/YacheLee/Aditor/index.html",
-    "precache-manifest.084eac1f90eca1e663ee6a83fdc46ee0.js": "/YacheLee/Aditor/precache-manifest.084eac1f90eca1e663ee6a83fdc46ee0.js",
+    "precache-manifest.4031ad136b9023742f5259e5859b56aa.js": "/YacheLee/Aditor/precache-manifest.4031ad136b9023742f5259e5859b56aa.js",
     "service-worker.js": "/YacheLee/Aditor/service-worker.js",
     "static/css/main.d498bfb3.chunk.css.map": "/YacheLee/Aditor/static/css/main.d498bfb3.chunk.css.map",
-    "static/js/2.3c41252a.chunk.js.LICENSE.txt": "/YacheLee/Aditor/static/js/2.3c41252a.chunk.js.LICENSE.txt"
+    "static/js/2.be1f3a96.chunk.js.LICENSE.txt": "/YacheLee/Aditor/static/js/2.be1f3a96.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6d9410c3.js",
-    "static/js/2.3c41252a.chunk.js",
+    "static/js/2.be1f3a96.chunk.js",
     "static/css/main.d498bfb3.chunk.css",
-    "static/js/main.c288c7d0.chunk.js"
+    "static/js/main.e483191f.chunk.js"
   ]
 }
