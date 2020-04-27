@@ -1,6 +1,6 @@
-# Aditor
+# [Aditor](https://yachelee.github.io/Aditor)
 
-> An React-based component made by ProseMirror
+> A React component made by ProseMirror
 
 [![NPM](https://img.shields.io/npm/v/Aditor.svg)](https://www.npmjs.com/package/aditor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -8,7 +8,14 @@
 
 ```bash
 npm install --save aditor
+
 ```
+
+## Demo
+
+![Demo](https://yachelee.github.io/Aditor/demo.png)
+
+[**Live Demo**](https://yachelee.github.io/Aditor)
 
 ## Usage
 
