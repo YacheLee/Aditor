@@ -1,0 +1,2 @@
+export const PARAGRAPH_VALUE = 0;
+export const HEADING_DEFAULT_TYPE = PARAGRAPH_VALUE;
