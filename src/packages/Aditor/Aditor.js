@@ -399,7 +399,7 @@ function Aditor({id, defaultValue, onChange}) {
     }, [init]);
 
     return (
-        <Paper style={{margin: 12}}>
+        <Paper>
             <Toolbar ref={toolbar} onMouseDown={e=>e.preventDefault()} />
             <Divider light />
             <Root ref={editor} />
