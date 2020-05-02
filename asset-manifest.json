@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Aditor/static/css/main.9a36a3fc.chunk.css",
-    "main.js": "/Aditor/static/js/main.75197dae.chunk.js",
-    "main.js.map": "/Aditor/static/js/main.75197dae.chunk.js.map",
+    "main.css": "/Aditor/static/css/main.5d98e678.chunk.css",
+    "main.js": "/Aditor/static/js/main.6fcb14c4.chunk.js",
+    "main.js.map": "/Aditor/static/js/main.6fcb14c4.chunk.js.map",
     "runtime-main.js": "/Aditor/static/js/runtime-main.03cbfc9c.js",
     "runtime-main.js.map": "/Aditor/static/js/runtime-main.03cbfc9c.js.map",
-    "static/js/2.dcb0f023.chunk.js": "/Aditor/static/js/2.dcb0f023.chunk.js",
-    "static/js/2.dcb0f023.chunk.js.map": "/Aditor/static/js/2.dcb0f023.chunk.js.map",
+    "static/js/2.b0778f05.chunk.js": "/Aditor/static/js/2.b0778f05.chunk.js",
+    "static/js/2.b0778f05.chunk.js.map": "/Aditor/static/js/2.b0778f05.chunk.js.map",
     "index.html": "/Aditor/index.html",
-    "precache-manifest.187182e64e507afd84df63983c9cf7b3.js": "/Aditor/precache-manifest.187182e64e507afd84df63983c9cf7b3.js",
+    "precache-manifest.5bb33db89e32a2b65565095dffefb543.js": "/Aditor/precache-manifest.5bb33db89e32a2b65565095dffefb543.js",
     "service-worker.js": "/Aditor/service-worker.js",
-    "static/css/main.9a36a3fc.chunk.css.map": "/Aditor/static/css/main.9a36a3fc.chunk.css.map",
-    "static/js/2.dcb0f023.chunk.js.LICENSE.txt": "/Aditor/static/js/2.dcb0f023.chunk.js.LICENSE.txt"
+    "static/css/main.5d98e678.chunk.css.map": "/Aditor/static/css/main.5d98e678.chunk.css.map",
+    "static/js/2.b0778f05.chunk.js.LICENSE.txt": "/Aditor/static/js/2.b0778f05.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.03cbfc9c.js",
-    "static/js/2.dcb0f023.chunk.js",
-    "static/css/main.9a36a3fc.chunk.css",
-    "static/js/main.75197dae.chunk.js"
+    "static/js/2.b0778f05.chunk.js",
+    "static/css/main.5d98e678.chunk.css",
+    "static/js/main.6fcb14c4.chunk.js"
   ]
 }
