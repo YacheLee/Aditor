@@ -17,7 +17,7 @@ const CenterBox = styled.div`
 const ToolbarButton = styled(ToolbarButtonStyle)`
   color: ${BLACK_COLOR};
   margin-right: 0;
-  min-width: 120px;
+  min-width: 140px;
   font-size: 20px;
   &:hover{
     cursor: pointer;
