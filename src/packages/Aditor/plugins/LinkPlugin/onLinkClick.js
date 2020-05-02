@@ -4,15 +4,16 @@ import LinkPopover from './components/LinkPopover';
 import setLinkHref from './setLinkHref';
 import LinkEditPopover from './components/LinkEditPopover';
 import setLinkText from './setLinkText';
-import {className, DIALOG_ASK_URL} from './config';
+import {DIALOG_ASK_URL} from './config';
 import getActiveLinkMark from './getActiveLinkMark';
 import PopoverManager from '../../PopoverManager';
 import {isMobileView} from './utils';
+import styles from './LinkPlugin.module.css';
 
 function onLinkClick(editorView, _pos, event){
     const {target} = event;
     if (target) {
-        const hyperlinkElement = target.closest(`.${className}`);
+        const hyperlinkElement = target.closest(`.${styles.blockLink}`);
         if(hyperlinkElement){
             const mark = getActiveLinkMark(editorView.state);
             if(mark){
