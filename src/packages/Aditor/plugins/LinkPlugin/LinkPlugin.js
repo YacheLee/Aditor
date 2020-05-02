@@ -6,8 +6,6 @@ import mark from './mark';
 import onLinkClick from './onLinkClick';
 import LinkToolbarButton from './components/LinkToolbarButton';
 
-import './LinkPlugin.css';
-
 class View{
     constructor(editorView) {
         this.dom = this.toolbarButtonDom = document.createElement('div');

@@ -1,4 +1,4 @@
-import {className} from './config';
+import styles from './LinkPlugin.module.css'
 
 const mark  = {
     link: {
@@ -20,7 +20,7 @@ const mark  = {
         ],
         toDOM(node) {
             const { href, title } = node.attrs;
-            return ['a', { href, title, class: className }, 0];
+            return ['a', { href, title, class: styles.blockLink }, 0];
         }
     }
 };
