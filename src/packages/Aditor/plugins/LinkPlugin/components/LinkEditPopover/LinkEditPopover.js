@@ -10,14 +10,14 @@ const Paper = styled(_Paper)`
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  .wrapper{
+`;
+
+const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 24px;
-  }
 `;
 
 const TextFieldContainer = styled.div`
@@ -95,7 +95,7 @@ function LinkEditPopover({text: _text="", url: _url="", button_text="Apply", onA
     const link_id = _.uniqueId('link_')
 
     return <Paper>
-        <div className="wrapper">
+        <Wrapper>
             <TextFieldContainer>
                 <Label htmlFor={text_id}>Text</Label>
                 <TextField autoFocus={true} id={text_id} value={text} onChange={e=>setText(e.target.value)} />
@@ -105,7 +105,7 @@ function LinkEditPopover({text: _text="", url: _url="", button_text="Apply", onA
                 <TextField id={link_id} value={url} onChange={e=>setUrl(e.target.value)} />
                 <Button onClick={()=>onApply({text, url})}>{button_text}</Button>
             </TextFieldContainer>
-        </div>
+        </Wrapper>
     </Paper>
 }
 
