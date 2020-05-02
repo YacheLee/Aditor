@@ -6,40 +6,32 @@ import _Paper from '@material-ui/core/Paper';
 const Paper = styled(_Paper)`
   width: 462px;
   height: 146px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
+  position: relative;
 `;
 
 const TextFieldContainer = styled.div`
-    width: 100%;
     height: 50%;
-    display: flex;
-    align-items: center;
+    position: relative;
+    padding: 24px;
+`;
+
+const TextFieldInner = styled.div`
     position: relative;
 `;
 
 const Label = styled.label`
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    
     background-color: white;
     box-shadow: 5px 0 0 white, -5px 0 0 white;
     color: #5f6368;
     display: inline;
     font-size: 12px;
-    left: 12px;
     margin-bottom: 0;
     max-width: 300px;
     padding: 0;
-    position: absolute;
-    top: 8px;
 `;
 
 const TextField = styled.input`
@@ -95,17 +87,19 @@ function LinkEditPopover({text: _text="", url: _url="", button_text="Apply", onA
     const link_id = _.uniqueId('link_')
 
     return <Paper>
-        <Wrapper>
-            <TextFieldContainer>
+        <TextFieldContainer>
+            <TextFieldInner>
                 <Label htmlFor={text_id}>Text</Label>
                 <TextField autoFocus={true} id={text_id} value={text} onChange={e=>setText(e.target.value)} />
-            </TextFieldContainer>
-            <TextFieldContainer>
+            </TextFieldInner>
+        </TextFieldContainer>
+        <TextFieldContainer>
+            <TextFieldInner style={{display: "flex"}}>
                 <Label htmlFor={link_id}>Link</Label>
                 <TextField id={link_id} value={url} onChange={e=>setUrl(e.target.value)} />
                 <Button onClick={()=>onApply({text, url})}>{button_text}</Button>
-            </TextFieldContainer>
-        </Wrapper>
+            </TextFieldInner>
+        </TextFieldContainer>
     </Paper>
 }
 

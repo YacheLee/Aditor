@@ -6,6 +6,7 @@ import {EditorState} from "prosemirror-state";
 import {EditorView} from "prosemirror-view";
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Popover from './components/Popover';
 import plugins from "./plugins";
 import nodes from "./nodes";
@@ -71,16 +72,18 @@ function Aditor({id, defaultValue, onChange}) {
     }, [init]);
 
     return (
-        <Paper>
-            <Toolbar ref={toolbar} onMouseDown={e=>e.preventDefault()} />
-            <Divider light />
-            <ProseMirrorStyle ref={editor} />
-            {
-                editorView && <Popover id={`popover_${id}`} anchorEl={anchorEl}>
-                    {popoverContent}
-                </Popover>
-            }
-        </Paper>
+        <CssBaseline>
+            <Paper>
+                <Toolbar ref={toolbar} onMouseDown={e=>e.preventDefault()} />
+                <Divider light />
+                <ProseMirrorStyle ref={editor} />
+                {
+                    editorView && <Popover id={`popover_${id}`} anchorEl={anchorEl}>
+                        {popoverContent}
+                    </Popover>
+                }
+            </Paper>
+        </CssBaseline>
     );
 }
 
