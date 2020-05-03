@@ -1,5 +1,9 @@
 a.blockLink{
-	color: inherit;
+	color: #1155cc;
+}
+
+a.blockLink:link{
+	color: #1155cc;
 }
 
 a.blockLink:hover{

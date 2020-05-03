@@ -26,8 +26,8 @@ function plugins(toolbarDom) {
     ItalicPlugin(toolbarDom),
     UnderlinePlugin(toolbarDom),
     StrikeThroughPlugin(toolbarDom),
+    LinkPlugin(toolbarDom),
     TextColorPlugin(toolbarDom),
-    LinkPlugin(toolbarDom)
   ];
 }
 
