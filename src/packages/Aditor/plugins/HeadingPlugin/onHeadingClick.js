@@ -1,5 +1,5 @@
-import {PARAGRAPH_VALUE} from './config';
-import {setBlockType} from 'prosemirror-commands';
+import { setBlockType } from 'prosemirror-commands';
+import { PARAGRAPH_VALUE } from './config';
 
 function onHeadingClick(editorView, level) {
   editorView.focus();

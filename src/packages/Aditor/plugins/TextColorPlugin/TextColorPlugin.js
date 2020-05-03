@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Plugin} from 'prosemirror-state';
+import { Plugin } from 'prosemirror-state';
 import mark from './mark';
-import {getColor} from './commands';
+import { getColor } from './commands';
 import TextColorToolbarButton from './TextColorToolbarButton';
 
 class ToolbarView {

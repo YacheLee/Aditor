@@ -1,12 +1,13 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import {MdArrowDropDown} from 'react-icons/md';
-import {BLACK_COLOR} from '../../config';
+import { MdArrowDropDown } from 'react-icons/md';
+import { BLACK_COLOR } from '../../config';
 import getLabel from '../getLabel';
 import ToolbarButtonStyle from '../../shared/ToolbarButtonStyle';
-import HeadingList from './HeadingList';
+
 import onHeadingClick from '../onHeadingClick';
 import PopoverManager from '../../../PopoverManager';
+import HeadingList from './HeadingList';
 
 const CenterBox = styled.div`
   display: flex;

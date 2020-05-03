@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import useEscClose from './useEscClose';
 import PopoverManager from '../../PopoverManager';
+import useEscClose from './useEscClose';
 
 function Popover({ id, anchorEl, children }) {
   const open = Boolean(anchorEl);

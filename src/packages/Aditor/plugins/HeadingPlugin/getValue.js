@@ -1,5 +1,5 @@
 import getSelectedHeadingValue from './getSelectedHeadingValue';
-import {PARAGRAPH_VALUE} from './config';
+import { PARAGRAPH_VALUE } from './config';
 
 function getHeading(editorView) {
   const { selection, tr } = editorView.state;

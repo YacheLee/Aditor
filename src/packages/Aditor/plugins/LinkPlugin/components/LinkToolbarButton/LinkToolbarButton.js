@@ -1,13 +1,14 @@
 import React from 'react';
-import {MdInsertLink} from 'react-icons/md';
+import { MdInsertLink } from 'react-icons/md';
 import ToolbarButtonStyle from '../../../shared/ToolbarButtonStyle';
 import LinkEditPopover from '../LinkEditPopover';
-import insertLink from './insertLink';
+
 import PopoverManager from '../../../../PopoverManager';
 import setLinkHref from '../../setLinkHref';
 import setLinkText from '../../setLinkText';
-import {isMobileView} from '../../utils';
-import {DIALOG_ASK_TEXT, DIALOG_ASK_URL} from '../../config';
+import { isMobileView } from '../../utils';
+import { DIALOG_ASK_TEXT, DIALOG_ASK_URL } from '../../config';
+import insertLink from './insertLink';
 
 function getSelectedText(state, from, to) {
   const selectedNode = state.doc.cut(from, to);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {DEFAULT_FONT_SIZE} from '../../config';
+import { DEFAULT_FONT_SIZE } from '../../config';
 
 const Root = styled.svg`
   height: ${DEFAULT_FONT_SIZE};

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {AiOutlineGlobal} from 'react-icons/ai';
-import {FaRegCopy, FaRegEdit, FaUnlink} from 'react-icons/fa';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaRegCopy, FaRegEdit, FaUnlink } from 'react-icons/fa';
 import _Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 

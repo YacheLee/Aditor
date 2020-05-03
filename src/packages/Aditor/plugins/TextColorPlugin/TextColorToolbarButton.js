@@ -1,9 +1,9 @@
 import React from 'react';
-import {CompactPicker} from 'react-color';
-import {changeColor} from './commands';
-import AButton from './AButton';
+import { CompactPicker } from 'react-color';
 import ToolbarButtonStyle from '../shared/ToolbarButtonStyle';
 import PopoverManager from '../../PopoverManager';
+import { changeColor } from './commands';
+import AButton from './AButton';
 
 function TextColorToolbarButton({ editorView, value, toolbarButtonDom }) {
   return (

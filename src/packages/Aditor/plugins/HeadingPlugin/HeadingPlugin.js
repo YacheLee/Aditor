@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Plugin} from 'prosemirror-state';
+import { Plugin } from 'prosemirror-state';
 import getValue from './getValue';
 import HeadingToolbarButton from './components/HeadingToolbarButton';
 

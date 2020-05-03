@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Plugin} from 'prosemirror-state';
-import {toggleMark} from 'prosemirror-commands';
-import {keydownHandler} from 'prosemirror-keymap';
-import {isActive} from './utils';
+import { Plugin } from 'prosemirror-state';
+import { toggleMark } from 'prosemirror-commands';
+import { keydownHandler } from 'prosemirror-keymap';
 import ToolbarActiveButtonStyle from '../shared/ToolbarActiveButtonStyle';
+import { isActive } from './utils';
 
 function MarkPlugin(toolbarDom, Icon, mark, markType, attr, hotkey) {
   function toggle(editorState, dispatch) {

@@ -1,8 +1,8 @@
-import {history} from 'prosemirror-history';
-import {keymap} from 'prosemirror-keymap';
-import {baseKeymap} from 'prosemirror-commands';
-import {dropCursor} from 'prosemirror-dropcursor';
-import {gapCursor} from 'prosemirror-gapcursor';
+import { history } from 'prosemirror-history';
+import { keymap } from 'prosemirror-keymap';
+import { baseKeymap } from 'prosemirror-commands';
+import { dropCursor } from 'prosemirror-dropcursor';
+import { gapCursor } from 'prosemirror-gapcursor';
 import UndoPlugin from './UndoPlugin';
 import RedoPlugin from './RedoPlugin';
 import BoldPlugin from './BoldPlugin';
@@ -27,7 +27,7 @@ function plugins(toolbarDom) {
     UnderlinePlugin(toolbarDom),
     StrikeThroughPlugin(toolbarDom),
     LinkPlugin(toolbarDom),
-    TextColorPlugin(toolbarDom),
+    TextColorPlugin(toolbarDom)
   ];
 }
 

@@ -1,4 +1,4 @@
-import {MdFormatStrikethrough} from 'react-icons/md';
+import { MdFormatStrikethrough } from 'react-icons/md';
 import MarkPlugin from '../MarkPlugin';
 import mark from './mark';
 

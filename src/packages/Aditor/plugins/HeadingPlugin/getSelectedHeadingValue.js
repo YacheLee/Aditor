@@ -1,4 +1,4 @@
-import {PARAGRAPH_VALUE} from './config';
+import { PARAGRAPH_VALUE } from './config';
 
 function getSelectedHeadingValue(headingNodes = []) {
   const set = new Set(headingNodes.map((node) => node.attrs.level));

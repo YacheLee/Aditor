@@ -1,4 +1,4 @@
-import {MdFormatItalic} from 'react-icons/md';
+import { MdFormatItalic } from 'react-icons/md';
 import MarkPlugin from '../MarkPlugin';
 import mark from './mark';
 

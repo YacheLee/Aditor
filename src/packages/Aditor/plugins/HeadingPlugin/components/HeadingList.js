@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {GREY_COLOR} from '../../config';
-import {HEADING_DEFAULT_TYPE, PARAGRAPH_VALUE} from '../config';
+import { GREY_COLOR } from '../../config';
+import { HEADING_DEFAULT_TYPE, PARAGRAPH_VALUE } from '../config';
 import getLabel from '../getLabel';
 
 const FONT_SIZE = 20;

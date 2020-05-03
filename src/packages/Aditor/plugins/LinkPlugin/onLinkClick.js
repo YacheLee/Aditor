@@ -1,13 +1,14 @@
 import React from 'react';
 import copy from 'copy-to-clipboard';
+import PopoverManager from '../../PopoverManager';
 import LinkPopover from './components/LinkPopover';
 import setLinkHref from './setLinkHref';
 import LinkEditPopover from './components/LinkEditPopover';
 import setLinkText from './setLinkText';
-import {DIALOG_ASK_URL} from './config';
+import { DIALOG_ASK_URL } from './config';
 import getActiveLinkMark from './getActiveLinkMark';
-import PopoverManager from '../../PopoverManager';
-import {isMobileView} from './utils';
+
+import { isMobileView } from './utils';
 import styles from './LinkPlugin.module.css';
 
 function onLinkClick(editorView, _pos, event) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {MdRedo} from 'react-icons/md';
-import {redo} from 'prosemirror-history';
-import {keydownHandler} from 'prosemirror-keymap';
-import {Plugin} from 'prosemirror-state';
+import { MdRedo } from 'react-icons/md';
+import { redo } from 'prosemirror-history';
+import { keydownHandler } from 'prosemirror-keymap';
+import { Plugin } from 'prosemirror-state';
 import ToolbarButtonStyle from '../shared/ToolbarButtonStyle';
 
 class RedoView {

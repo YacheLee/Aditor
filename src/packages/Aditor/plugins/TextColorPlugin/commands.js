@@ -1,5 +1,5 @@
-import {toggleMark} from 'prosemirror-commands';
-import {BLACK_COLOR} from '../config';
+import { toggleMark } from 'prosemirror-commands';
+import { BLACK_COLOR } from '../config';
 
 const DEFAULT_COLOR = BLACK_COLOR;
 

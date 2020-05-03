@@ -1,5 +1,5 @@
 import React from 'react';
-import {Plugin} from 'prosemirror-state';
+import { Plugin } from 'prosemirror-state';
 import ReactDOM from 'react-dom';
 
 import mark from './mark';

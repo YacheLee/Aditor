@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {DEFAULT_FONT_SIZE} from '../config';
+import { DEFAULT_FONT_SIZE } from '../config';
 
 const ToolbarButtonStyle = styled.div`
   font-size: ${DEFAULT_FONT_SIZE};
