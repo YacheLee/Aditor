@@ -3,6 +3,7 @@ import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { gapCursor } from 'prosemirror-gapcursor';
+import HighlightPlugin from './HighlightPlugin';
 import UndoPlugin from './UndoPlugin';
 import RedoPlugin from './RedoPlugin';
 import BoldPlugin from './BoldPlugin';
@@ -15,6 +16,7 @@ import LinkPlugin from './LinkPlugin';
 
 function plugins(toolbarDom) {
   return [
+    HighlightPlugin(),
     history(),
     keymap(baseKeymap),
     dropCursor(),
