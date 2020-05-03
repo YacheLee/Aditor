@@ -1,1 +1,1 @@
-export {default} from './RedoPlugin';
+export { default } from './RedoPlugin';

@@ -1,1 +1,1 @@
-export {default} from './MarkPlugin';
+export { default } from './MarkPlugin';

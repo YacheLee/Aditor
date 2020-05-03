@@ -1,1 +1,1 @@
-export {default} from './BoldPlugin';
+export { default } from './BoldPlugin';

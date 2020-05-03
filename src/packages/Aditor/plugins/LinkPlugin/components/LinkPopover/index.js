@@ -1,1 +1,1 @@
-export {default} from './LinkPopover';
+export { default } from './LinkPopover';

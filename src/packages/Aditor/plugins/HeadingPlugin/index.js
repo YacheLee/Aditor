@@ -1,1 +1,1 @@
-export {default} from './HeadingPlugin';
+export { default } from './HeadingPlugin';

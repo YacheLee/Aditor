@@ -65,7 +65,6 @@ HeadingList.defaultProps = {
   value: HEADING_DEFAULT_TYPE
 };
 
-HeadingList.propTypes = {
-};
+HeadingList.propTypes = {};
 
 export default HeadingList;

@@ -1,1 +1,1 @@
-export {default} from './UndoPlugin';
+export { default } from './UndoPlugin';

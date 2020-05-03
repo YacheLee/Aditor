@@ -1,1 +1,1 @@
-export {default} from './TextColorPlugin';
+export { default } from './TextColorPlugin';

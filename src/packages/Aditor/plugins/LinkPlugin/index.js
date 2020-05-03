@@ -1,1 +1,1 @@
-export {default} from './LinkPlugin';
+export { default } from './LinkPlugin';

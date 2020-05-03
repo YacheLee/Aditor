@@ -1,1 +1,1 @@
-export {default} from './ItalicPlugin';
+export { default } from './ItalicPlugin';

@@ -1,1 +1,1 @@
-export {default} from './Aditor';
+export { default } from './Aditor';

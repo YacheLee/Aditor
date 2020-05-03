@@ -1,1 +1,1 @@
-export {default} from './StrikeThroughPlugin';
+export { default } from './StrikeThroughPlugin';

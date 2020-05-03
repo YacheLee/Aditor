@@ -1,1 +1,1 @@
-export {default} from './UnderlinePlugin';
+export { default } from './UnderlinePlugin';
