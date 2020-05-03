@@ -104,7 +104,7 @@ function LinkEditPopover({
           />
         </TextFieldInner>
       </TextFieldContainer>
-      <TextFieldContainer>
+      <TextFieldContainer style={{ paddingTop: 12 }}>
         <TextFieldInner style={{ display: 'flex' }}>
           <Label htmlFor={linkId}>Link</Label>
           <TextField
