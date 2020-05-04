@@ -1,4 +1,5 @@
 import { AllSelection, Plugin } from 'prosemirror-state';
+import modules from './HighlightPlugin.module.css';
 
 function getStart({ isFirst, fromTextOffset, isAllSelection }) {
   if (isAllSelection) {
@@ -64,9 +65,7 @@ function addOverlay(editorView) {
 
     textRange.setStart(firstTextNode, _start);
     textRange.setEnd(firstTextNode, _end);
-    const textRect = textRange.getClientRects()[0];
-
-    const { width, height, left, top } = textRect;
+    const { width, height, left, top } = textRange.getBoundingClientRect();
 
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -93,20 +92,31 @@ function removeOverlay() {
   });
 }
 
+function sync(editorView){
+  removeOverlay(editorView);
+  addOverlay(editorView);
+}
+
+class View{
+  constructor(editorView) {
+    this.editorView = editorView;
+    editorView.dom.classList.add(modules.highlightPlugin);
+  }
+  update(editorView){
+    const { from, to } = editorView.state.selection;
+    if(from !== to){
+      sync(editorView);
+    }
+    else{
+      removeOverlay();
+    }
+  }
+}
+
 function HighlightPlugin() {
   const plugin = new Plugin({
-    update() {
-      return true;
-    },
-    props: {
-      handleDOMEvents: {
-        blur: (editorView) => {
-          addOverlay(editorView);
-        },
-        focus: () => {
-          removeOverlay();
-        }
-      }
+    view(editorView) {
+      return new View(editorView);
     }
   });
 

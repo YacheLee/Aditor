@@ -1,0 +1,3 @@
+.highlightPlugin *::selection{
+	background-color: white;
+}
