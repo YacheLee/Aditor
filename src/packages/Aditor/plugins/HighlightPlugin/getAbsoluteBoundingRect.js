@@ -1,4 +1,4 @@
-//source is from https://gist.github.com/rgrove/5463265
+// source is from https://gist.github.com/rgrove/5463265
 
 /**
  Returns a bounding rect for _el_ with absolute coordinates corrected for
@@ -15,18 +15,22 @@
  @return {Object} Absolute bounding rect for _el_.
  **/
 
-function getAbsoluteBoundingRect (el) {
-  var doc  = document,
-    win  = window,
-    body = doc.body,
+function getAbsoluteBoundingRect(el) {
+  var doc = document;
+  var win = window;
+  var body = doc.body;
 
-    // pageXOffset and pageYOffset work everywhere except IE <9.
-    offsetX = win.pageXOffset !== undefined ? win.pageXOffset :
-      (doc.documentElement || body.parentNode || body).scrollLeft,
-    offsetY = win.pageYOffset !== undefined ? win.pageYOffset :
-      (doc.documentElement || body.parentNode || body).scrollTop,
+  // pageXOffset and pageYOffset work everywhere except IE <9.
+  var offsetX =
+    win.pageXOffset !== undefined
+      ? win.pageXOffset
+      : (doc.documentElement || body.parentNode || body).scrollLeft;
+  var offsetY =
+    win.pageYOffset !== undefined
+      ? win.pageYOffset
+      : (doc.documentElement || body.parentNode || body).scrollTop;
 
-    rect = el.getBoundingClientRect();
+  var rect = el.getBoundingClientRect();
 
   if (el !== body) {
     var parent = el.parentNode;
@@ -37,17 +41,17 @@ function getAbsoluteBoundingRect (el) {
     while (parent !== body) {
       offsetX += parent.scrollLeft;
       offsetY += parent.scrollTop;
-      parent   = parent.parentNode;
+      parent = parent.parentNode;
     }
   }
 
   return {
     bottom: rect.bottom + offsetY,
     height: rect.height,
-    left  : rect.left + offsetX,
-    right : rect.right + offsetX,
-    top   : rect.top + offsetY,
-    width : rect.width
+    left: rect.left + offsetX,
+    right: rect.right + offsetX,
+    top: rect.top + offsetY,
+    width: rect.width
   };
 }
 

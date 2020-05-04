@@ -94,22 +94,22 @@ function removeOverlay() {
   });
 }
 
-function sync(editorView){
+function sync(editorView) {
   removeOverlay(editorView);
   addOverlay(editorView);
 }
 
-class View{
+class View {
   constructor(editorView) {
     this.editorView = editorView;
     editorView.dom.classList.add(modules.highlightPlugin);
   }
-  update(editorView){
+
+  update(editorView) {
     const { from, to } = editorView.state.selection;
-    if(from !== to){
+    if (from !== to) {
       sync(editorView);
-    }
-    else{
+    } else {
       removeOverlay();
     }
   }
