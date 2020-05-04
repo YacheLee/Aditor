@@ -1,5 +1,6 @@
 import { AllSelection, Plugin } from 'prosemirror-state';
 import modules from './HighlightPlugin.module.css';
+import getAbsoluteBoundingRect from './getAbsoluteBoundingRect';
 
 function getStart({ isFirst, fromTextOffset, isAllSelection }) {
   if (isAllSelection) {
@@ -65,7 +66,8 @@ function addOverlay(editorView) {
 
     textRange.setStart(firstTextNode, _start);
     textRange.setEnd(firstTextNode, _end);
-    const { width, height, left, top } = textRange.getBoundingClientRect();
+    const { left, width, height } = textRange.getBoundingClientRect();
+    const { top } = getAbsoluteBoundingRect(dom);
 
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
