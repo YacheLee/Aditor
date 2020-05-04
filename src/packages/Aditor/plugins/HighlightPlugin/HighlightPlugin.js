@@ -14,6 +14,22 @@ function getEnd({isLast, textLength, toTextOffset}){
   return textLength;
 }
 
+function getTextNodes(dom){
+  if(dom.childNodes.length===0){
+    return [];
+  }
+  else{
+    let arr = [];
+    [...dom.childNodes].forEach(child =>{
+      if(child.nodeType === Node.TEXT_NODE){
+        arr.push(child);
+      }
+      arr = arr.concat(getTextNodes(child));
+    });
+    return arr;
+  }
+}
+
 function HighlightPlugin() {
   const plugin = new Plugin({
     update() {
@@ -38,14 +54,17 @@ function HighlightPlugin() {
             const isLast = index === nodes.length - 1;
             const dom = editorView.nodeDOM(nodePos);
 
-            const textNode = [...dom.childNodes].find(child => child.nodeType === Node.TEXT_NODE);
+            const textNodes = getTextNodes(dom);
+            const firstTextNode = textNodes[0];
+            console.log(textNodes);
+
+            const textLength = firstTextNode.length;
             const textRange = document.createRange();
-
             const _start = getStart({ isFirst, fromTextOffset });
-            const _end = getEnd({ isLast, textLength: textNode.length, toTextOffset });
+            const _end = getEnd({ isLast, textLength, toTextOffset });
 
-            textRange.setStart(textNode, _start);
-            textRange.setEnd(textNode, _end);
+            textRange.setStart(firstTextNode, _start);
+            textRange.setEnd(firstTextNode, _end);
             const textRect = textRange.getClientRects()[0];
 
             const {width, height, left, top} = textRect;
