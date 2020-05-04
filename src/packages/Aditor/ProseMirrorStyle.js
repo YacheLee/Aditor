@@ -3,9 +3,6 @@ import styled from 'styled-components';
 const ProseMirrorStyle = styled.div`
   .ProseMirror {
     position: relative;
-  }
-
-  .ProseMirror {
     word-wrap: break-word;
     white-space: pre-wrap;
     -webkit-font-variant-ligatures: none;
