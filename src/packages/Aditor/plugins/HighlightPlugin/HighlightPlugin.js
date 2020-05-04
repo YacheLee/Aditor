@@ -1,14 +1,21 @@
-import { Plugin } from 'prosemirror-state';
+import { AllSelection, Plugin } from 'prosemirror-state';
+import { instanceOf } from 'prop-types';
 
-function getStart({isFirst, fromTextOffset}){
-  if(isFirst){
+function getStart({isFirst, fromTextOffset, isAllSelection}){
+  if(isAllSelection){
+    return 0;
+  }
+  else if(isFirst){
     return fromTextOffset;
   }
   return 0;
 }
 
-function getEnd({isLast, textLength, toTextOffset}){
-  if(isLast){
+function getEnd({isLast, textLength, toTextOffset, isAllSelection}){
+  if(isAllSelection){
+    return textLength;
+  }
+  else if(isLast){
     return toTextOffset;
   }
   return textLength;
@@ -38,7 +45,8 @@ function HighlightPlugin() {
     props: {
       handleDOMEvents: {
         blur: (editorView)=>{
-          const {from, to, $from, $to} = editorView.state.selection;
+          const {$from, $to} = editorView.state.selection;
+          const isAllSelection = editorView.state.selection instanceof AllSelection;
           const fromTextOffset = $from.parentOffset;
           const toTextOffset = $to.parentOffset;
 
@@ -56,12 +64,11 @@ function HighlightPlugin() {
 
             const textNodes = getTextNodes(dom);
             const firstTextNode = textNodes[0];
-            console.log(textNodes);
 
             const textLength = firstTextNode.length;
             const textRange = document.createRange();
-            const _start = getStart({ isFirst, fromTextOffset });
-            const _end = getEnd({ isLast, textLength, toTextOffset });
+            const _start = getStart({ isFirst, fromTextOffset, isAllSelection });
+            const _end = getEnd({ isLast, textLength, toTextOffset, isAllSelection });
 
             textRange.setStart(firstTextNode, _start);
             textRange.setEnd(firstTextNode, _end);
