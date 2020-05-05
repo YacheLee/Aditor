@@ -42,6 +42,7 @@ function Aditor({ id, defaultValue, onChange }) {
   PopoverManager.setPopoverAnchorElement = setAnchorEl;
   PopoverManager.setPopoverContent = setPopoverContent;
   PopoverManager.setAnchorEl(anchorEl);
+  PopoverManager.setEditorView(editorView);
 
   const init = useCallback(() => {
     if (!editorView) {
