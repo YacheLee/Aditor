@@ -1,3 +1,7 @@
-.highlightPlugin *::selection{
-	background-color: red;
+.editorView *::selection {
+	user-select: none;
+}
+
+.highlight {
+	background-color: rgba(118, 167, 250, 0.35);
 }
