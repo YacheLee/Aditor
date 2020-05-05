@@ -12,8 +12,8 @@ function getOpenState(doc, position) {
 
   const decorations = [
     Decoration.widget(position, span, {
-      key: `cursor`,
-    }),
+      key: `cursor`
+    })
   ];
   return DecorationSet.create(doc, decorations);
 }
@@ -27,21 +27,19 @@ function MyPlugin() {
   return new Plugin({
     key: pluginKey,
     state: {
-      init(_, { doc }) {
-      },
+      init(_, { doc }) {},
       apply(tr, oldState) {
         const data = tr.getMeta(pluginKey);
 
-        if(data){
+        if (data) {
           const { selection, doc } = tr;
           const { from, to } = selection;
 
-          if(data.type==='open'){
+          if (data.type === 'open') {
             if (from === to) {
               return getOpenState(doc, tr.selection.head);
             }
-          }
-          else if(data.type==='close'){
+          } else if (data.type === 'close') {
             return getCloseState(doc);
           }
         }
@@ -53,15 +51,15 @@ function MyPlugin() {
         return this.getState(state);
       },
       handleDOMEvents: {
-        blur: function(editorView){
+        blur: function (editorView) {
           editorView.dispatch(
-            editorView.state.tr.setMeta(pluginKey, {type: "open"})
+            editorView.state.tr.setMeta(pluginKey, { type: 'open' })
           );
           return true;
         },
-        focus: function(editorView){
+        focus: function (editorView) {
           editorView.dispatch(
-            editorView.state.tr.setMeta(pluginKey, {type: "close"})
+            editorView.state.tr.setMeta(pluginKey, { type: 'close' })
           );
           return true;
         }

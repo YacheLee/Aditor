@@ -4,7 +4,7 @@ const PopoverManager = {
   setPopoverAnchorElement: null,
   setPopoverContent: null,
 
-  setEditorView: function(editorView){
+  setEditorView: function (editorView) {
     this.editorView = editorView;
   },
   setAnchorEl: function (anchorEl) {
