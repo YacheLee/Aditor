@@ -3,7 +3,9 @@ import { Decoration, DecorationSet } from 'prosemirror-view';
 import styles from './HighlightPlugin.module.css';
 
 function getState(doc, from, to) {
-  const decorations = [Decoration.inline(from, to, { class: styles.highlight })]
+  const decorations = [
+    Decoration.inline(from, to, { class: styles.highlight })
+  ];
   return DecorationSet.create(doc, decorations);
 }
 
@@ -20,11 +22,11 @@ function MyPlugin() {
       return new View(editorView);
     },
     state: {
-      init(_, {doc}) {
+      init(_, { doc }) {
         return getState(doc);
       },
       apply(tr) {
-        const {selection, doc} = tr;
+        const { selection, doc } = tr;
         const { from, to } = selection;
         if (from !== to) {
           return getState(doc, from, to);
