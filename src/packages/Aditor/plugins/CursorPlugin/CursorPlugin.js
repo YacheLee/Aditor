@@ -54,7 +54,6 @@ function MyPlugin() {
       },
       handleDOMEvents: {
         blur: function(editorView){
-          console.log('blur');
           editorView.dispatch(
             editorView.state.tr.setMeta(pluginKey, {type: "open"})
           );
