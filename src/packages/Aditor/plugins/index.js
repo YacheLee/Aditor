@@ -13,9 +13,11 @@ import StrikeThroughPlugin from './StrikeThroughPlugin';
 import TextColorPlugin from './TextColorPlugin';
 import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
+import CursorPlugin from './CursorPlugin';
 
 function plugins(toolbarDom) {
   return [
+    CursorPlugin(),
     HighlightPlugin(),
     history(),
     keymap(baseKeymap),
