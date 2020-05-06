@@ -2,37 +2,30 @@ import { Plugin } from 'prosemirror-state';
 import { Decoration, DecorationSet } from 'prosemirror-view';
 import styles from './HighlightPlugin.module.css';
 
-function getState(doc, from, to) {
-  const decorations = [
-    Decoration.inline(from, to, { class: styles.highlight })
-  ];
-  return DecorationSet.create(doc, decorations);
-}
+const DECORATION_ID = "HighlightDecoration_id";
 
-class View {
-  constructor(editorView) {
-    this.editorView = editorView;
-    editorView.dom.classList.add(styles.editorView);
-  }
+function getDecorations(from, to) {
+  return [ Decoration.inline(from, to, { class: styles.highlight }, {id: DECORATION_ID}) ];
 }
 
 function MyPlugin() {
   return new Plugin({
-    view(editorView) {
-      return new View(editorView);
-    },
     state: {
-      init(_, { doc }) {
-        return getState(doc);
+      init() {
+        return DecorationSet.empty;
       },
-      apply(tr) {
+      apply(tr, set) {
         const { selection, doc } = tr;
         const { from, to } = selection;
+
+        set = set.map(tr.mapping, doc);
         if (from !== to) {
-          return getState(doc, from, to);
+          set = set.add(tr.doc, getDecorations(from, to));
         } else {
-          return getState(doc, 0, 0);
+          const highlightDecoration = set.find(null, null, e=> e.id=== DECORATION_ID);
+          set = set.remove(highlightDecoration);
         }
+        return set;
       }
     },
     props: {
