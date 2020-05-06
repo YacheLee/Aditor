@@ -3,10 +3,15 @@ import { Decoration, DecorationSet } from 'prosemirror-view';
 import styles from './HighlightPlugin.module.css';
 
 const key = new PluginKey('HighlightPlugin');
-const DECORATION_ID = "HighlightDecoration_id";
+const DECORATION_ID = 'HighlightDecoration_id';
 
-function getDecorations(from, to) {
-  return [ Decoration.inline(from, to, { class: styles.highlight }, {id: DECORATION_ID}) ];
+function getDecoration(from, to) {
+  return Decoration.inline(
+    from,
+    to,
+    { class: styles.highlight },
+    { id: DECORATION_ID }
+  );
 }
 
 function MyPlugin() {
@@ -19,16 +24,19 @@ function MyPlugin() {
       apply(tr, set) {
         const data = tr.getMeta(key);
 
-        if(!data) return set;
+        if (!data) return set;
 
         const { selection, doc, mapping } = tr;
         set = set.map(mapping, doc);
 
-        if(data.type ==='open'){
-          set = set.add(doc, getDecorations(selection.from, selection.to));
-        }
-        else if(data.type ==='close'){
-          const highlightDecoration = set.find(null, null, e=> e.id=== DECORATION_ID);
+        if (data.type === 'open') {
+          set = set.add(doc, [getDecoration(selection.from, selection.to)]);
+        } else if (data.type === 'close') {
+          const highlightDecoration = set.find(
+            null,
+            null,
+            (e) => e.id === DECORATION_ID
+          );
           set = set.remove(highlightDecoration);
         }
 
