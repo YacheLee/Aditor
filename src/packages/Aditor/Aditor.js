@@ -65,7 +65,7 @@ function Aditor({ id, defaultValue, onChange }) {
         },
         attributes: {
           'data-gramm': false,
-          'spellcheck': false
+          spellcheck: false
         }
       });
       setEditorView(_editorView);
