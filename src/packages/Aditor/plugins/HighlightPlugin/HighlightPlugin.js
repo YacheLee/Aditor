@@ -1,7 +1,8 @@
-import { Plugin } from 'prosemirror-state';
+import { Plugin, PluginKey } from 'prosemirror-state';
 import { Decoration, DecorationSet } from 'prosemirror-view';
 import styles from './HighlightPlugin.module.css';
 
+const key = new PluginKey('HighlightPlugin');
 const DECORATION_ID = "HighlightDecoration_id";
 
 function getDecorations(from, to) {
@@ -10,27 +11,47 @@ function getDecorations(from, to) {
 
 function MyPlugin() {
   return new Plugin({
+    key,
     state: {
       init() {
         return DecorationSet.empty;
       },
       apply(tr, set) {
-        const { selection, doc } = tr;
-        const { from, to } = selection;
+        const data = tr.getMeta(key);
 
-        set = set.map(tr.mapping, doc);
-        if (from !== to) {
-          set = set.add(tr.doc, getDecorations(from, to));
-        } else {
+        if(!data) return set;
+
+        const { selection, doc, mapping } = tr;
+        set = set.map(mapping, doc);
+
+        if(data.type ==='open'){
+          set = set.add(doc, getDecorations(selection.from, selection.to));
+        }
+        else if(data.type ==='close'){
           const highlightDecoration = set.find(null, null, e=> e.id=== DECORATION_ID);
           set = set.remove(highlightDecoration);
         }
+
         return set;
       }
     },
     props: {
       decorations(state) {
         return this.getState(state);
+      },
+      handleDOMEvents: {
+        blur: function (editorView) {
+          editorView.dispatch(
+            editorView.state.tr.setMeta(key, { type: 'open' })
+          );
+          return false;
+        },
+        focus: function (editorView) {
+          editorView.dispatch(
+            editorView.state.tr.setMeta(key, { type: 'close' })
+          );
+          return false;
+        }
       }
     }
   });

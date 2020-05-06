@@ -55,13 +55,13 @@ function MyPlugin() {
           editorView.dispatch(
             editorView.state.tr.setMeta(pluginKey, { type: 'open' })
           );
-          return true;
+          return false;
         },
         focus: function (editorView) {
           editorView.dispatch(
             editorView.state.tr.setMeta(pluginKey, { type: 'close' })
           );
-          return true;
+          return false;
         }
       }
     }
