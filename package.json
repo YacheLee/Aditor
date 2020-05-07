@@ -29,7 +29,9 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -53,6 +55,12 @@
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/preset-create-react-app": "^2.1.1",
+    "@storybook/react": "^5.3.18",
+    "testcafe": "^1.8.4",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
