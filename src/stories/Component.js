@@ -3,6 +3,7 @@ import Aditor from '../packages/Aditor';
 
 export default function Component({defaultValue}){
   const [value, setValue] = React.useState(defaultValue);
+
   return <div className="App">
     <Aditor id="aditor" defaultValue={value} onChange={value=>{
       setValue(value);

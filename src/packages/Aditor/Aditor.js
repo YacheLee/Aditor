@@ -70,7 +70,7 @@ function Aditor({ id, defaultValue, onChange }) {
       });
       setEditorView(_editorView);
     }
-  }, [defaultValue, editorView]);
+  }, [defaultValue, onChange, editorView]);
 
   useEffect(() => {
     init();

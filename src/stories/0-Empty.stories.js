@@ -1,5 +1,4 @@
 import React from 'react';
-import Aditor from '../packages/Aditor';
 import Component from './Component';
 
 export default {
