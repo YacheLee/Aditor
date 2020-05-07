@@ -81,7 +81,7 @@ function Aditor({ id, defaultValue, onChange }) {
       <Paper>
         <Toolbar ref={toolbar} onMouseDown={(e) => e.preventDefault()} />
         <Divider light />
-        <ProseMirrorStyle ref={editor} />
+        <ProseMirrorStyle id={id} ref={editor} />
         {editorView && (
           <Popover id={`popover_${id}`} anchorEl={anchorEl}>
             {popoverContent}
