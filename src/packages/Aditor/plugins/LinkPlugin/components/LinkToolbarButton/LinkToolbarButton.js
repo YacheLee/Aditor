@@ -77,7 +77,7 @@ function LinkToolbarButton({ editorView, toolbarButtonDom }) {
               <LinkEditPopover
                 text={text}
                 url={url}
-                button_text={buttonText}
+                buttonText={buttonText}
                 onApply={({ text, url }) => {
                   if (isInsertMode) {
                     insertLink(
