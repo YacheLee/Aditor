@@ -1,9 +1,4 @@
 .cursor {
 	display: inline-block;
-	animation: blink-color 1s infinite;
-	border-left: transparent solid 1px;
-}
-
-@keyframes blink-color {
-	50% {border-color: black;}
+	border-left: solid 1px black;
 }
