@@ -6,5 +6,5 @@ export default {
 };
 
 export const Empty = () => {
-  return <Component defaultValue={[]} />
+  return <Component defaultValue={[]} />;
 };

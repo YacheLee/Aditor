@@ -6,15 +6,30 @@ const pluginKey = new PluginKey('CursorPlugin');
 const DECORATION_ID = 'CursorDecoration_id';
 const ZeroWidthSpace = '\u200b';
 
-function getDecoration(doc, position) {
+function getCursorDecoration(doc, position) {
   const span = document.createElement('span');
   span.textContent = ZeroWidthSpace;
   span.className = styles.cursor;
 
   return Decoration.widget(position, span, {
-    key: `cursor`,
     id: DECORATION_ID
   });
+}
+
+function getNodeSpellCheckDecoration(doc, position) {
+  let decoration;
+  doc.nodesBetween(position, position, function (node, pos) {
+    if (node.isBlock) {
+      const attribute = {
+        'data-gramm': false,
+        spellcheck: false
+      };
+      decoration = Decoration.node(pos, pos + node.nodeSize, attribute, {
+        id: DECORATION_ID
+      });
+    }
+  });
+  return decoration;
 }
 
 function MyPlugin() {
@@ -35,13 +50,16 @@ function MyPlugin() {
 
         if (data.type === 'open') {
           if (from === to) {
-            set = set.add(doc, [getDecoration(doc, selection.head)]);
+            set = set.add(doc, [
+              getCursorDecoration(doc, selection.head),
+              getNodeSpellCheckDecoration(doc, selection.head)
+            ]);
           }
         } else if (data.type === 'close') {
-          const decoration = set.find(null, null, (e) => {
+          const decorations = set.find(null, null, (e) => {
             return e.id === DECORATION_ID;
           });
-          set = set.remove(decoration);
+          set = set.remove(decorations);
         }
         return set;
       }

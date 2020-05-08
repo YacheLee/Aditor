@@ -62,10 +62,6 @@ function Aditor({ id, defaultValue, onChange }) {
           const newState = _editorView.state.apply(transaction);
           _editorView.updateState(newState);
           onChange(newState.toJSON().doc.content);
-        },
-        attributes: {
-          'data-gramm': false,
-          spellcheck: false
         }
       });
       setEditorView(_editorView);
