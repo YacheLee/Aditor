@@ -41,25 +41,12 @@ const nodes = {
       width: { default: null },
       height: { default: null },
     },
-    draggable: true,
+    draggable: false,
     parseDOM: [
       {
         tag: 'img[src^="data:image/"]',
         ignore: true,
-      },
-      {
-        tag: 'img[src]',
-        getAttrs(domNode) {
-          const { src, alt, title, width, height} = domNode;
-          return {
-            src,
-            alt,
-            title,
-            width,
-            height
-          };
-        },
-      },
+      }
     ],
     toDOM(node) {
       return ['img', node.attrs];
