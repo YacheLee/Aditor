@@ -1,5 +1,20 @@
 [
   {
+    "type": "paragraph",
+    "content": [
+      {
+        "type": "image",
+        "attrs" : {
+          "src": "https://source.unsplash.com/random/800x550",
+          "alt": "alt",
+          "title": "title",
+          "width": 75,
+          "height": 75
+        }
+      }
+    ]
+  },
+  {
     "type": "heading",
     "attrs": {
       "level": 1

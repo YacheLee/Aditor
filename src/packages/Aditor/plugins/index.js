@@ -14,6 +14,7 @@ import TextColorPlugin from './TextColorPlugin';
 import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
+import ImagePlugin from './ImagePlugin';
 
 function plugins(toolbarDom) {
   return [
@@ -31,7 +32,8 @@ function plugins(toolbarDom) {
     UnderlinePlugin(toolbarDom),
     StrikeThroughPlugin(toolbarDom),
     LinkPlugin(toolbarDom),
-    TextColorPlugin(toolbarDom)
+    TextColorPlugin(toolbarDom),
+    ImagePlugin(toolbarDom)
   ];
 }
 

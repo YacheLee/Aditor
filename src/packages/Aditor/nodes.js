@@ -30,7 +30,40 @@ const nodes = {
   text: {
     group: 'inline',
     inline: true
-  }
+  },
+  image: {
+    group: 'inline',
+    inline: true,
+    attrs: {
+      src: { default: '' },
+      alt: { default: null },
+      title: { default: null },
+      width: { default: null },
+      height: { default: null },
+    },
+    draggable: true,
+    parseDOM: [
+      {
+        tag: 'img[src^="data:image/"]',
+        ignore: true,
+      },
+      {
+        tag: 'img[src]',
+        getAttrs(domNode) {
+          const { src, alt, title, width} = domNode.getAttrs();
+          return {
+            src,
+            alt,
+            title,
+            width,
+          };
+        },
+      },
+    ],
+    toDOM(node) {
+      return ['img', node.attrs];
+    },
+  },
 };
 
 export default nodes;
