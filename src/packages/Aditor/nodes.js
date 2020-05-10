@@ -50,12 +50,13 @@ const nodes = {
       {
         tag: 'img[src]',
         getAttrs(domNode) {
-          const { src, alt, title, width} = domNode.getAttrs();
+          const { src, alt, title, width, height} = domNode.getAttrs();
           return {
             src,
             alt,
             title,
             width,
+            height
           };
         },
       },
