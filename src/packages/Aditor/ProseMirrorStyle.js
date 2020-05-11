@@ -28,7 +28,7 @@ const ProseMirrorStyle = styled.div`
   }
 
   .ProseMirror-selectednode {
-    outline: 2px solid #8cf;
+    outline: none;
   }
 
   /* Make sure li selections wrap around markers */
