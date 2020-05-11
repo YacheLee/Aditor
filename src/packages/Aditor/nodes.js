@@ -41,7 +41,7 @@ const nodes = {
       width: { default: null },
       height: { default: null },
     },
-    draggable: false,
+    draggable: true,
     parseDOM: [
       {
         tag: 'img[src^="data:image/"]',
