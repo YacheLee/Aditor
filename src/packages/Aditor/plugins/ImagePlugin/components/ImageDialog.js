@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { findParentNodeOfType } from 'prosemirror-utils';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,13 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
 import { setImageAttrs } from '../commands';
 import { updateLayout } from '../../MediaSinglePlugin/commands';
-import { changeColor } from '../../TextColorPlugin/commands';
-
-const Image = styled.img`
-  &:hover{
-    cursor: pointer;
-  }
-`;
 
 function PaperComponent(props) {
   return (
