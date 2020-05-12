@@ -8,8 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
 import { setImageAttrs } from '../commands';
-import { getLayout, updateLayout } from '../../MediaSinglePlugin/commands';
-import { name as mediaSingleNodeName } from '../../MediaSinglePlugin/node';
+import { getLayout, getMediaSingle, updateLayout } from '../../MediaSinglePlugin/commands';
 
 function PaperComponent(props) {
   return (
@@ -20,12 +19,12 @@ function PaperComponent(props) {
 }
 
 function Component({node, editorView, getPos, onClose}){
-  const mediaSingleNode = findParentNodeOfType(editorView.state.schema.nodes[mediaSingleNodeName])(editorView.state.selection);
+  const mediaSingle = getMediaSingle(editorView);
   const { title: _title, width: _width, height: _height } = node.attrs;
   const [width, setWidth] = useState(_width);
   const [height, setHeight] = useState(_height);
   const [title, setTitle] = useState(_title);
-  const [layout, setLayout] = useState(getLayout(mediaSingleNode));
+  const [layout, setLayout] = useState(getLayout(mediaSingle));
   const pos = getPos();
 
   return <Dialog
@@ -71,10 +70,7 @@ function Component({node, editorView, getPos, onClose}){
         <Button onClick={()=>{
           const attrs = {width, height, title};
           setImageAttrs({pos, editorView, node, attrs});
-
-          if(mediaSingleNode){
-            updateLayout({ pos: mediaSingleNode.pos, editorView, node: mediaSingleNode.node, layout });
-          }
+          updateLayout({ editorView, mediaSingle, layout });
           onClose();
         }} color="primary">
           Apply
