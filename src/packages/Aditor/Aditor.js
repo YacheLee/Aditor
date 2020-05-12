@@ -15,6 +15,7 @@ import PopoverManager from './PopoverManager';
 import normaliseValue from './normaliseValue';
 import ProseMirrorStyle from './ProseMirrorStyle';
 import ImageView from './plugins/ImagePlugin/ImageView';
+import MediaSingleView from './plugins/MediaSinglePlugin/MediaSingleView';
 
 const Toolbar = styled.div`
   padding: 4px 8px 4px 14px;
@@ -60,7 +61,8 @@ function Aditor({ id, defaultValue, onChange }) {
       const _editorView = new EditorView(editor.current, {
         state,
         nodeViews: {
-          image(node, view, getPos) { return new ImageView(node, view, getPos) }
+          image(node, view, getPos) { return new ImageView(node, view, getPos) },
+          mediaSingle(node, view, getPos) { return new MediaSingleView(node, view, getPos) }
         },
         dispatchTransaction(transaction) {
           const newState = _editorView.state.apply(transaction);

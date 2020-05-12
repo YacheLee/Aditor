@@ -15,6 +15,7 @@ import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
 import ImagePlugin from './ImagePlugin';
+import MediaSinglePlugin from './MediaSinglePlugin';
 
 function plugins(toolbarDom) {
   return [
@@ -33,7 +34,8 @@ function plugins(toolbarDom) {
     StrikeThroughPlugin(toolbarDom),
     LinkPlugin(toolbarDom),
     TextColorPlugin(toolbarDom),
-    ImagePlugin(toolbarDom)
+    ImagePlugin(toolbarDom),
+    MediaSinglePlugin()
   ];
 }
 
