@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
 import { setImageAttrs } from '../commands';
-import { updateLayout } from '../../MediaSinglePlugin/commands';
+import { getLayout, updateLayout } from '../../MediaSinglePlugin/commands';
 
 function PaperComponent(props) {
   return (
@@ -16,12 +16,6 @@ function PaperComponent(props) {
       <Paper {...props} />
     </Draggable>
   );
-}
-
-function getLayout(mediaSingleNode){
-  if(!mediaSingleNode) return 'left';
-
-  return mediaSingleNode.node.attrs.layout;
 }
 
 function Component({node, editorView, getPos, onClose}){
