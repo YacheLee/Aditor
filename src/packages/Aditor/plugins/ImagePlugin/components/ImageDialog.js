@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
 import { setImageAttrs } from '../commands';
 import { getLayout, updateLayout } from '../../MediaSinglePlugin/commands';
+import { name as mediaSingleNodeName } from '../../MediaSinglePlugin/node';
 
 function PaperComponent(props) {
   return (
@@ -19,7 +20,7 @@ function PaperComponent(props) {
 }
 
 function Component({node, editorView, getPos, onClose}){
-  const mediaSingleNode = findParentNodeOfType(editorView.state.schema.nodes.mediaSingle)(editorView.state.selection);
+  const mediaSingleNode = findParentNodeOfType(editorView.state.schema.nodes[mediaSingleNodeName])(editorView.state.selection);
   const { title: _title, width: _width, height: _height } = node.attrs;
   const [width, setWidth] = useState(_width);
   const [height, setHeight] = useState(_height);
@@ -70,7 +71,10 @@ function Component({node, editorView, getPos, onClose}){
         <Button onClick={()=>{
           const attrs = {width, height, title};
           setImageAttrs({pos, editorView, node, attrs});
-          updateLayout({ pos: mediaSingleNode.pos, editorView, node: mediaSingleNode.node, layout });
+
+          if(mediaSingleNode){
+            updateLayout({ pos: mediaSingleNode.pos, editorView, node: mediaSingleNode.node, layout });
+          }
           onClose();
         }} color="primary">
           Apply

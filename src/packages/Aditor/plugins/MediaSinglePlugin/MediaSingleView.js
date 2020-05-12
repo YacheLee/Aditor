@@ -1,12 +1,12 @@
 import {DOMSerializer} from 'prosemirror-model';
 import modules from './MediaSingleView.module.scss';
-import nodes from '../../nodes';
+import {toDOM} from './node';
 
 class MediaSingleView {
   constructor(node) {
     const {layout} = node.attrs;
 
-    const {dom, contentDOM} = DOMSerializer.renderSpec(window.document, nodes.mediaSingle.toDOM(node));
+    const {dom, contentDOM} = DOMSerializer.renderSpec(window.document, toDOM(node));
     this.dom = dom;
     this.contentDOM = contentDOM;
     this.contentDOM.classList.add( modules.MediaSingleView);

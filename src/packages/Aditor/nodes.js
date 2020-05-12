@@ -1,4 +1,6 @@
-const nodes = {
+import {name as mediaSingleName, node as mediaSingleNode} from './plugins/MediaSinglePlugin/node';
+
+export default {
   doc: {
     content: 'block+'
   },
@@ -10,34 +12,7 @@ const nodes = {
       return ['p', 0];
     }
   },
-  mediaSingle: {
-    inline: false,
-    group: 'block',
-    selectable: true,
-    atom: true,
-    content: 'image',
-    attrs: {
-      layout: { default: 'left' },
-    },
-    parseDOM: [
-      {
-        tag: 'div[layout]',
-        getAttrs: dom => {
-          console.log(dom);
-          return {
-            layout: dom.getAttribute('layout') || 'left'
-          };
-        }
-      },
-    ],
-    toDOM(node) {
-      const { layout } = node.attrs;
-      const attrs = {
-        layout,
-      };
-      return ['div', attrs, 0];
-    }
-  },
+  [mediaSingleName]: mediaSingleNode,
   image: {
     group: 'inline',
     inline: true,
@@ -79,6 +54,4 @@ const nodes = {
     group: 'inline',
     inline: true
   },
-};
-
-export default nodes;
+}
