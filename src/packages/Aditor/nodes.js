@@ -10,7 +10,7 @@ export default {
     content: 'inline*',
     group: 'block',
     parseDOM: [{ tag: 'p' }],
-    toDOM: function toDOM() {
+    toDOM() {
       return ['p', 0];
     }
   },
