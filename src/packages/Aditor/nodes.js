@@ -36,7 +36,6 @@ const nodes = {
     inline: true,
     attrs: {
       src: { default: '' },
-      alt: { default: null },
       title: { default: null },
       width: { default: null },
       height: { default: null },

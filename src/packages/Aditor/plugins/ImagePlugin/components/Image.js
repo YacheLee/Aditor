@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
-import { setImageSize } from '../commands';
+import { setImageAttrs } from '../commands';
 
 const Image = styled.img`
   &:hover{
@@ -24,10 +24,11 @@ function PaperComponent(props) {
 }
 
 function Component({node, editorView, getPos}){
-  const { src, alt, title, width: _width, height: _height } = node.attrs;
+  const { src, title: _title, width: _width, height: _height } = node.attrs;
   const [open, setOpen] = useState(false);
   const [width, setWidth] = useState(_width);
   const [height, setHeight] = useState(_height);
+  const [title, setTitle] = useState(_title);
 
   const handleClose = ()=> setOpen(false);
   const handleOpen = ()=> setOpen(true);
@@ -44,9 +45,14 @@ function Component({node, editorView, getPos}){
       </DialogTitle>
       <DialogContent>
           <div>
-              Width: <input type="number" value={width} onChange={e=>{
-                setWidth(e.target.value);
+            Title: <input type="text" value={title} onChange={e=>{
+            setTitle(e.target.value);
           }} />
+          </div>
+          <div>
+            Width: <input type="number" value={width} onChange={e=>{
+                setWidth(e.target.value);
+            }} />
           </div>
           <div>
               Height: <input type="number" value={height} onChange={e=>{
@@ -59,7 +65,8 @@ function Component({node, editorView, getPos}){
           Cancel
         </Button>
         <Button onClick={()=>{
-          setImageSize({pos: getPos(), editorView, node, width, height});
+          const attrs = {width, height, title};
+          setImageAttrs({pos: getPos(), editorView, node, attrs});
           handleClose();
         }} color="primary">
           Apply
@@ -71,7 +78,6 @@ function Component({node, editorView, getPos}){
       width={width}
       height={height}
       src={src}
-      alt={alt}
       title={title}
     />
   </Fragment>
