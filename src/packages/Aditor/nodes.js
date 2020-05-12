@@ -1,4 +1,5 @@
-import {name as mediaSingleName, node as mediaSingleNode} from './plugins/MediaSinglePlugin/node';
+import {name as mediaSingleNodeName, node as mediaSingleNode} from './plugins/MediaSinglePlugin/node';
+import {name as imageNodeName, node as imageNode} from './plugins/ImagePlugin/node';
 
 export default {
   doc: {
@@ -12,27 +13,8 @@ export default {
       return ['p', 0];
     }
   },
-  [mediaSingleName]: mediaSingleNode,
-  image: {
-    group: 'inline',
-    inline: true,
-    attrs: {
-      src: { default: '' },
-      title: { default: null },
-      width: { default: null },
-      height: { default: null },
-    },
-    draggable: true,
-    parseDOM: [
-      {
-        tag: 'img[src^="data:image/"]',
-        ignore: true,
-      }
-    ],
-    toDOM(node) {
-      return ['img', node.attrs];
-    },
-  },
+  [mediaSingleNodeName]: mediaSingleNode,
+  [imageNodeName]: imageNode,
   heading: {
     attrs: { level: { default: 1 } },
     content: 'inline*',
