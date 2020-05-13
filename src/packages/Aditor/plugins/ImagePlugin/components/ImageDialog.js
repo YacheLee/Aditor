@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { findParentNodeOfType } from 'prosemirror-utils';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -7,8 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
-import { setImageAttrs } from '../commands';
-import { getLayout, getMediaSingle, updateLayout } from '../../MediaSinglePlugin/commands';
+import {setImageAttrs} from '../commands';
+import {getLayout, getMediaSingle, updateLayout} from '../../MediaSinglePlugin/commands';
 
 function PaperComponent(props) {
   return (
