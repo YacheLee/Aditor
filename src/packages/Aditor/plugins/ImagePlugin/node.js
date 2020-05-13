@@ -1,22 +1,23 @@
 export const name = 'image';
 
 export const node = {
-  group: 'inline',
+    group: 'inline',
     inline: true,
     attrs: {
-    src: { default: '' },
-    title: { default: null },
-    width: { default: null },
-    height: { default: null },
-  },
-  draggable: true,
+        src: {default: ''},
+        title: {default: null},
+        width: {default: null},
+        height: {default: null},
+    },
+    selectable: false,
+    draggable: false,
     parseDOM: [
-    {
-      tag: 'img[src^="data:image/"]',
-      ignore: true,
-    }
-  ],
+        {
+            tag: 'img[src^="data:image/"]',
+            ignore: true,
+        }
+    ],
     toDOM(node) {
-    return ['img', node.attrs];
-  }
+        return ['img', node.attrs];
+    }
 }

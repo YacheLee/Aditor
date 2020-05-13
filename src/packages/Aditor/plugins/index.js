@@ -1,8 +1,7 @@
-import { history } from 'prosemirror-history';
-import { keymap } from 'prosemirror-keymap';
-import { baseKeymap } from 'prosemirror-commands';
-import { dropCursor } from 'prosemirror-dropcursor';
-import { gapCursor } from 'prosemirror-gapcursor';
+import {history} from 'prosemirror-history';
+import {keymap} from 'prosemirror-keymap';
+import {baseKeymap} from 'prosemirror-commands';
+import {gapCursor} from 'prosemirror-gapcursor';
 import HighlightPlugin from './HighlightPlugin';
 import UndoPlugin from './UndoPlugin';
 import RedoPlugin from './RedoPlugin';
@@ -24,7 +23,7 @@ function plugins(toolbarDom) {
     HighlightPlugin(),
     history(),
     keymap(baseKeymap),
-    dropCursor(),
+    // dropCursor(),
     gapCursor(),
     UndoPlugin(toolbarDom),
     RedoPlugin(toolbarDom),
