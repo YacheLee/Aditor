@@ -10,6 +10,13 @@ const Image = styled.img`
   }
 `;
 
+export const MIN_SIZE = 20;
+export const MAX_SIZE = 10000;
+
+function clamp(min, value, max){
+  return Math.min(Math.max(value, min), max);
+}
+
 function Component({node, editorView, getPos}) {
     const {src, title, width: _width, height: _height} = node.attrs;
 
@@ -29,8 +36,17 @@ function Component({node, editorView, getPos}) {
         <Resizable
             size={{width, height}}
             onResize={(e, direction, ref, d) => {
-                setWidth(_width + d.width);
-                setHeight(_height + d.height);
+              const dx = d.width;
+              const dy = d.height;
+
+              const aspect = _width / _height;
+              let ww = clamp(MIN_SIZE, _width + Math.round(dx), MAX_SIZE);
+              let hh = clamp(MIN_SIZE, _height + Math.round(dy), MAX_SIZE);
+
+              hh = Math.max(ww / aspect, MIN_SIZE);
+              ww = hh * aspect;
+              setWidth(ww);
+              setHeight(hh);
             }}
             onResizeStop={(e, direction, ref, d) => {
                 const attrs = {width, height};
