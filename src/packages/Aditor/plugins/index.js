@@ -14,8 +14,6 @@ import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
 import ImagePlugin from './ImagePlugin';
-import MediaSinglePlugin from './MediaSinglePlugin';
-import LayoutPlugin from './LayoutPlugin';
 
 function plugins(toolbarDom) {
   return [
@@ -24,7 +22,7 @@ function plugins(toolbarDom) {
     history(),
     keymap(baseKeymap),
     // dropCursor(),
-    gapCursor(),
+    // gapCursor(),
     UndoPlugin(toolbarDom),
     RedoPlugin(toolbarDom),
     HeadingPlugin(toolbarDom),
@@ -35,8 +33,6 @@ function plugins(toolbarDom) {
     LinkPlugin(toolbarDom),
     TextColorPlugin(toolbarDom),
     ImagePlugin(toolbarDom),
-    MediaSinglePlugin(),
-    LayoutPlugin(toolbarDom)
   ];
 }
 

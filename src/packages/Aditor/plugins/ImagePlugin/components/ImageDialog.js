@@ -7,7 +7,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
 import {setImageAttrs} from '../commands';
-import {getLayout, getMediaSingle, updateLayout} from '../../MediaSinglePlugin/commands';
 
 function PaperComponent(props) {
   return (

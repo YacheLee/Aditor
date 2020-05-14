@@ -1,1 +1,1 @@
-export {default} from './Image';
+export {default as ResizableImage} from './ResizableImage';
