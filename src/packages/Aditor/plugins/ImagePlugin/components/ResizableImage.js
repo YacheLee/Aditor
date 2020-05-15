@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {Resizable} from 're-resizable';
-import BottomRightDot from "./BottomRightDot";
+import AngleBlueDot from "./AngleBlueDot";
 
 const Wrapper = styled.div`
   position: relative;
@@ -12,12 +12,35 @@ const Image = styled.img`
   cursor: move;
 `;
 
+const handleStyles = {
+    bottomRight: {
+        width: 7,
+        height: 7,
+        bottom: -3,
+        right: -3
+    },
+    topRight: {
+        width: 7,
+        height: 7,
+        top: -3,
+        right: -3
+    },
+    topLeft: {
+        width: 7,
+        height: 7,
+        top: -3,
+        left: -3
+    },
+    bottomLeft: {
+        width: 7,
+        height: 7,
+        bottom: -3,
+        left: -3
+    },
+};
+
 function getEnable(enableToResize){
     return {
-        top: enableToResize,
-        right: enableToResize,
-        bottom: enableToResize,
-        left: enableToResize,
         topRight: enableToResize,
         bottomRight: enableToResize,
         bottomLeft: enableToResize,
@@ -37,9 +60,16 @@ function Component({enableToResize, src, title, width, height, setWidth, setHeig
         <Resizable
             enable={getEnable(enableToResize)}
             lockAspectRatio={true}
-            size={{width: finalWidth, height: finalHeight}}
+            size={{
+                width: finalWidth,
+                height: finalHeight
+            }}
+            handleStyles={handleStyles}
             handleComponent={{
-                bottomRight: <BottomRightDot />,
+                topRight: <AngleBlueDot />,
+                bottomRight: <AngleBlueDot />,
+                bottomLeft: <AngleBlueDot />,
+                topLeft: <AngleBlueDot />,
             }}
             onResize={(e, direction, ref, d) => {
                 setDWidth(d.width);
