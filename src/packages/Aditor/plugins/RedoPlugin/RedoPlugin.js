@@ -32,6 +32,7 @@ class RedoView {
 
   update(editorView) {
     this.renderReactComponent(editorView);
+    return true;
   }
 
   destroy() {
@@ -50,9 +51,6 @@ function RedoPlugin(toolbarDom) {
       handleKeyDown: keydownHandler({
         'Mod-y': redo
       })
-    },
-    update() {
-      return true;
     }
   });
 }

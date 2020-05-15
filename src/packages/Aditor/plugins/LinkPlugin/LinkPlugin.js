@@ -24,6 +24,7 @@ class View {
 
   update(editorView) {
     this.renderReactComponent(editorView);
+    return true;
   }
 
   destroy() {
@@ -37,9 +38,6 @@ function LinkPlugin(toolbarDom) {
       const view = new View(editorView, toolbarDom);
       toolbarDom.append(view.dom);
       return view;
-    },
-    update() {
-      return true;
     },
     mark,
     props: {

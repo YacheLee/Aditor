@@ -32,6 +32,7 @@ class UndoView {
 
   update(editorView) {
     this.renderReactComponent(editorView);
+    return true;
   }
 
   destroy() {
@@ -50,9 +51,6 @@ function UndoPlugin(toolbarDom) {
       handleKeyDown: keydownHandler({
         'Mod-z': undo
       })
-    },
-    update() {
-      return true;
     }
   });
 }

@@ -4,11 +4,12 @@ import ImageNodeView from './ImageNodeView';
 
 class ProseMirrorNodeView {
   constructor(node, editorView, getPos) {
-    this.dom = this.contentDom = document.createElement('div');
+    this.dom = document.createElement('div');
     this.node = node;
     this.focus = false;
     this.editorView = editorView;
     this.getPos = getPos;
+
     this.renderReactComponent();
   }
 
@@ -19,7 +20,7 @@ class ProseMirrorNodeView {
       node={this.node}
       editorView={this.editorView}
       pos={pos}
-    />, this.contentDom);
+    />, this.dom);
   }
 
   selectNode(){
@@ -28,6 +29,11 @@ class ProseMirrorNodeView {
 
   deselectNode(){
     this.renderReactComponent();
+  }
+
+  update(){
+    this.renderReactComponent();
+    return true;
   }
 
   destroy() {

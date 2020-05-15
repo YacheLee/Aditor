@@ -25,6 +25,7 @@ class ToolbarView {
 
   update(editorView) {
     this.renderReactComponent(editorView);
+    return true;
   }
 
   destroy() {
@@ -38,9 +39,6 @@ function TextColorPlugin(toolbarDom) {
       const view = new ToolbarView(editorView);
       toolbarDom.append(view.dom);
       return view;
-    },
-    update() {
-      return true;
     },
     mark
   };

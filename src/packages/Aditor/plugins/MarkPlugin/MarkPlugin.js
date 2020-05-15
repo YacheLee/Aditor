@@ -40,6 +40,7 @@ function MarkPlugin(toolbarDom, Icon, mark, markType, attr, hotkey) {
 
     update(editorView) {
       this.renderReactComponent(editorView);
+      return true;
     }
 
     destroy() {
@@ -52,9 +53,6 @@ function MarkPlugin(toolbarDom, Icon, mark, markType, attr, hotkey) {
       const view = new ToolbarView(editorView);
       toolbarDom.append(view.dom);
       return view;
-    },
-    update() {
-      return true;
     },
     mark
   };
