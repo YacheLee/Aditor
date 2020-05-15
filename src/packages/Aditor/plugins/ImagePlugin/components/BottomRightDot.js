@@ -46,6 +46,7 @@ function Component({imageRef, onResize, onResizeEnd}) {
 
     function unbindEvents(){
       window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('touchstart', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
       window.removeEventListener('touchmove', onMouseMove);
@@ -54,6 +55,7 @@ function Component({imageRef, onResize, onResizeEnd}) {
 
     function bindEvents(){
       window.addEventListener('mousedown', onMouseDown);
+      window.addEventListener('touchstart', onMouseMove);
       window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('mouseup', onMouseUp);
       window.addEventListener('touchmove', onMouseMove);
