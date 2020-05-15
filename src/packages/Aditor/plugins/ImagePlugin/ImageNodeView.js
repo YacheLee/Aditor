@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ResizableImage from './components/ResizableImage';
 import { DEFAULT_LAYOUT } from './config';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { changeColor } from '../TextColorPlugin/commands';
+import getFocus from './getFocus';
+import { selectNode } from './commands';
 
 const HIDE_SELECTION_CLASS_NAME = 'ProseMirror-hideselection';
 
@@ -21,16 +21,25 @@ function showSelection(editorViewDOM){
   editorViewDOM.classList.remove(HIDE_SELECTION_CLASS_NAME);
 }
 
-function ImageNodeView({node, editorView, getPos}) {
-  const pos = getPos();
+function ImageNodeView({node, editorView, pos}) {
   const {attrs={}} = node;
   const { layout = DEFAULT_LAYOUT } = attrs;
 
-  return <Layout layout={layout}>
+  const focus = getFocus(editorView, pos);
+
+  return <Layout layout={layout} onMouseDown={e=>{
+    e.preventDefault();
+  }} onClick={()=>{
+    selectNode(editorView, pos);
+  }}>
       <ResizableImage
+        focus={focus}
         node={node}
         editorView={editorView}
         pos={pos}
+        onResizeEnd={e=>{
+          selectNode(editorView, pos);
+        }}
       />
     </Layout>
 }

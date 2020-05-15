@@ -13,11 +13,21 @@ class ProseMirrorNodeView {
   }
 
   renderReactComponent() {
+    const pos = this.getPos();
+
     ReactDOM.render(<ImageNodeView
       node={this.node}
       editorView={this.editorView}
-      getPos={this.getPos}
+      pos={pos}
     />, this.contentDom);
+  }
+
+  selectNode(){
+    this.renderReactComponent();
+  }
+
+  deselectNode(){
+    this.renderReactComponent();
   }
 
   destroy() {

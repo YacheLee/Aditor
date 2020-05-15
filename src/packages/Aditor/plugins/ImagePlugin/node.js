@@ -21,6 +21,6 @@ export const node = {
         }
     ],
     toDOM(node) {
-        return ['img', node.attrs];
+        return ['div', 0];
     }
 }
