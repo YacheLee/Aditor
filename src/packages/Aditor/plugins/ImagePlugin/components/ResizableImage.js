@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {Resizable} from 're-resizable';
+import BottomRightDot from "./BottomRightDot";
 
 const Wrapper = styled.div`
   position: relative;
@@ -11,7 +12,20 @@ const Image = styled.img`
   cursor: move;
 `;
 
-function Component({src, title, width, height, setWidth, setHeight, onImageClick, onResizeEnd}) {
+function getEnable(enableToResize){
+    return {
+        top: enableToResize,
+        right: enableToResize,
+        bottom: enableToResize,
+        left: enableToResize,
+        topRight: enableToResize,
+        bottomRight: enableToResize,
+        bottomLeft: enableToResize,
+        topLeft: enableToResize
+    }
+}
+
+function Component({enableToResize, src, title, width, height, setWidth, setHeight, onImageClick, onResizeEnd}) {
     const imageRef = useRef(null);
     const [dWidth, setDWidth] = useState(0);
     const [dHeight, setDHeight] = useState(0);
@@ -21,9 +35,13 @@ function Component({src, title, width, height, setWidth, setHeight, onImageClick
 
     return <Wrapper>
         <Resizable
+            enable={getEnable(enableToResize)}
             lockAspectRatio={true}
             size={{width: finalWidth, height: finalHeight}}
-            onResize={(e, direction, ref, d)=>{
+            handleComponent={{
+                bottomRight: <BottomRightDot />,
+            }}
+            onResize={(e, direction, ref, d) => {
                 setDWidth(d.width);
                 setDHeight(d.height);
             }}
@@ -54,6 +72,7 @@ Component.defaultProps = {
 };
 
 Component.propTypes = {
+    enableToResize: PropTypes.bool.isRequired,
     src: PropTypes.string,
     title: PropTypes.string,
     width: PropTypes.number.isRequired,

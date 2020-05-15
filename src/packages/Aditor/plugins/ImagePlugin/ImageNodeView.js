@@ -15,7 +15,7 @@ function ImageNodeView({node, editorView, pos}) {
     const {attrs = {}} = node;
     const {layout = DEFAULT_LAYOUT, src, title} = attrs;
 
-    const focus = getFocus(editorView, pos);
+    const enableToResize = getFocus(editorView, pos);
     const [width, setWidth] = useState(attrs.width);
     const [height, setHeight] = useState(attrs.height);
 
@@ -23,7 +23,7 @@ function ImageNodeView({node, editorView, pos}) {
         e.preventDefault();
     }}>
         <ResizableImage
-            focus={focus}
+            enableToResize={enableToResize}
             src={src}
             title={title}
             width={width}
