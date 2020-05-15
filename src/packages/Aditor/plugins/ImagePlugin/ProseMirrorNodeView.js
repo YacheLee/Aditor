@@ -15,9 +15,10 @@ class ProseMirrorNodeView {
 
   renderReactComponent() {
     const pos = this.getPos();
+    const node = this.editorView.state.doc.nodeAt(pos);
 
     ReactDOM.render(<ImageNodeView
-      node={this.node}
+      node={node}
       editorView={this.editorView}
       pos={pos}
     />, this.dom);

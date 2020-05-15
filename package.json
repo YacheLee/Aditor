@@ -48,6 +48,7 @@
     "prosemirror-tables": "^1.1.0",
     "prosemirror-utils": "^0.9.6",
     "prosemirror-view": "^1.14.7",
+    "re-resizable": "^6.4.0",
     "react-color": "^2.18.0",
     "react-draggable": "^4.3.1",
     "react-icons": "^3.10.0",
