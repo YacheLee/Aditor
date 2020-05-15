@@ -29,17 +29,12 @@ function ImageNodeView({node, editorView, pos}) {
 
   return <Layout layout={layout} onMouseDown={e=>{
     e.preventDefault();
-  }} onClick={()=>{
-    selectNode(editorView, pos);
   }}>
       <ResizableImage
         focus={focus}
         node={node}
         editorView={editorView}
         pos={pos}
-        onResizeEnd={e=>{
-          selectNode(editorView, pos);
-        }}
       />
     </Layout>
 }
