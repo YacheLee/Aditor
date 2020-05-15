@@ -55,8 +55,8 @@ function ImageNodeView({node, editorView, pos}) {
                     <ImagePopover
                         layout={layout}
                         onLayoutClick={layout=>{
-                            selectNode(editorView, pos);
                             setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
+                            selectNode(editorView, pos);
                         }}
                     />
                 )
