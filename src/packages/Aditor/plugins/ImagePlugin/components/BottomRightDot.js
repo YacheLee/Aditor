@@ -52,11 +52,13 @@ function Component({imageRef, onResize, onResizeEnd}) {
       window.removeEventListener('touchend', onMouseUp);
     }
 
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('touchmove', onMouseMove);
-    window.addEventListener('touchend', onMouseUp);
+    function bindEvents(){
+      window.addEventListener('mousedown', onMouseDown);
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+      window.addEventListener('touchmove', onMouseMove);
+      window.addEventListener('touchend', onMouseUp);
+    }
 
     function onMouseDown(e){
       isResizing = true;
@@ -82,6 +84,7 @@ function Component({imageRef, onResize, onResizeEnd}) {
       unbindEvents();
     }
 
+    bindEvents();
     return () => {
       unbindEvents();
     };
