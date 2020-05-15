@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ImageNodeView from './ImageNodeView';
+import ImageNodeView from './components/ImageNodeView';
 
 class ProseMirrorNodeView {
   constructor(node, editorView, getPos) {

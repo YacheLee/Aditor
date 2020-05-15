@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import ResizableImage from './components/ResizableImage';
-import {DEFAULT_LAYOUT} from './config';
-import getFocus from './getFocus';
-import {selectNode, setImageAttrs} from './commands';
+import ResizableImage from './ResizableImage';
+import {DEFAULT_LAYOUT} from '../config';
+import getFocus from '../getFocus';
+import {selectNode, setImageAttrs} from '../commands';
 
 const Layout = styled.div`
   position: relative;
@@ -28,8 +28,6 @@ function ImageNodeView({node, editorView, pos}) {
             title={title}
             width={width}
             height={height}
-            editorView={editorView}
-            pos={pos}
             setWidth={setWidth}
             setHeight={setHeight}
             onImageClick={()=>{
