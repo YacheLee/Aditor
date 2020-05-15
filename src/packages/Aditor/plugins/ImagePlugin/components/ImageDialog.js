@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,7 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
-import {setImageAttrs} from '../commands';
 
 function PaperComponent(props) {
   return (
@@ -16,15 +15,7 @@ function PaperComponent(props) {
   );
 }
 
-function Component({node, editorView, getPos, onClose}){
-  const mediaSingle = getMediaSingle(editorView);
-  const { title: _title, width: _width, height: _height } = node.attrs;
-  const [width, setWidth] = useState(_width);
-  const [height, setHeight] = useState(_height);
-  const [title, setTitle] = useState(_title);
-  const [layout, setLayout] = useState(getLayout(mediaSingle));
-  const pos = getPos();
-
+function Component({title, setTitle, width, setWidth, height, setHeight, layout, setLayout, onApply, onClose}){
   return <Dialog
       open={true}
       onClose={onClose}
@@ -52,8 +43,7 @@ function Component({node, editorView, getPos, onClose}){
         </div>
         <div>
           Alignment: <select value={layout} onChange={e=>{
-          const layout = e.target.value;
-          setLayout(layout);
+          setLayout(e.target.value);
         }}>
           <option value="left">Left</option>
           <option value="center">Center</option>
@@ -65,12 +55,7 @@ function Component({node, editorView, getPos, onClose}){
         <Button onClick={onClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={()=>{
-          const attrs = {width, height, title};
-          setImageAttrs({pos, editorView, node, attrs});
-          updateLayout({ editorView, mediaSingle, layout });
-          onClose();
-        }} color="primary">
+        <Button onClick={onApply} color="primary">
           Apply
         </Button>
       </DialogActions>
