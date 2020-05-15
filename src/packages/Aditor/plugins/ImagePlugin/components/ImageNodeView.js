@@ -53,13 +53,10 @@ function ImageNodeView({node, editorView, pos}) {
                 PopoverManager.setPopoverAnchorElement(e.currentTarget);
                 PopoverManager.setPopoverContent(
                     <ImagePopover
-                        node={node}
                         layout={layout}
-                        editorView={editorView}
-                        pos={pos}
                         onLayoutClick={layout=>{
-                            setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
                             selectNode(editorView, pos);
+                            setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
                         }}
                     />
                 )
