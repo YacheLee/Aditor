@@ -1,5 +1,17 @@
 [
   {
+    "type": "mediaSingle",
+    "attrs": {
+      "layout": "center"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "TEXT"
+      }
+    ]
+  },
+  {
     "type": "image",
     "attrs": {
       "src": "https://images.unsplash.com/photo-1588463340638-4d72fd85166a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=550&ixlib=rb-1.2.1&q=80&w=800",
