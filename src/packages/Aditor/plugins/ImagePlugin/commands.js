@@ -3,9 +3,12 @@ import {NodeSelection} from 'prosemirror-state';
 export function setImageAttrs({pos, editorView, node, attrs}) {
     const {state, dispatch} = editorView;
     const {tr} = state;
-    tr.setNodeMarkup(pos, null, {...node.attrs, ...attrs});
-    tr.setSelection(getNodeSelection(tr.doc, pos));
-    dispatch(tr);
+    dispatch(tr.setNodeMarkup(pos, null, {...node.attrs, ...attrs}));
+
+    //AD-57 Because the image is gone for a while, it will select the other blocks, we have to set the selection to fix this bug.
+    window.setTimeout(()=>{
+        selectNode(editorView, pos);
+    }, 0.0000000001)
 }
 
 function getNodeSelection(doc, pos) {
