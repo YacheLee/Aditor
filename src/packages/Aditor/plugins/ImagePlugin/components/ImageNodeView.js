@@ -56,7 +56,9 @@ function ImageNodeView({node, editorView, pos}) {
                         layout={layout}
                         onLayoutClick={layout=>{
                             setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
-                            selectNode(editorView, pos);
+                            window.setTimeout(()=>{
+                                selectNode(editorView, pos);
+                            },1);
                         }}
                     />
                 )
