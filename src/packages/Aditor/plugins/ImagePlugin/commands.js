@@ -2,13 +2,9 @@ import {NodeSelection} from 'prosemirror-state';
 
 export function setImageAttrs({pos, editorView, node, attrs}) {
     const {state, dispatch} = editorView;
-    let {tr} = state;
-
-    tr = tr.setNodeMarkup(pos, null, {...node.attrs, ...attrs});
-
-    //doc after and doc before is different after setNodeMarkup!
-    const nodeSelection = getNodeSelection(tr.doc, pos);
-    tr = tr.setSelection(nodeSelection);
+    const {tr} = state;
+    tr.setNodeMarkup(pos, null, {...node.attrs, ...attrs});
+    tr.setSelection(getNodeSelection(tr.doc, pos));
     dispatch(tr);
 }
 
