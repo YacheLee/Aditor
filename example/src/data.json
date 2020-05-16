@@ -2,7 +2,7 @@
   {
     "type": "mediaSingle",
     "attrs": {
-      "layout": "center"
+      "layout": "wrap-left"
     },
     "content": [
       {

@@ -1,17 +1,26 @@
 import React, {useState} from 'react';
+import {LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT} from "../../MediaSinglePlugin/node";
 
 const layouts = [
     {
-        label: "Left",
-        value: "left",
+        label: "Align left",
+        value: LAYOUT_LEFT,
     },
     {
-        label: "Center",
-        value: "center",
+        label: "Align center",
+        value: LAYOUT_CENTER,
     },
     {
-        label: "Right",
-        value: "right",
+        label: "Align right",
+        value: LAYOUT_RIGHT,
+    },
+    {
+        label: "Wrap left",
+        value: LAYOUT_WRAP_LEFT,
+    },
+    {
+        label: "Wrap right",
+        value: LAYOUT_WRAP_RIGHT,
     }
 ];
 
