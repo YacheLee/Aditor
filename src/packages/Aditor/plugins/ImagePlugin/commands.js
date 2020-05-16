@@ -1,4 +1,4 @@
-import { NodeSelection } from 'prosemirror-state';
+import {NodeSelection} from 'prosemirror-state';
 
 export function setImageAttrs({pos, editorView, node, attrs}){
   const tr = editorView.state.tr;
@@ -7,9 +7,15 @@ export function setImageAttrs({pos, editorView, node, attrs}){
   editorView.dispatch(tr);
 }
 
+function getNodeSelection(editorView, pos){
+    return NodeSelection.create(editorView.state.doc, pos);
+}
+
 export function selectNode(editorView, pos){
-  const nodeSelection = NodeSelection.create(editorView.state.doc, pos);
-  const tr = editorView.state.tr;
-  tr.setSelection(nodeSelection);
-  editorView.dispatch(tr);
+    window.setTimeout(e => {
+        const nodeSelection = getNodeSelection(editorView, pos);
+        const tr = editorView.state.tr;
+        tr.setSelection(nodeSelection);
+        editorView.dispatch(tr);
+    }, 0.000000005);
 }
