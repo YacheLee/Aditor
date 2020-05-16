@@ -56,15 +56,12 @@ function ImageNodeView({node, editorView, pos}) {
                         layout={layout}
                         onLayoutClick={layout=>{
                             setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
-                            selectNode(editorView, pos);
                         }}
                     />
                 )
             }}
             onResizeEnd={({width, height})=>{
-                const attrs = { width, height };
-                setImageAttrs({ pos, editorView, node, attrs });
-                selectNode(editorView, pos);
+                setImageAttrs({ pos, editorView, node, attrs: { ...attrs, width, height }});
             }}
         />
     </Layout>

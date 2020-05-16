@@ -1,21 +1,23 @@
 import {NodeSelection} from 'prosemirror-state';
 
-export function setImageAttrs({pos, editorView, node, attrs}){
-  const tr = editorView.state.tr;
-  const toArr = {...node.attrs, ...attrs};
-  tr.setNodeMarkup(pos, null, toArr);
-  editorView.dispatch(tr);
+export function setImageAttrs({pos, editorView, node, attrs}) {
+    const {state, dispatch} = editorView;
+    let {tr} = state;
+
+    tr = tr.setNodeMarkup(pos, null, {...node.attrs, ...attrs});
+
+    //doc after and doc before is different after setNodeMarkup!
+    const nodeSelection = getNodeSelection(tr.doc, pos);
+    tr = tr.setSelection(nodeSelection);
+    dispatch(tr);
 }
 
-function getNodeSelection(editorView, pos){
-    return NodeSelection.create(editorView.state.doc, pos);
+function getNodeSelection(doc, pos) {
+    return NodeSelection.create(doc, pos);
 }
 
-export function selectNode(editorView, pos){
-    window.setTimeout(e => {
-        const nodeSelection = getNodeSelection(editorView, pos);
-        const tr = editorView.state.tr;
-        tr.setSelection(nodeSelection);
-        editorView.dispatch(tr);
-    }, 0.000000005);
+export function selectNode(editorView, pos) {
+    const tr = editorView.state.tr;
+    const nodeSelection = getNodeSelection(tr.doc, pos);
+    editorView.dispatch(tr.setSelection(nodeSelection));
 }
