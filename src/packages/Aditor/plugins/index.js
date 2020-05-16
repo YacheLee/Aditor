@@ -14,6 +14,7 @@ import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
 import ImagePlugin from './ImagePlugin';
+import {dropCursor} from "prosemirror-dropcursor";
 
 function plugins(toolbarDom) {
   return [
@@ -21,8 +22,8 @@ function plugins(toolbarDom) {
     HighlightPlugin(),
     history(),
     keymap(baseKeymap),
-    // dropCursor(),
-    // gapCursor(),
+    dropCursor(),
+    gapCursor(),
     UndoPlugin(toolbarDom),
     RedoPlugin(toolbarDom),
     HeadingPlugin(toolbarDom),

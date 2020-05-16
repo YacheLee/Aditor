@@ -1,12 +1,10 @@
-import { DEFAULT_LAYOUT } from './config';
-
 export const name = 'image';
 
 export const node = {
-    group: 'block',
+    group: 'inline',
+    inline: true,
     attrs: {
         src: {default: ''},
-        layout: {default: DEFAULT_LAYOUT},
         title: {default: null},
         width: {default: null},
         height: {default: null},
@@ -21,6 +19,6 @@ export const node = {
         }
     ],
     toDOM(node) {
-        return ['div', 0];
+        return ['div', node.attrs];
     }
 }

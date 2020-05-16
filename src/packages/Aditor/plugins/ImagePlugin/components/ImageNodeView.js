@@ -1,40 +1,21 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import ResizableImage from './ResizableImage';
-import {DEFAULT_LAYOUT} from '../config';
 import getFocus from '../getFocus';
 import {selectNode, setImageAttrs} from '../commands';
-import PopoverManager from "../../../PopoverManager";
 import ImagePopover from "./ImagePopover";
-
-function getJustifyContent(layout = DEFAULT_LAYOUT) {
-    if (layout === "left") {
-        return "flex-start";
-    }
-    else if (layout === "center") {
-        return "center";
-    }
-    else if (layout === "right") {
-        return "flex-end";
-    }
-    return "left";
-}
-
-const Layout = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: ${props => getJustifyContent(props.layout)};
-`;
+import setLayout from "../../MediaSinglePlugin/setLayout";
+import getLayout from "../../MediaSinglePlugin/getLayout";
 
 function ImageNodeView({node, editorView, pos}) {
     const {attrs = {}} = node;
-    const {layout = DEFAULT_LAYOUT, src, title} = attrs;
+    const {src, title} = attrs;
 
+    const layout = getLayout({editorView, pos});
     const focus = getFocus(editorView, pos);
     const [width, setWidth] = useState(attrs.width);
     const [height, setHeight] = useState(attrs.height);
 
-    return <Layout layout={layout} onMouseDown={e => {
+    return <div onMouseDown={e => {
         e.preventDefault();
     }}>
         <ResizableImage
@@ -48,23 +29,20 @@ function ImageNodeView({node, editorView, pos}) {
             onImageClick={(e)=>{
                 //focus the image node
                 selectNode(editorView, pos);
-
-                //render the popover
-                PopoverManager.setPopoverAnchorElement(e.currentTarget);
-                PopoverManager.setPopoverContent(
-                    <ImagePopover
-                        layout={layout}
-                        onLayoutClick={layout=>{
-                            setImageAttrs({pos, editorView, node, attrs: {...attrs, layout}});
-                        }}
-                    />
-                )
             }}
             onResizeEnd={({width, height})=>{
                 setImageAttrs({ pos, editorView, node, attrs: { ...attrs, width, height }});
+                selectNode(editorView, pos);
             }}
         />
-    </Layout>
+        {focus && <ImagePopover
+            layout={layout}
+            onLayoutClick={layout=>{
+                setLayout({pos, editorView, layout});
+                selectNode(editorView, pos);
+            }}
+        />}
+    </div>
 }
 
 export default ImageNodeView;
