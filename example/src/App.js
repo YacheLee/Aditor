@@ -1,5 +1,7 @@
 import React from 'react';
 import Aditor from 'aditor';
+import JSONPretty from 'react-json-prettify';
+import {github} from 'react-json-prettify/dist/themes';
 import defaultValue from './data.json';
 import 'aditor/dist/index.css';
 
@@ -11,7 +13,7 @@ const App = () => {
       <Aditor id="aditor" defaultValue={value} onChange={value=>{
         setValue(value);
       }} />
-      {JSON.stringify(value)}
+      <JSONPretty json={value} theme={github} />
     </div>
   );
 }
