@@ -24,15 +24,12 @@ const layouts = [
     }
 ];
 
-function LayoutPopover({layout: initLayout, onLayoutChange}) {
-    const [layout, setLayout] = useState(initLayout);
-
+function LayoutPopover({layout, onLayoutChange}) {
     return <div>
         {layouts.map(({label, value}, index)=>{
             const isSelecting = value === layout;
 
             return <button style={{border: `solid ${isSelecting ? 1: 0}px red`}} key={`ImageNodeView_Popover_${value}_${index}`} onClick={()=>{
-                setLayout(value);
                 onLayoutChange(value);
             }}>{label}</button>
         })}
