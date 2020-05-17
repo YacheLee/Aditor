@@ -1,10 +1,10 @@
 import React from 'react';
-import ImagePopover from './ImagePopover';
-import ImageNodeView from './ImageNodeView';
+import LayoutPopover from './LayoutPopover';
+import Image from './Image';
 
 function MediaSingleNodeView({src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
   return <div>
-    <ImageNodeView
+    <Image
       src={src}
       title={title}
       width={width}
@@ -14,7 +14,7 @@ function MediaSingleNodeView({src, title, width, height, layout, focus, onLayout
       onImageClick={onImageClick}
     />
 
-    {focus && <ImagePopover
+    {focus && <LayoutPopover
       layout={layout}
       onLayoutChange={onLayoutChange}
     />}

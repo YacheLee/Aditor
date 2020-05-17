@@ -24,7 +24,7 @@ const layouts = [
     }
 ];
 
-function ImagePopover({layout: initLayout, onLayoutChange}) {
+function LayoutPopover({layout: initLayout, onLayoutChange}) {
     const [layout, setLayout] = useState(initLayout);
 
     return <div>
@@ -39,4 +39,4 @@ function ImagePopover({layout: initLayout, onLayoutChange}) {
     </div>
 }
 
-export default ImagePopover;
+export default LayoutPopover;

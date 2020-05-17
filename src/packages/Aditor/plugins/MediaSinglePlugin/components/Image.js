@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ResizableImage from './ResizableImage';
 
-function ImageNodeView({src, title, enableToResize, width: _width, height: _height, onResizeEnd, onImageClick}) {
+function Image({src, title, enableToResize, width: _width, height: _height, onResizeEnd, onImageClick}) {
     const [width, setWidth] = useState(_width);
     const [height, setHeight] = useState(_height);
 
@@ -22,4 +22,4 @@ function ImageNodeView({src, title, enableToResize, width: _width, height: _heig
     </div>
 }
 
-export default ImageNodeView;
+export default Image;
