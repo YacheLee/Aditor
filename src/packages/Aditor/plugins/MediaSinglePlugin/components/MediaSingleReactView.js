@@ -2,8 +2,8 @@ import React from 'react';
 import LayoutPopover from './LayoutPopover';
 import Image from './Image';
 
-function MediaSingleReactView({src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
-  return <div>
+function MediaSingleReactView({id, src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
+  return <div id={id}>
     <Image
       src={src}
       title={title}
