@@ -4,9 +4,9 @@ import MediaSingleReactView from './components/MediaSingleReactView';
 import getStyle from './getStyle';
 import {setImageSize, setLayout} from './commands';
 
-function getNodeMediaId(node) {
+function getNodeMedia(node) {
     if (node.firstChild) {
-        return node.firstChild.attrs.id;
+        return node.firstChild;
     }
     return undefined;
 }
@@ -14,8 +14,7 @@ function getNodeMediaId(node) {
 class MediaSingleProseMirrorNodeView {
     constructor(node, editorView, getPos) {
         this.dom = document.createElement('div');
-        this.nodeFocus = false;
-        this.imageFocus = false;
+        this.focus = false;
         this.node = node;
         this.editorView = editorView;
         this.getPos = getPos;
@@ -35,7 +34,7 @@ class MediaSingleProseMirrorNodeView {
         const {attrs, firstChild: mediaNode} = node;
         const {id, src, title, width, height} = mediaNode.attrs;
         const {layout} = attrs;
-        const focus = this.nodeFocus && this.imageFocus;
+        const focus = this.focus;
         const editorView = this.editorView;
 
         ReactDOM.render(<MediaSingleReactView
@@ -54,39 +53,26 @@ class MediaSingleProseMirrorNodeView {
                 setLayout({pos, editorView, layout});
             }}
             onResizeEnd={({width, height}) => {
-                setImageSize({editorView, mediaNode: node.firstChild, width, height});
+                const pos = this.getPos();
+                const nodeMedia = getNodeMedia(node);
+                setImageSize({editorView, attrs: nodeMedia.attrs, pos: pos+1, width, height});
+            }}
+            onBlur={()=>{
+                this.focus = false;
+                this.renderReactComponent(node);
             }}
             onImageClick={() => {
-                this.imageFocus = true;
+                this.focus = true;
                 this.renderReactComponent(node);
             }}
         />, this.dom);
     }
 
     update(node) {
-        const isValidUpdate = node.type===this.node.type && getNodeMediaId(node) === getNodeMediaId(this.node);
-
-        if(!isValidUpdate){
-            return false;
-        }
-
         this.node = node;
         this.renderReactComponent(node);
         return true;
     }
-
-    selectNode() {
-        this.nodeFocus = true;
-        this.imageFocus = false;
-        this.renderReactComponent(this.node);
-    }
-
-    deselectNode() {
-        this.nodeFocus = false;
-        this.imageFocus = false;
-        this.renderReactComponent(this.node);
-    }
-
 
     destroy() {
         this.dom.remove();

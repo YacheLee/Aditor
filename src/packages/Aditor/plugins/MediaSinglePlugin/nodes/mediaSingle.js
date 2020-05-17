@@ -1,17 +1,18 @@
-import { DEFAULT_LAYOUT } from '../index';
+import {DEFAULT_LAYOUT} from '../index';
 
 export const name = 'mediaSingle';
 
 export const node = {
     inline: false,
     group: 'block',
-    selectable: true,
+    selectable: false,
+    draggable: true,
     atom: true,
     content: 'media',
     attrs: {
         layout: {default: DEFAULT_LAYOUT},
     },
     toDOM(node) {
-      return ['div', node.attrs, 0];
+        return ['div', node.attrs, 0];
     }
 }

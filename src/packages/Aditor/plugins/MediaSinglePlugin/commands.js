@@ -1,8 +1,7 @@
-export function setImageSize({editorView, mediaNode, width, height}){
-  const pos = editorView.state.selection.from+1;
+export function setImageSize({editorView, attrs, pos, width, height}){
   editorView.dispatch(
     editorView.state.tr.setNodeMarkup(pos, undefined, {
-      ...mediaNode.attrs,
+      ...attrs,
       width,
       height
     })
