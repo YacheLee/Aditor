@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MediaSingleNode from './components/MediaSingleNode';
 import getStyle from './getStyle';
-import { changeColor } from '../TextColorPlugin/commands';
 
 class MediaSingleProseMirrorNodeView {
   constructor(node, editorView, getPos) {
