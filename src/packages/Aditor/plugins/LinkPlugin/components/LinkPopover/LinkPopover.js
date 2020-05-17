@@ -25,6 +25,8 @@ const Paper = styled(_Paper)`
     display: inline-block;
     width: 160px;
     max-width: 400px;
+    max-height: 20px;
+    white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: 500;
