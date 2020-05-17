@@ -3,7 +3,7 @@ import { setLayout, setImageSize } from '../commands';
 import ImagePopover from './ImagePopover';
 import ImageNodeView from './ImageNodeView';
 
-function MediaSingleNode({node, focus, getPos, editorView}){
+function MediaSingleNodeView({node, focus, getPos, editorView}){
   const { layout } = node.attrs;
 
   const {firstChild: mediaNode} = node;
@@ -31,4 +31,4 @@ function MediaSingleNode({node, focus, getPos, editorView}){
   </div>
 }
 
-export default MediaSingleNode;
+export default MediaSingleNodeView;

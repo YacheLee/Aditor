@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MediaSingleNode from './components/MediaSingleNode';
+import MediaSingleNodeView from './components/MediaSingleNodeView';
 import getStyle from './getStyle';
 
 class MediaSingleProseMirrorNodeView {
@@ -23,7 +23,7 @@ class MediaSingleProseMirrorNodeView {
       this.dom.style[key] = styleObj[key];
     });
 
-    ReactDOM.render(<MediaSingleNode
+    ReactDOM.render(<MediaSingleNodeView
       focus={this.focus}
       node={node}
       getPos={this.getPos}
