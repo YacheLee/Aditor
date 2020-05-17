@@ -1,3 +1,23 @@
 body{
 	margin: 16px;
 }
+
+.App{
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 768px){
+    .App{
+        flex-direction: column;
+    }
+}
+
+.left {
+    flex: 1;
+
+}
+
+.right{
+
+}

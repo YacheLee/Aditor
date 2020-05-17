@@ -10,10 +10,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Aditor id="aditor" defaultValue={value} onChange={value=>{
-        setValue(value);
-      }} />
-      <JSONPretty json={value} theme={github} />
+        <div className="left">
+            <Aditor id="aditor" defaultValue={value} onChange={value=>{
+                setValue(value);
+            }} />
+        </div>
+        <div className="right">
+            <JSONPretty json={value} theme={github} />
+        </div>
     </div>
   );
 }
