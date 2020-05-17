@@ -49,7 +49,6 @@ function getEnable(enableToResize){
 }
 
 function Component({enableToResize, src, title, width, height, setWidth, setHeight, onImageClick, onResizeEnd}) {
-    const imageRef = useRef(null);
     const [dWidth, setDWidth] = useState(0);
     const [dHeight, setDHeight] = useState(0);
 
@@ -85,7 +84,6 @@ function Component({enableToResize, src, title, width, height, setWidth, setHeig
             }}
         >
             <Image
-                ref={imageRef}
                 width={finalWidth}
                 height={finalHeight}
                 src={src}
