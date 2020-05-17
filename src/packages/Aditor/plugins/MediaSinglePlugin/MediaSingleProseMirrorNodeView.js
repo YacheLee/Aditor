@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MediaSingleNodeView from './components/MediaSingleNodeView';
+import MediaSingleReactView from './components/MediaSingleReactView';
 import getStyle from './getStyle';
 import { setImageSize, setLayout } from './commands';
 
@@ -31,7 +31,7 @@ class MediaSingleProseMirrorNodeView {
     const focus = this.nodeFocus && this.imageFocus;
     const editorView = this.editorView;
 
-    ReactDOM.render(<MediaSingleNodeView
+    ReactDOM.render(<MediaSingleReactView
       layout={layout}
       src={src}
       title={title}

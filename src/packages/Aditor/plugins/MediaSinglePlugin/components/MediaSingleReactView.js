@@ -2,7 +2,7 @@ import React from 'react';
 import LayoutPopover from './LayoutPopover';
 import Image from './Image';
 
-function MediaSingleNodeView({src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
+function MediaSingleReactView({src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
   return <div>
     <Image
       src={src}
@@ -21,4 +21,4 @@ function MediaSingleNodeView({src, title, width, height, layout, focus, onLayout
   </div>
 }
 
-export default MediaSingleNodeView;
+export default MediaSingleReactView;
