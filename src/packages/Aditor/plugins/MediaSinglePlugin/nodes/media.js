@@ -1,6 +1,7 @@
 export const name = 'media';
 
 export const node = {
+    inline: true,
     selectable: true,
     attrs: {
         id: {default: ''},
