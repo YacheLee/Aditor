@@ -1,14 +1,8 @@
 import React from 'react';
-import { setLayout, setImageSize } from '../commands';
 import ImagePopover from './ImagePopover';
 import ImageNodeView from './ImageNodeView';
 
-function MediaSingleNodeView({node, focus, getPos, editorView, onImageClick}){
-  const { layout } = node.attrs;
-
-  const {firstChild: mediaNode} = node;
-  const { src, title, width, height } = mediaNode.attrs;
-
+function MediaSingleNodeView({src, title, width, height, layout, focus, onLayoutChange, onImageClick, onResizeEnd}){
   return <div>
     <ImageNodeView
       src={src}
@@ -16,18 +10,13 @@ function MediaSingleNodeView({node, focus, getPos, editorView, onImageClick}){
       width={width}
       height={height}
       enableToResize={focus}
-      onResizeEnd={({width, height})=>{
-        setImageSize({editorView, mediaNode, width, height});
-      }}
+      onResizeEnd={onResizeEnd}
       onImageClick={onImageClick}
     />
 
     {focus && <ImagePopover
       layout={layout}
-      onLayoutChange={layout=>{
-        const pos = getPos();
-        setLayout({pos, editorView, layout});
-      }}
+      onLayoutChange={onLayoutChange}
     />}
   </div>
 }

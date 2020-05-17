@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MediaSingleNodeView from './components/MediaSingleNodeView';
 import getStyle from './getStyle';
+import { setImageSize, setLayout } from './commands';
 
 class MediaSingleProseMirrorNodeView {
   constructor(node, editorView, getPos) {
@@ -24,13 +25,29 @@ class MediaSingleProseMirrorNodeView {
       this.dom.style[key] = styleObj[key];
     });
 
+    const {attrs, firstChild: mediaNode} = node;
+    const { src, title, width, height } = mediaNode.attrs;
+    const {layout} = attrs;
     const focus = this.nodeFocus && this.imageFocus;
+    const editorView = this.editorView;
 
     ReactDOM.render(<MediaSingleNodeView
+      layout={layout}
+      src={src}
+      title={title}
+      width={width}
+      height={height}
       focus={focus}
       node={node}
       getPos={this.getPos}
-      editorView={this.editorView}
+      editorView={editorView}
+      onLayoutChange={layout=>{
+        const pos = this.getPos();
+        setLayout({pos, editorView, layout});
+      }}
+      onResizeEnd={({width, height})=>{
+        setImageSize({editorView, mediaNode: node.firstChild, width, height});
+      }}
       onImageClick={()=>{
         this.imageFocus = true;
         this.renderReactComponent(node);
