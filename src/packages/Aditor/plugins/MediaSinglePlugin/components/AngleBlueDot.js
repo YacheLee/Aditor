@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const className = 'dragging-dot';
+
 const AngleBlueDot = styled.div`
   background-color: rgb(26, 115, 232);
   border-radius: 2px;  
@@ -10,7 +12,11 @@ const AngleBlueDot = styled.div`
   height: 100%;
 `;
 
-AngleBlueDot.propTypes = {
+function Component(){
+    return <AngleBlueDot className={className} />
+}
+
+Component.propTypes = {
 };
 
-export default AngleBlueDot;
+export default Component;

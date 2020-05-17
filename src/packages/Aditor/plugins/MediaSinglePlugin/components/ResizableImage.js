@@ -88,7 +88,10 @@ function Component({enableToResize, src, title, width, height, setWidth, setHeig
                 height={finalHeight}
                 src={src}
                 title={title}
-                onClick={onImageClick}
+                onClick={e=>{
+                    e.stopPropagation();
+                    onImageClick(e);
+                }}
             />
         </Resizable>
     </Wrapper>;
