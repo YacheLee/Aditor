@@ -1,8 +1,7 @@
 import React from 'react';
-import ImageNodeView from '../../ImagePlugin/components/ImageNodeView';
-import ImagePopover from '../../ImagePlugin/components/ImagePopover';
-import setLayout from '../setLayout';
-import { setImageSize } from '../commands';
+import { setLayout, setImageSize } from '../commands';
+import ImagePopover from './ImagePopover';
+import ImageNodeView from './ImageNodeView';
 
 function MediaSingleNode({node, focus, getPos, editorView}){
   const { layout } = node.attrs;

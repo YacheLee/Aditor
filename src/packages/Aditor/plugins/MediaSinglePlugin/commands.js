@@ -8,3 +8,7 @@ export function setImageSize({editorView, mediaNode, width, height}){
     })
   );
 }
+
+export function setLayout({editorView, pos, layout}){
+  editorView.dispatch(editorView.state.tr.setNodeMarkup(pos, null, {layout}));
+}

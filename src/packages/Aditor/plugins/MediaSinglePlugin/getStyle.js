@@ -1,6 +1,5 @@
 import getJustifyContent from './getJustifyContent';
-import { LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT } from './node';
-import { DEFAULT_LAYOUT } from './index';
+import { DEFAULT_LAYOUT, LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT } from './';
 
 function getFlexStyle(layout){
   return {

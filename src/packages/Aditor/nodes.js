@@ -1,6 +1,6 @@
-import {name as imageNodeName, node as imageNode} from './plugins/ImagePlugin/node';
 import {name as headingNodeName, node as headingNode} from './plugins/HeadingPlugin/node';
-import {name as mediaSingleNodeName, node as mediaSingleNode} from './plugins/MediaSinglePlugin/node';
+import {name as mediaSingleNodeName, node as mediaSingleNode} from './plugins/MediaSinglePlugin/nodes/mediaSingle';
+import {name as mediaName, node as mediaNode} from './plugins/MediaSinglePlugin/nodes/media';
 
 export default {
     doc: {
@@ -14,8 +14,8 @@ export default {
             return ['p', 0];
         }
     },
-    [imageNodeName]: imageNode,
     [headingNodeName]: headingNode,
+    [mediaName]: mediaNode,
     [mediaSingleNodeName]: mediaSingleNode,
     text: {
         group: 'inline',

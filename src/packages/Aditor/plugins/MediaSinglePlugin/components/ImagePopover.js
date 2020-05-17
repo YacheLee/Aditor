@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT} from "../../MediaSinglePlugin/node";
+import { LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT } from '../';
 
 const layouts = [
     {

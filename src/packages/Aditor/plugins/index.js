@@ -1,6 +1,7 @@
 import {history} from 'prosemirror-history';
 import {keymap} from 'prosemirror-keymap';
 import {baseKeymap} from 'prosemirror-commands';
+import {dropCursor} from "prosemirror-dropcursor";
 import {gapCursor} from 'prosemirror-gapcursor';
 import HighlightPlugin from './HighlightPlugin';
 import UndoPlugin from './UndoPlugin';
@@ -13,8 +14,6 @@ import TextColorPlugin from './TextColorPlugin';
 import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
-import ImagePlugin from './ImagePlugin';
-import {dropCursor} from "prosemirror-dropcursor";
 
 function plugins(toolbarDom) {
   return [
@@ -33,7 +32,6 @@ function plugins(toolbarDom) {
     StrikeThroughPlugin(toolbarDom),
     LinkPlugin(toolbarDom),
     TextColorPlugin(toolbarDom),
-    ImagePlugin(toolbarDom),
   ];
 }
 
