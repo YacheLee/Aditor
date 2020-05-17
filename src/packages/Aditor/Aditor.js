@@ -14,7 +14,7 @@ import marks from './marks';
 import PopoverManager from './PopoverManager';
 import normaliseValue from './normaliseValue';
 import ProseMirrorStyle from './ProseMirrorStyle';
-import ProseMirrorNodeView from './plugins/ImagePlugin/ProseMirrorNodeView';
+import nodeViews from './nodeViews';
 
 const Toolbar = styled.div`
   padding: 4px 8px 4px 14px;
@@ -59,9 +59,7 @@ function Aditor({ id, defaultValue, onChange }) {
       });
       const _editorView = new EditorView(editor.current, {
         state,
-        nodeViews: {
-          image(node, view, getPos) { return new ProseMirrorNodeView(node, view, getPos) }
-        },
+        nodeViews,
         dispatchTransaction(transaction) {
           const newState = _editorView.state.apply(transaction);
           _editorView.updateState(newState);
