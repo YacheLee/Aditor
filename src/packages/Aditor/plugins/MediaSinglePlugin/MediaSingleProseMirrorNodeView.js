@@ -6,7 +6,8 @@ import getStyle from './getStyle';
 class MediaSingleProseMirrorNodeView {
   constructor(node, editorView, getPos) {
     this.dom = document.createElement('div');
-    this.focus = false;
+    this.nodeFocus = false;
+    this.imageFocus = false;
     this.node = node;
     this.editorView = editorView;
     this.getPos = getPos;
@@ -23,11 +24,17 @@ class MediaSingleProseMirrorNodeView {
       this.dom.style[key] = styleObj[key];
     });
 
+    const focus = this.nodeFocus && this.imageFocus;
+
     ReactDOM.render(<MediaSingleNodeView
-      focus={this.focus}
+      focus={focus}
       node={node}
       getPos={this.getPos}
       editorView={this.editorView}
+      onImageClick={()=>{
+        this.imageFocus = true;
+        this.renderReactComponent(node);
+      }}
     />, this.dom);
   }
 
@@ -38,12 +45,14 @@ class MediaSingleProseMirrorNodeView {
   }
 
   selectNode(){
-    this.focus = true;
+    this.nodeFocus = true;
+    this.imageFocus = false;
     this.renderReactComponent(this.node);
   }
 
   deselectNode(){
-    this.focus = false;
+    this.nodeFocus = false;
+    this.imageFocus = false;
     this.renderReactComponent(this.node);
   }
 

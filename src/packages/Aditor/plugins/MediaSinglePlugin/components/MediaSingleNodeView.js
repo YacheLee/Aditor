@@ -3,7 +3,7 @@ import { setLayout, setImageSize } from '../commands';
 import ImagePopover from './ImagePopover';
 import ImageNodeView from './ImageNodeView';
 
-function MediaSingleNodeView({node, focus, getPos, editorView}){
+function MediaSingleNodeView({node, focus, getPos, editorView, onImageClick}){
   const { layout } = node.attrs;
 
   const {firstChild: mediaNode} = node;
@@ -19,6 +19,7 @@ function MediaSingleNodeView({node, focus, getPos, editorView}){
       onResizeEnd={({width, height})=>{
         setImageSize({editorView, mediaNode, width, height});
       }}
+      onImageClick={onImageClick}
     />
 
     {focus && <ImagePopover
