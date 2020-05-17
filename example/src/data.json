@@ -2,11 +2,11 @@
   {
     "type": "mediaSingle",
     "attrs": {
-      "layout": "wrap-left"
+      "layout": "center"
     },
     "content": [
       {
-        "type": "image",
+        "type": "media",
         "attrs": {
           "src": "https://images.unsplash.com/photo-1588463340638-4d72fd85166a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=550&ixlib=rb-1.2.1&q=80&w=800",
           "alt": "alt",
@@ -32,11 +32,11 @@
   {
     "type": "mediaSingle",
     "attrs": {
-      "layout": "right"
+      "layout": "left"
     },
     "content": [
       {
-        "type": "image",
+        "type": "media",
         "attrs": {
           "src": "https://images.unsplash.com/photo-1588463340638-4d72fd85166a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=550&ixlib=rb-1.2.1&q=80&w=800",
           "alt": "alt",

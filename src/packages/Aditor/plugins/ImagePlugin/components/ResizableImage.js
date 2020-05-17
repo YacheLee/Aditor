@@ -109,7 +109,6 @@ Component.propTypes = {
     height: PropTypes.number.isRequired,
     setWidth: PropTypes.func.isRequired,
     setHeight: PropTypes.func.isRequired,
-    onImageClick: PropTypes.func.isRequired,
     onResizeEnd: PropTypes.func.isRequired,
 };
 

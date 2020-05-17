@@ -24,7 +24,7 @@ const layouts = [
     }
 ];
 
-function ImagePopover({layout: initLayout, onLayoutClick}) {
+function ImagePopover({layout: initLayout, onLayoutChange}) {
     const [layout, setLayout] = useState(initLayout);
 
     return <div>
@@ -33,7 +33,7 @@ function ImagePopover({layout: initLayout, onLayoutClick}) {
 
             return <button style={{border: `solid ${isSelecting ? 1: 0}px red`}} key={`ImageNodeView_Popover_${value}_${index}`} onClick={()=>{
                 setLayout(value);
-                onLayoutClick(value);
+                onLayoutChange(value);
             }}>{label}</button>
         })}
     </div>

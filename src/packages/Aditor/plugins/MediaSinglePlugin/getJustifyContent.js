@@ -1,4 +1,4 @@
-import {DEFAULT_LAYOUT} from "./node";
+import { DEFAULT_LAYOUT } from './index';
 
 function getJustifyContent(layout = DEFAULT_LAYOUT) {
     if (layout === "left") {

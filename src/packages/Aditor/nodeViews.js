@@ -1,5 +1,5 @@
-import ProseMirrorNodeView from './plugins/ImagePlugin/ProseMirrorNodeView';
+import MediaSingleProseMirrorNodeView from './plugins/MediaSinglePlugin/MediaSingleProseMirrorNodeView';
 
 export default {
-  image(node, view, getPos) { return new ProseMirrorNodeView(node, view, getPos) }
+  mediaSingle(node, view, getPos) { return new MediaSingleProseMirrorNodeView(node, view, getPos) }
 };
