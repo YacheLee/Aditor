@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import FocusLock from 'react-focus-lock';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import _Paper from '@material-ui/core/Paper';
@@ -93,28 +94,30 @@ function LinkEditPopover({
 
   return (
     <Paper>
-      <TextFieldContainer>
-        <TextFieldInner>
-          <Label htmlFor={textId}>Text</Label>
-          <TextField
-            autoFocus
-            id={textId}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </TextFieldInner>
-      </TextFieldContainer>
-      <TextFieldContainer style={{ paddingTop: 12 }}>
-        <TextFieldInner style={{ display: 'flex' }}>
-          <Label htmlFor={linkId}>Link</Label>
-          <TextField
-            id={linkId}
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <Button onClick={() => onApply({ text, url })}>{buttonText}</Button>
-        </TextFieldInner>
-      </TextFieldContainer>
+      <FocusLock>
+        <TextFieldContainer>
+          <TextFieldInner>
+            <Label htmlFor={textId}>Text</Label>
+            <TextField
+              autoFocus
+              id={textId}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </TextFieldInner>
+        </TextFieldContainer>
+        <TextFieldContainer style={{ paddingTop: 12 }}>
+          <TextFieldInner style={{ display: 'flex' }}>
+            <Label htmlFor={linkId}>Link</Label>
+            <TextField
+              id={linkId}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+            <Button onClick={() => onApply({ text, url })}>{buttonText}</Button>
+          </TextFieldInner>
+        </TextFieldContainer>
+      </FocusLock>
     </Paper>
   );
 }
