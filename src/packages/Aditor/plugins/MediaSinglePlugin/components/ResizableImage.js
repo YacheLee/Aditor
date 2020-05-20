@@ -8,8 +8,14 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Image = styled.img`
+const Image = styled.div`
   cursor: move;
+  box-sizing: border-box;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
+  background-image: url("${props => props.src}");
+  background-repeat: round;
+  background-size: contain;
 `;
 
 const handleStyles = {
@@ -39,7 +45,7 @@ const handleStyles = {
     },
 };
 
-function getEnable(enableToResize){
+function getEnable(enableToResize) {
     return {
         topRight: enableToResize,
         bottomRight: enableToResize,
@@ -65,10 +71,10 @@ function Component({enableToResize, src, title, width, height, setWidth, setHeig
             }}
             handleStyles={handleStyles}
             handleComponent={{
-                topRight: <AngleBlueDot />,
-                bottomRight: <AngleBlueDot />,
-                bottomLeft: <AngleBlueDot />,
-                topLeft: <AngleBlueDot />,
+                topRight: <AngleBlueDot/>,
+                bottomRight: <AngleBlueDot/>,
+                bottomLeft: <AngleBlueDot/>,
+                topLeft: <AngleBlueDot/>,
             }}
             onResize={(e, direction, ref, d) => {
                 setDWidth(d.width);
@@ -88,7 +94,7 @@ function Component({enableToResize, src, title, width, height, setWidth, setHeig
                 height={finalHeight}
                 src={src}
                 title={title}
-                onClick={e=>{
+                onClick={e => {
                     e.stopPropagation();
                     onImageClick(e);
                 }}
