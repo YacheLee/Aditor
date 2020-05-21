@@ -8,14 +8,8 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Image = styled.div`
+const Image = styled.img`
   cursor: move;
-  box-sizing: border-box;
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-  background-image: url("${props => props.src}");
-  background-repeat: round;
-  background-size: contain;
 `;
 
 const handleStyles = {
