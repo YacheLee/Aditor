@@ -30,7 +30,7 @@ const Toolbar = styled.div`
   flex-shrink: 0;
 `;
 
-function Aditor({ id, defaultValue, onChange }) {
+function Aditor({ id, defaultValue, onChange, onSelect }) {
   if (!id) {
     throw new Error('The id is required to use Aditor');
   }
@@ -63,7 +63,10 @@ function Aditor({ id, defaultValue, onChange }) {
         dispatchTransaction(transaction) {
           const newState = _editorView.state.apply(transaction);
           _editorView.updateState(newState);
-          onChange(newState.toJSON().doc.content);
+
+          const data = newState.toJSON();
+          onChange(data.doc.content);
+          onSelect(data.selection);
         }
       });
       setEditorView(_editorView);
@@ -94,13 +97,15 @@ function Aditor({ id, defaultValue, onChange }) {
 
 Aditor.defaultProps = {
   defaultValue: [],
-  onChange: () => {}
+  onChange: () => {},
+  onSelect: () => {},
 };
 
 Aditor.propTypes = {
   id: PropTypes.string.isRequired,
   defaultValue: PropTypes.array,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onSelect: PropTypes.func,
 };
 
 export default Aditor;
