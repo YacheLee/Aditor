@@ -14,25 +14,27 @@ import TextColorPlugin from './TextColorPlugin';
 import HeadingPlugin from './HeadingPlugin';
 import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
+import MediaSinglePlugin from './MediaSinglePlugin';
 
 function plugins(toolbarDom) {
-  return [
-    CursorPlugin(),
-    HighlightPlugin(),
-    history(),
-    keymap(baseKeymap),
-    dropCursor(),
-    gapCursor(),
-    UndoPlugin(toolbarDom),
-    RedoPlugin(toolbarDom),
-    HeadingPlugin(toolbarDom),
-    BoldPlugin(toolbarDom),
-    ItalicPlugin(toolbarDom),
-    UnderlinePlugin(toolbarDom),
-    StrikeThroughPlugin(toolbarDom),
-    LinkPlugin(toolbarDom),
-    TextColorPlugin(toolbarDom),
-  ];
+    return [
+        CursorPlugin(),
+        HighlightPlugin(),
+        history(),
+        keymap(baseKeymap),
+        dropCursor(),
+        gapCursor(),
+        UndoPlugin(toolbarDom),
+        RedoPlugin(toolbarDom),
+        HeadingPlugin(toolbarDom),
+        BoldPlugin(toolbarDom),
+        ItalicPlugin(toolbarDom),
+        UnderlinePlugin(toolbarDom),
+        StrikeThroughPlugin(toolbarDom),
+        LinkPlugin(toolbarDom),
+        TextColorPlugin(toolbarDom),
+        MediaSinglePlugin(toolbarDom),
+    ];
 }
 
 export default plugins;

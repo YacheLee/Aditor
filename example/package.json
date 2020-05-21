@@ -7,6 +7,7 @@
     "aditor": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
+    "lodash": "^4.17.15",
     "react-json-prettify": "^0.2.0",
     "react-scripts": "link:../node_modules/react-scripts"
   },

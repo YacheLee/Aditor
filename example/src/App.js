@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from 'react';
 import Aditor from 'aditor';
 import JSONPretty from 'react-json-prettify';
@@ -11,9 +12,7 @@ const App = () => {
   return (
     <div className="App">
         <div className="left">
-            <Aditor id="aditor" defaultValue={value} onChange={value=>{
-                setValue(value);
-            }} />
+            <Aditor id="aditor" defaultValue={value} onChange={_.debounce(setValue, 500)} />
         </div>
         <div className="right">
             <JSONPretty json={value} theme={github} />
