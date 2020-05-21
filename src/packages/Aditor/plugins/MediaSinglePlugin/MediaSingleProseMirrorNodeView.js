@@ -42,24 +42,23 @@ class MediaSingleProseMirrorNodeView {
         const editorView = this.editorView;
 
         ReactDOM.render(<MediaSingleReactView
-            layout={layout}
             id={id}
             src={src}
             title={title}
             width={width}
             height={height}
+            layout={layout}
             focus={focus}
-            editorView={editorView}
             onLayoutChange={layout => {
                 setLayout({pos, editorView, layout});
-            }}
-            onResizeEnd={({width, height}) => {
-                const nodeMedia = getNodeMedia(node);
-                setImageSize({editorView, attrs: nodeMedia.attrs, pos: pos+1, width, height});
             }}
             onImageClick={() => {
                 setNodeSelection(this.editorView, this.getPos());
                 this.renderReactComponent(node);
+            }}
+            onResizeEnd={({width, height}) => {
+                const nodeMedia = getNodeMedia(node);
+                setImageSize({editorView, attrs: nodeMedia.attrs, pos: pos+1, width, height});
             }}
             onBlur={()=>{
                 this.renderReactComponent(node);
