@@ -16,8 +16,8 @@ const App = () => {
             <Aditor
                 id="aditor"
                 defaultValue={value}
-                onChange={_.debounce(setValue, 500)}
-                onSelect={setSelection}
+                onChange={_.debounce(setValue, 100)}
+                onSelect={_.debounce(setSelection, 100)}
             />
         </div>
         <div className="right">
