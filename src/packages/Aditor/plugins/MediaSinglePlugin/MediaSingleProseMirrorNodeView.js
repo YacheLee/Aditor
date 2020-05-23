@@ -21,7 +21,6 @@ class MediaSingleProseMirrorNodeView {
         this.getPos = getPos;
 
         this.dom.classList.add(`${this.node.type.name}View-content-wrap`);
-        this.dom.contentEditable = true;
         this.renderReactComponent(node);
     }
 
