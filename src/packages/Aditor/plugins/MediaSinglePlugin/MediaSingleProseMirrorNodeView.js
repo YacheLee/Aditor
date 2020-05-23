@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MediaSingleReactView from './components/MediaSingleReactView';
 import {setImageSize, setLayout} from './commands';
 import setNodeSelection from "./setNodeSelection";
+import isFocus from "./isFocus";
 
 function getNodeMedia(node) {
     if (node.firstChild) {
@@ -30,27 +31,26 @@ class MediaSingleProseMirrorNodeView {
         const {layout} = attrs;
 
         const editorView = this.editorView;
+        const focus = isFocus(editorView.state.selection, pos, posEnd, node);
 
         ReactDOM.render(<MediaSingleReactView
             id={id}
+            focus={focus}
             src={src}
             title={title}
             width={width}
             height={height}
             layout={layout}
-            onLayoutChange={layout => {
-                setLayout({pos, editorView, layout});
-                window.setTimeout(e=>{
-                    setNodeSelection(this.editorView, this.getPos());
-                }, 50);
-            }}
+            onLayoutChange={layout=>setLayout({editorView, layout, pos: this.getPos()})}
             onImageClick={() => {
                 setNodeSelection(this.editorView, this.getPos());
                 this.renderReactComponent(node);
             }}
             onResizeEnd={({width, height}) => {
                 const nodeMedia = getNodeMedia(node);
-                setImageSize({editorView, attrs: nodeMedia.attrs, pos: pos+1, width, height});
+                const mediaSinglePos = pos;
+                const mediaPos = pos+1;
+                setImageSize({editorView, attrs: nodeMedia.attrs, mediaSinglePos, mediaPos, width, height});
             }}
             onBlur={()=>{
                 this.renderReactComponent(node);

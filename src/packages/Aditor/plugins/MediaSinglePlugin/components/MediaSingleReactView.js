@@ -5,9 +5,8 @@ import Image from './Image';
 import getStyle from "../getStyle";
 import Popover from "../../../components/Popover";
 
-function MediaSingleReactView({id, src, title, width, height, layout, onLayoutChange, onImageClick, onResizeEnd, onBlur}) {
+function MediaSingleReactView({id, focus, src, title, width, height, layout, onLayoutChange, onImageClick, onResizeEnd, onBlur}) {
     const [anchorEl, setAnchorEl] = useState(null);
-    const focus = Boolean(anchorEl);
 
     return <ClickAwayListener onClickAway={(e)=>{
         setAnchorEl(null);
