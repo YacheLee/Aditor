@@ -1,28 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import LayoutPopover from './LayoutPopover';
 import Image from './Image';
 import getStyle from "../getStyle";
+import Popover from "../../../components/Popover";
 
-function MediaSingleReactView({id, src, title, width, height, layout, onLayoutChange, focus, onImageClick, onResizeEnd, onBlur}){
-  return <ClickAwayListener onClickAway={onBlur}>
-      <div id={id} style={getStyle(layout)}>
-          <Image
-              src={src}
-              title={title}
-              width={width}
-              height={height}
-              enableToResize={focus}
-              onResizeEnd={onResizeEnd}
-              onImageClick={onImageClick}
-          />
+function MediaSingleReactView({id, src, title, width, height, layout, onLayoutChange, onImageClick, onResizeEnd, onBlur}) {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const focus = Boolean(anchorEl);
 
-          {focus && <LayoutPopover
-              layout={layout}
-              onLayoutChange={onLayoutChange}
-          />}
-      </div>
-  </ClickAwayListener>
+    return <ClickAwayListener onClickAway={(e)=>{
+        setAnchorEl(null);
+        onBlur(e);
+    }}>
+        <div id={id} style={getStyle(layout)}>
+            <Image
+                src={src}
+                title={title}
+                width={width}
+                height={height}
+                enableToResize={focus}
+                onResizeEnd={onResizeEnd}
+                onImageClick={(e) => {
+                    onImageClick(e);
+                    setAnchorEl(e.currentTarget);
+                }}
+            />
+            <Popover id={`popover_${id}`} anchorEl={anchorEl}>
+                <LayoutPopover layout={layout} onLayoutChange={onLayoutChange}/>
+            </Popover>
+        </div>
+    </ClickAwayListener>
 }
 
 export default MediaSingleReactView;

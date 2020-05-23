@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import MediaSingleReactView from './components/MediaSingleReactView';
 import {setImageSize, setLayout} from './commands';
 import setNodeSelection from "./setNodeSelection";
-import isFocus from "./isFocus";
 
 function getNodeMedia(node) {
     if (node.firstChild) {
@@ -30,7 +29,6 @@ class MediaSingleProseMirrorNodeView {
         const {id, src, title, width, height} = mediaNode.attrs;
         const {layout} = attrs;
 
-        const focus = isFocus(this.editorView.state.selection, pos, posEnd, node);
         const editorView = this.editorView;
 
         ReactDOM.render(<MediaSingleReactView
@@ -40,9 +38,11 @@ class MediaSingleProseMirrorNodeView {
             width={width}
             height={height}
             layout={layout}
-            focus={focus}
             onLayoutChange={layout => {
                 setLayout({pos, editorView, layout});
+                window.setTimeout(e=>{
+                    setNodeSelection(this.editorView, this.getPos());
+                }, 50);
             }}
             onImageClick={() => {
                 setNodeSelection(this.editorView, this.getPos());
