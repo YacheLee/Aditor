@@ -1,35 +1,31 @@
 import React, {useState} from 'react';
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import LayoutPopover from './LayoutPopover';
-import Image from './Image';
 import getStyle from "../getStyle";
-import Popover from "../../../components/Popover";
+import isMouseDownEventFromResize from "../isMouseDownEventFromResize";
+import ResizableImage from "./ResizableImage";
 
-function MediaSingleReactView({id, focus, src, title, width, height, layout, onLayoutChange, onImageClick, onResizeEnd, onBlur}) {
-    const [anchorEl, setAnchorEl] = useState(null);
+function MediaSingleReactView({id, focus, src, title, width: _width, height: _height, layout, onImageClick, onResizeEnd}) {
+    const [width, setWidth] = useState(_width);
+    const [height, setHeight] = useState(_height);
 
-    return <ClickAwayListener onClickAway={(e)=>{
-        setAnchorEl(null);
-        onBlur(e);
-    }}>
-        <div id={id} style={getStyle(layout)}>
-            <Image
+    return <div id={id} style={getStyle(layout)}>
+        <div onMouseDown={e => {
+            if (isMouseDownEventFromResize(e)) {
+                e.preventDefault();
+            }
+        }}>
+            <ResizableImage
+                enableToResize={focus}
                 src={src}
                 title={title}
                 width={width}
                 height={height}
-                enableToResize={focus}
+                setWidth={setWidth}
+                setHeight={setHeight}
                 onResizeEnd={onResizeEnd}
-                onImageClick={(e) => {
-                    onImageClick(e);
-                    setAnchorEl(e.currentTarget);
-                }}
+                onImageClick={onImageClick}
             />
-            <Popover id={`popover_${id}`} anchorEl={anchorEl}>
-                <LayoutPopover layout={layout} onLayoutChange={onLayoutChange}/>
-            </Popover>
         </div>
-    </ClickAwayListener>
+    </div>
 }
 
 export default MediaSingleReactView;

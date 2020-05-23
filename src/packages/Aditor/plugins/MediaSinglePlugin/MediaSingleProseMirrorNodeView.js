@@ -4,6 +4,9 @@ import MediaSingleReactView from './components/MediaSingleReactView';
 import {setImageSize, setLayout} from './commands';
 import setNodeSelection from "./setNodeSelection";
 import isFocus from "./isFocus";
+import {key} from "../SelectionPlugin";
+import PopoverManager from "../../PopoverManager";
+import LayoutPopover from "./components/LayoutPopover";
 
 function getNodeMedia(node) {
     if (node.firstChild) {
@@ -21,6 +24,10 @@ class MediaSingleProseMirrorNodeView {
 
         this.dom.classList.add(`${node.type.name}View-content-wrap`);
         this.renderReactComponent(node);
+
+        key.getState(editorView.state).subscribe(()=>{
+            this.renderReactComponent(node);
+        });
     }
 
     renderReactComponent(node) {
@@ -29,7 +36,6 @@ class MediaSingleProseMirrorNodeView {
         const {attrs, firstChild: mediaNode} = node;
         const {id, src, title, width, height} = mediaNode.attrs;
         const {layout} = attrs;
-
         const editorView = this.editorView;
         const focus = isFocus(editorView.state.selection, pos, posEnd, node);
 
@@ -41,10 +47,13 @@ class MediaSingleProseMirrorNodeView {
             width={width}
             height={height}
             layout={layout}
-            onLayoutChange={layout=>setLayout({editorView, layout, pos: this.getPos()})}
+            onLayoutChange={layout=>{
+                setLayout({editorView, layout, pos: this.getPos()})
+            }}
             onImageClick={() => {
-                setNodeSelection(this.editorView, this.getPos());
-                this.renderReactComponent(node);
+                if(!focus){
+                    setNodeSelection(this.editorView, this.getPos());
+                }
             }}
             onResizeEnd={({width, height}) => {
                 const nodeMedia = getNodeMedia(node);
@@ -52,19 +61,23 @@ class MediaSingleProseMirrorNodeView {
                 const mediaPos = pos+1;
                 setImageSize({editorView, attrs: nodeMedia.attrs, mediaSinglePos, mediaPos, width, height});
             }}
-            onBlur={()=>{
-                this.renderReactComponent(node);
-            }}
         />, this.dom);
-    }
 
-    update(node) {
-        this.node = node;
-        this.renderReactComponent(node);
-        return true;
+        //when we focus on the image, we have to pop the layout panel
+        if(focus){
+            const img = document.querySelectorAll(`[id="${id}"] img`)[0];
+            PopoverManager.setPopoverAnchorElement(img);
+            PopoverManager.setPopoverContent(<LayoutPopover layout={layout} onLayoutChange={(layout)=>{
+                setLayout({editorView, layout, pos: this.getPos()})
+            }}/>);
+        }
+        else{
+            PopoverManager.setPopoverAnchorElement(null);
+        }
     }
 
     destroy() {
+        key.getState(editorView.state).unsubscribe();
         this.dom.remove();
     }
 }
