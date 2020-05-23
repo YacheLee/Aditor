@@ -20,7 +20,7 @@ class MediaSingleProseMirrorNodeView {
         this.editorView = editorView;
         this.getPos = getPos;
 
-        this.dom.classList.add(`${this.node.type.name}View-content-wrap`);
+        this.dom.classList.add(`${node.type.name}View-content-wrap`);
         this.renderReactComponent(node);
     }
 
