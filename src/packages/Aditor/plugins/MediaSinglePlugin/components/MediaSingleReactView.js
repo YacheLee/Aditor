@@ -1,11 +1,12 @@
 import React from 'react';
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import LayoutPopover from './LayoutPopover';
 import Image from './Image';
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import getStyle from "../getStyle";
 
 function MediaSingleReactView({id, src, title, width, height, layout, onLayoutChange, focus, onImageClick, onResizeEnd, onBlur}){
   return <ClickAwayListener onClickAway={onBlur}>
-      <div id={id}>
+      <div id={id} style={getStyle(layout)}>
           <Image
               src={src}
               title={title}

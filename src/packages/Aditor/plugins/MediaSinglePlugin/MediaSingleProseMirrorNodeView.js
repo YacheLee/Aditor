@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MediaSingleReactView from './components/MediaSingleReactView';
-import getStyle from './getStyle';
 import {setImageSize, setLayout} from './commands';
 import setNodeSelection from "./setNodeSelection";
 import isFocus from "./isFocus";
@@ -27,12 +26,6 @@ class MediaSingleProseMirrorNodeView {
     renderReactComponent(node) {
         const pos = this.getPos();
         const posEnd = pos + node.nodeSize;
-        const styleObj = getStyle(node.attrs.layout);
-        this.dom.style = {};
-        Object.keys(styleObj).forEach(key => {
-            this.dom.style[key] = styleObj[key];
-        });
-
         const {attrs, firstChild: mediaNode} = node;
         const {id, src, title, width, height} = mediaNode.attrs;
         const {layout} = attrs;

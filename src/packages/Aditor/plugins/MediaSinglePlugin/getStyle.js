@@ -1,5 +1,5 @@
 import getJustifyContent from './getJustifyContent';
-import { DEFAULT_LAYOUT, LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT } from './';
+import {DEFAULT_LAYOUT, LAYOUT_CENTER, LAYOUT_LEFT, LAYOUT_RIGHT, LAYOUT_WRAP_LEFT, LAYOUT_WRAP_RIGHT} from './';
 
 function getFlexStyle(layout){
   return {
@@ -15,7 +15,6 @@ function getFloatStyle(layout){
 }
 
 function getStyle(layout=DEFAULT_LAYOUT){
-
   switch(layout){
     case LAYOUT_WRAP_LEFT:
     case LAYOUT_WRAP_RIGHT:
