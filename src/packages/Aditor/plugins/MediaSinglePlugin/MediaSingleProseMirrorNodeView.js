@@ -21,7 +21,7 @@ class MediaSingleProseMirrorNodeView {
         this.getPos = getPos;
 
         this.dom.classList.add(`${node.type.name}View-content-wrap`);
-        this.renderReactComponent(node);
+        this.update(node);
         this.onSelectionChange = this.onSelectionChange.bind(this);
 
         key.getState(editorView.state).subscribe(this.onSelectionChange);
@@ -59,6 +59,13 @@ class MediaSingleProseMirrorNodeView {
                 setImageSize({editorView, attrs: nodeMedia.attrs, mediaSinglePos, mediaPos, width, height});
             }}
         />, this.dom);
+    }
+
+    update(node){
+        console.log('update');
+        this.node = node;
+        this.renderReactComponent(node);
+        return true;
     }
 
     destroy() {
