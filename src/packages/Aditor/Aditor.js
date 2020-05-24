@@ -77,8 +77,6 @@ function Aditor({ id, defaultValue, onChange, onSelect }) {
     init();
   }, [init]);
 
-  window.editorView = editorView;
-
   return (
     <CssBaseline>
       <Paper>
