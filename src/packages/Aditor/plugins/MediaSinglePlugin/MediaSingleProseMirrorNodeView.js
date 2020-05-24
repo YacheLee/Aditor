@@ -22,10 +22,9 @@ class MediaSingleProseMirrorNodeView {
 
         this.dom.classList.add(`${node.type.name}View-content-wrap`);
         this.renderReactComponent(node);
+        this.onSelectionChange = this.onSelectionChange.bind(this);
 
-        key.getState(editorView.state).subscribe(()=>{
-            this.renderReactComponent(node);
-        });
+        key.getState(editorView.state).subscribe(this.onSelectionChange);
     }
 
     renderReactComponent(node) {
@@ -65,6 +64,10 @@ class MediaSingleProseMirrorNodeView {
     destroy() {
         key.getState(editorView.state).unsubscribe();
         this.dom.remove();
+    }
+
+    onSelectionChange(){
+        this.renderReactComponent(this.node);
     }
 }
 
