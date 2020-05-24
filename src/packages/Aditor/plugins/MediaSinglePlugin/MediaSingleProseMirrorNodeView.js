@@ -71,9 +71,6 @@ class MediaSingleProseMirrorNodeView {
                 setLayout({editorView, layout, pos: this.getPos()})
             }}/>);
         }
-        else{
-            PopoverManager.setPopoverAnchorElement(null);
-        }
     }
 
     destroy() {
