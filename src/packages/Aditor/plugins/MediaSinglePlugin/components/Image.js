@@ -6,11 +6,8 @@ const Image = styled.img`
   cursor: move;
 `;
 
-export const className = 'media';
-
 function Component({src, title, width, height, onClick}) {
   return <Image
-        className={className}
         width={width}
         height={height}
         src={src}

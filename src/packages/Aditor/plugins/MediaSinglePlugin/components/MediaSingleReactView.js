@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import getStyle from "../getStyle";
 import isMouseDownEventFromResize from "../isMouseDownEventFromResize";
 import ResizableImage from "./ResizableImage";
 import LayoutPopover from './LayoutPopover';
 import Popover from '../../../components/Popover';
-import Image, { className } from './Image';
+import Image from './Image';
+
+const mediaClassName = "media";
 
 function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _width, height: _height, layout, onImageClick, onResizeEnd}) {
     const [width, setWidth] = useState(_width);
@@ -12,7 +14,7 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
     const [anchorEl, setAnchorEl] = useState(null);
 
     useEffect(e => {
-      const img = document.querySelector(`[id="${id}"] .${className}`);
+      const img = document.querySelector(`[id="${id}"] .${mediaClassName}`);
       setAnchorEl(img);
     });
 
@@ -22,17 +24,22 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
                 e.preventDefault();
             }
         }}>
-          {focus ? <ResizableImage
-            enableToResize={focus}
-            src={src}
-            title={title}
-            width={width}
-            height={height}
-            setWidth={setWidth}
-            setHeight={setHeight}
-            onResizeEnd={onResizeEnd}
-            onImageClick={onImageClick}
-          /> : <Image title={title} src={src} width={width} height={height} onClick={onImageClick} />}
+          <div className={mediaClassName}>
+              {
+                  focus ? <ResizableImage
+                      enableToResize={focus}
+                      src={src}
+                      title={title}
+                      width={width}
+                      height={height}
+                      setWidth={setWidth}
+                      setHeight={setHeight}
+                      onResizeEnd={onResizeEnd}
+                      onImageClick={onImageClick}
+                  /> :
+                  <Image title={title} src={src} width={width} height={height} onClick={onImageClick} />
+              }
+          </div>
 
           { focus && <Popover id={`MediaSingle_Popover_${id}`} anchorEl={anchorEl}>
             <LayoutPopover layout={layout} onLayoutChange={layout=>{
