@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import getStyle from "../getStyle";
 import isMouseDownEventFromResize from "../isMouseDownEventFromResize";
 import ResizableImage from "./ResizableImage";
-import { setLayout } from '../commands';
 import LayoutPopover from './LayoutPopover';
 import Popover from '../../../components/Popover';
 import Image, { className } from './Image';
