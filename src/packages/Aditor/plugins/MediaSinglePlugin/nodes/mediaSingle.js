@@ -5,7 +5,7 @@ export const name = 'mediaSingle';
 export const node = {
     inline: false,
     group: 'block',
-    selectable: false,
+    selectable: true,
     draggable: true,
     atom: true,
     content: 'media',
