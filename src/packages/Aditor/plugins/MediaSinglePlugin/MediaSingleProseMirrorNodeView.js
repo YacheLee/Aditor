@@ -62,15 +62,6 @@ class MediaSingleProseMirrorNodeView {
                 setImageSize({editorView, attrs: nodeMedia.attrs, mediaSinglePos, mediaPos, width, height});
             }}
         />, this.dom);
-
-        //when we focus on the image, we have to pop the layout panel
-        if(focus){
-            const img = document.querySelectorAll(`[id="${id}"] img`)[0];
-            PopoverManager.setPopoverAnchorElement(img);
-            PopoverManager.setPopoverContent(<LayoutPopover layout={layout} onLayoutChange={(layout)=>{
-                setLayout({editorView, layout, pos: this.getPos()})
-            }}/>);
-        }
     }
 
     destroy() {

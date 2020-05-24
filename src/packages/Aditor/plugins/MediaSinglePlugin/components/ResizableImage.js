@@ -3,13 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {Resizable} from 're-resizable';
 import AngleBlueDot from "./AngleBlueDot";
+import Image from './Image';
 
 const Wrapper = styled.div`
   position: relative;
-`;
-
-const Image = styled.img`
-  cursor: move;
 `;
 
 const handleStyles = {
