@@ -5,8 +5,6 @@ import {setImageSize, setLayout} from './commands';
 import setNodeSelection from "./setNodeSelection";
 import isFocus from "./isFocus";
 import {key} from "../SelectionPlugin";
-import PopoverManager from "../../PopoverManager";
-import LayoutPopover from "./components/LayoutPopover";
 
 function getNodeMedia(node) {
     if (node.firstChild) {
