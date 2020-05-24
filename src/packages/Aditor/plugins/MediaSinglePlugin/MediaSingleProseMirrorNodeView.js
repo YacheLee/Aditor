@@ -62,7 +62,7 @@ class MediaSingleProseMirrorNodeView {
     }
 
     destroy() {
-        key.getState(editorView.state).unsubscribe();
+        key.getState(this.editorView.state).unsubscribe();
         this.dom.remove();
     }
 
