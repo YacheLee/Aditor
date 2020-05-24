@@ -62,7 +62,6 @@ class MediaSingleProseMirrorNodeView {
     }
 
     update(node){
-        console.log('update');
         this.node = node;
         this.renderReactComponent(node);
         return true;
