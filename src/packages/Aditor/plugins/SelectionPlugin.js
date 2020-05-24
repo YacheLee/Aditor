@@ -1,22 +1,25 @@
 import {Plugin, PluginKey} from 'prosemirror-state';
 
 class ViewState{
-    changeHandlers = [];
+    changeHandlers = {};
 
     constructor() {
-        this.changeHandlers = [];
+        this.changeHandlers = {};
     }
 
-    subscribe(cb) {
-        this.changeHandlers.push(cb);
+    subscribe(id, cb) {
+        this.changeHandlers[id] = cb;
     }
 
-    unsubscribe(cb) {
-        this.changeHandlers = this.changeHandlers.filter(ch => ch !== cb);
+    unsubscribe(id) {
+        delete this.changeHandlers[id];
     }
 
     notifyNewSelection(fromPos, toPos) {
-        this.changeHandlers.forEach(cb => cb(fromPos, toPos));
+        Object.keys(this.changeHandlers).forEach(key=>{
+            const cb = this.changeHandlers[key];
+            cb(fromPos, toPos);
+        });
     }
 }
 

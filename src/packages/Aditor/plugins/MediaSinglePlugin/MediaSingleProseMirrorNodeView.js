@@ -19,12 +19,13 @@ class MediaSingleProseMirrorNodeView {
         this.node = node;
         this.editorView = editorView;
         this.getPos = getPos;
+        this.id = node.firstChild.attrs.id;
 
         this.dom.classList.add(`${node.type.name}View-content-wrap`);
         this.update(node);
         this.onSelectionChange = this.onSelectionChange.bind(this);
 
-        key.getState(editorView.state).subscribe(this.onSelectionChange);
+        key.getState(editorView.state).subscribe(this.id, this.onSelectionChange);
     }
 
     renderReactComponent(node) {
@@ -68,7 +69,7 @@ class MediaSingleProseMirrorNodeView {
     }
 
     destroy() {
-        key.getState(this.editorView.state).unsubscribe();
+        key.getState(this.editorView.state).unsubscribe(this.id);
         this.dom.remove();
     }
 
