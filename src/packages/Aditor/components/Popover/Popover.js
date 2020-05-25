@@ -20,6 +20,7 @@ function Popover({ id, anchorEl, children }) {
         id={id}
         open={open}
         anchorEl={anchorEl}
+        disablePortal={true}
         onClose={PopoverManager.closePopover}
       >
         <Fragment>{children}</Fragment>
