@@ -74,7 +74,7 @@ class MediaSingleProseMirrorNodeView {
     }
 
     onSelectionChange(){
-        this.renderReactComponent(this.node);
+        this.update(this.node);
     }
 }
 
