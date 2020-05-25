@@ -1,10 +1,14 @@
-import {Plugin, PluginKey} from 'prosemirror-state';
+import { Plugin, PluginKey } from 'prosemirror-state';
 
 class ViewState{
     changeHandlers = {};
+    from = undefined;
+    to = undefined;
 
     constructor() {
         this.changeHandlers = {};
+        this.from = undefined;
+        this.to = undefined;
     }
 
     subscribe(id, cb) {
@@ -16,6 +20,8 @@ class ViewState{
     }
 
     notifyNewSelection(fromPos, toPos) {
+        this.from = fromPos;
+        this.to = toPos;
         Object.keys(this.changeHandlers).forEach(key=>{
             const cb = this.changeHandlers[key];
             cb(fromPos, toPos);
@@ -42,7 +48,10 @@ function SelectionPlugin() {
             return {
                 update(editorView){
                     const {from, to } = editorView.state.selection;
-                    pluginState.notifyNewSelection(from, to);
+                    //If the selection is the same, do not notify our subscribers
+                    if(pluginState.from !== from && pluginState.to !== to){
+                      pluginState.notifyNewSelection(from, to);
+                    }
                 }
             };
         }

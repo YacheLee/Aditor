@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import getStyle from '../getStyle';
 import isMouseDownEventFromResize from '../isMouseDownEventFromResize';
 import ResizableImage from './ResizableImage';
 import LayoutPopover from './LayoutPopover';
-
-const mediaClassName = "media";
 
 function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _width, height: _height, layout, onImageClick, onResizeEnd}) {
     const [width, setWidth] = useState(_width);
@@ -16,24 +14,22 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
                 e.preventDefault();
             }
         }}>
-          <div className={mediaClassName}>
-            <ResizableImage
-                  enableToResize={focus}
-                  src={src}
-                  title={title}
-                  width={width}
-                  height={height}
-                  setWidth={setWidth}
-                  setHeight={setHeight}
-                  onResizeEnd={onResizeEnd}
-                  onImageClick={onImageClick}
-              />
-              { focus && <LayoutPopover layout={layout} onLayoutChange={layout=>{
-                onLayoutChange(layout);
-              }}/> }
-          </div>
+          <ResizableImage
+                enableToResize={focus}
+                src={src}
+                title={title}
+                width={width}
+                height={height}
+                setWidth={setWidth}
+                setHeight={setHeight}
+                onResizeEnd={onResizeEnd}
+                onImageClick={onImageClick}
+            />
+            { focus && <LayoutPopover layout={layout} onLayoutChange={layout=>{
+              onLayoutChange(layout);
+            }}/> }
         </div>
     </div>
 }
 
-export default MediaSingleReactView;
+export default memo(MediaSingleReactView);

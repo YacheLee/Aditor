@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MediaSingleReactView from './components/MediaSingleReactView';
-import {setImageSize, setLayout} from './commands';
-import setNodeSelection from "./setNodeSelection";
-import isFocus from "./isFocus";
-import {key} from "../SelectionPlugin";
+import { setImageSize, setLayout } from './commands';
+import setNodeSelection from './setNodeSelection';
+import isFocus from './isFocus';
+import { key } from '../SelectionPlugin';
 
 function getNodeMedia(node) {
     if (node.firstChild) {
