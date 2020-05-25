@@ -30,80 +30,84 @@ const Toolbar = styled.div`
   flex-shrink: 0;
 `;
 
-function Aditor({ id, defaultValue, onChange, onSelect }) {
-  if (!id) {
-    throw new Error('The id is required to use Aditor');
-  }
-  const editor = useRef(null);
-  const toolbar = useRef(null);
-  const [editorView, setEditorView] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popoverContent, setPopoverContent] = useState(null);
-
-  PopoverManager.setPopoverAnchorElement = setAnchorEl;
-  PopoverManager.setPopoverContent = setPopoverContent;
-  PopoverManager.setAnchorEl(anchorEl);
-  PopoverManager.setEditorView(editorView);
-
-  const init = useCallback(() => {
-    if (!editorView) {
-      const _plugins = plugins(toolbar.current);
-      const schema = new Schema({ nodes, marks: marks(_plugins) });
-      const doc = schema.nodeFromJSON({
-        type: 'doc',
-        content: normaliseValue(defaultValue)
-      });
-      const state = EditorState.create({
-        doc,
-        plugins: _plugins
-      });
-      const _editorView = new EditorView(editor.current, {
-        state,
-        nodeViews,
-        dispatchTransaction(transaction) {
-          const newState = _editorView.state.apply(transaction);
-          _editorView.updateState(newState);
-
-          const data = newState.toJSON();
-          onChange(data.doc.content);
-          onSelect(data.selection);
-        }
-      });
-      setEditorView(_editorView);
+function Aditor({id, defaultValue, onChange, onSelect}) {
+    if (!id) {
+        throw new Error('The id is required to use Aditor');
     }
-  }, [defaultValue, onChange, editorView]);
+    const editor = useRef(null);
+    const toolbar = useRef(null);
+    const [editorView, setEditorView] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [popoverContent, setPopoverContent] = useState(null);
 
-  useEffect(() => {
-    init();
-  }, [init]);
+    PopoverManager.setPopoverAnchorElement = setAnchorEl;
+    PopoverManager.setPopoverContent = setPopoverContent;
+    PopoverManager.setAnchorEl(anchorEl);
+    PopoverManager.setEditorView(editorView);
 
-  return (
-    <CssBaseline>
-      <Paper>
-        <Toolbar ref={toolbar} onMouseDown={(e) => e.preventDefault()} />
-        <Divider light />
-        <ProseMirrorStyle id={id} ref={editor} />
-        {editorView && (
-          <Popover id={`popover_${id}`} anchorEl={anchorEl}>
-            {popoverContent}
-          </Popover>
-        )}
-      </Paper>
-    </CssBaseline>
-  );
+    const init = useCallback(() => {
+        if (!editorView) {
+            const _plugins = plugins(toolbar.current);
+            const schema = new Schema({nodes, marks: marks(_plugins)});
+            const doc = schema.nodeFromJSON({
+                type: 'doc',
+                content: normaliseValue(defaultValue)
+            });
+            const state = EditorState.create({
+                doc,
+                plugins: _plugins
+            });
+            const _editorView = new EditorView(editor.current, {
+                state,
+                nodeViews,
+                dispatchTransaction(transaction) {
+                    const newState = _editorView.state.apply(transaction);
+                    _editorView.updateState(newState);
+
+                    const data = newState.toJSON();
+                    if (transaction.docChanged) {
+                        onChange(data.doc.content);
+                    }
+                    onSelect(data.selection);
+                }
+            });
+            setEditorView(_editorView);
+        }
+    }, [defaultValue, onChange, editorView]);
+
+    useEffect(() => {
+        init();
+    }, [init]);
+
+    return (
+        <CssBaseline>
+            <Paper>
+                <Toolbar ref={toolbar} onMouseDown={(e) => e.preventDefault()}/>
+                <Divider light/>
+                <ProseMirrorStyle id={id} ref={editor}/>
+                {editorView && (
+                    <Popover id={`popover_${id}`} anchorEl={anchorEl}>
+                        {popoverContent}
+                    </Popover>
+                )}
+            </Paper>
+        </CssBaseline>
+    );
 }
 
 Aditor.defaultProps = {
-  defaultValue: [],
-  onChange: () => {},
-  onSelect: () => {},
+    defaultValue: [],
+    onChange: () => {
+    },
+    onSelect: () => {
+    },
 };
 
 Aditor.propTypes = {
-  id: PropTypes.string.isRequired,
-  defaultValue: PropTypes.array,
-  onChange: PropTypes.func,
-  onSelect: PropTypes.func,
+    id: PropTypes.string.isRequired,
+    defaultValue: PropTypes.array,
+    onChange: PropTypes.func,
+    onSelect: PropTypes.func,
 };
 
 export default Aditor;
