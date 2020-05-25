@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Popover from '../../../components/Popover';
 import getStyle from '../getStyle';
 import isMouseDownEventFromResize from '../isMouseDownEventFromResize';
 import ResizableImage from './ResizableImage';
 import LayoutPopover from './LayoutPopover';
 
-export const mediaClassName = "media";
-
 function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _width, height: _height, layout, onImageClick, onResizeEnd}) {
   const [width, setWidth] = useState(_width);
   const [height, setHeight] = useState(_height);
   const [anchorEl, setAnchorEl] = useState(null);
+  const mediaRef = useRef(null);
 
   useEffect(() => {
-    const img = document.querySelector(`[id="${id}"] .${mediaClassName}`);
-    setAnchorEl(img);
-  });
+    setAnchorEl(mediaRef.current);
+  }, [mediaRef]);
 
   return <div id={id} style={getStyle(layout)}>
     <div onMouseDown={e => {
@@ -23,7 +21,7 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
         e.preventDefault();
       }
     }}>
-      <div className={mediaClassName}>
+      <div ref={mediaRef}>
         <ResizableImage
           enableToResize={focus}
           src={src}
