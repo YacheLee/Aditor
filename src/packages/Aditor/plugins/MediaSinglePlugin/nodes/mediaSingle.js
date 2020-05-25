@@ -6,7 +6,6 @@ export const node = {
     inline: false,
     group: 'block',
     selectable: true,
-    draggable: true,
     atom: true,
     content: 'media',
     attrs: {
