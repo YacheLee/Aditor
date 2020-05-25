@@ -14,25 +14,29 @@ const handleStyles = {
         width: 7,
         height: 7,
         bottom: -3,
-        right: -3
+        right: -3,
+        zIndex: 3
     },
     topRight: {
         width: 7,
         height: 7,
         top: -3,
-        right: -3
+        right: -3,
+        zIndex: 3
     },
     topLeft: {
         width: 7,
         height: 7,
         top: -3,
-        left: -3
+        left: -3,
+        zIndex: 3
     },
     bottomLeft: {
         width: 7,
         height: 7,
         bottom: -3,
-        left: -3
+        left: -3,
+        zIndex: 3
     },
 };
 
