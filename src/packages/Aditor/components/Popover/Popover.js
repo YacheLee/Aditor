@@ -21,6 +21,7 @@ function Popover({ id, anchorEl, children }) {
         open={open}
         anchorEl={anchorEl}
         disablePortal={true}
+        style={{zIndex: 1}}
         onClose={PopoverManager.closePopover}
       >
         <Fragment>{children}</Fragment>
