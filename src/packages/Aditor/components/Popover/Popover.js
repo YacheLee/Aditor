@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import PopoverManager from '../../PopoverManager';
@@ -22,7 +22,6 @@ function Popover({ id, anchorEl, children }) {
         anchorEl={anchorEl}
         disablePortal={true}
         style={{zIndex: 1}}
-        onClose={PopoverManager.closePopover}
       >
         <Fragment>{children}</Fragment>
       </Popper>
