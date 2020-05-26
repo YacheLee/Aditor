@@ -38,6 +38,7 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
           focus && <Popper
             id={`MediaSingle_Popover_${id}`}
             anchorEl={anchorEl}
+            disablePortal={true}
           >
             <LayoutPopover layout={layout} onLayoutChange={onLayoutChange}/>
           </Popper>
