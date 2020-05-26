@@ -3,6 +3,7 @@ import _Popper from '@material-ui/core/Popper';
 
 const Popper = React.forwardRef(function Popper({ id, anchorEl, disablePortal=false, children}, ref){
   const open = document.body.contains(anchorEl) && Boolean(anchorEl);
+  const zIndex = disablePortal ? 1 : 999;
 
   return (
     <_Popper
@@ -11,7 +12,7 @@ const Popper = React.forwardRef(function Popper({ id, anchorEl, disablePortal=fa
       open={open}
       anchorEl={anchorEl}
       disablePortal={disablePortal}
-      style={{zIndex: 1}}
+      style={{zIndex}}
     >
       <Fragment>{children}</Fragment>
     </_Popper>
