@@ -67,20 +67,6 @@ function MyPlugin() {
     props: {
       decorations(state) {
         return this.getState(state);
-      },
-      handleDOMEvents: {
-        blur: function (editorView) {
-          editorView.dispatch(
-            editorView.state.tr.setMeta(pluginKey, { type: 'open' })
-          );
-          return false;
-        },
-        focus: function (editorView) {
-          editorView.dispatch(
-            editorView.state.tr.setMeta(pluginKey, { type: 'close' })
-          );
-          return false;
-        }
       }
     }
   });

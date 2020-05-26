@@ -39,27 +39,7 @@ function MyPlugin() {
           );
           set = set.remove(highlightDecoration);
         }
-
         return set;
-      }
-    },
-    props: {
-      decorations(state) {
-        return this.getState(state);
-      },
-      handleDOMEvents: {
-        blur: function (editorView) {
-          editorView.dispatch(
-            editorView.state.tr.setMeta(key, { type: 'open' })
-          );
-          return false;
-        },
-        focus: function (editorView) {
-          editorView.dispatch(
-            editorView.state.tr.setMeta(key, { type: 'close' })
-          );
-          return false;
-        }
       }
     }
   });
