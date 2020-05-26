@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Schema} from 'prosemirror-model';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Schema } from 'prosemirror-model';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {EditorState} from 'prosemirror-state';
-import {EditorView} from 'prosemirror-view';
+import { EditorState } from 'prosemirror-state';
+import { EditorView } from 'prosemirror-view';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Popover from './components/Popover';
+import PopoverWithClickAway from './components/PopoverWithClickAway';
 import plugins from './plugins';
 import nodes from './nodes';
 import marks from './marks';
@@ -86,9 +86,9 @@ function Aditor({id, defaultValue, onChange, onSelect}) {
                 <Divider light/>
                 <ProseMirrorStyle id={id} ref={editor}/>
                 {editorView && (
-                    <Popover id={`popover_${id}`} anchorEl={anchorEl}>
+                    <PopoverWithClickAway id={`popover_${id}`} anchorEl={anchorEl}>
                         {popoverContent}
-                    </Popover>
+                    </PopoverWithClickAway>
                 )}
             </Paper>
         </CssBaseline>

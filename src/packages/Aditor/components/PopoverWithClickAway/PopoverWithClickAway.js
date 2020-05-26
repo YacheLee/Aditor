@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
-import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import PopoverManager from '../../PopoverManager';
 import useEscClose from './useEscClose';
+import Popper from '../Popper';
 
-function Popover({ id, anchorEl, children }) {
-  const open = document.body.contains(anchorEl) && Boolean(anchorEl);
+function PopoverWithClickAway({ id, anchorEl, children }) {
   useEscClose();
 
   return (
@@ -16,19 +15,13 @@ function Popover({ id, anchorEl, children }) {
         }
       }}
     >
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        disablePortal={true}
-        style={{zIndex: 1}}
-      >
+      <Popper id={id} anchorEl={anchorEl}>
         <Fragment>{children}</Fragment>
       </Popper>
     </ClickAwayListener>
   );
 }
 
-Popover.propTypes = {};
+PopoverWithClickAway.propTypes = {};
 
-export default Popover;
+export default PopoverWithClickAway;

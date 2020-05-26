@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Popper from '@material-ui/core/Popper';
 import getStyle from '../getStyle';
 import isMouseDownEventFromResize from '../isMouseDownEventFromResize';
 import ResizableImage from './ResizableImage';
 import LayoutPopover from './LayoutPopover';
+import Popper from '../../../components/Popper';
 
 function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _width, height: _height, layout, onImageClick, onResizeEnd}) {
   const [width, setWidth] = useState(_width);
@@ -35,12 +35,9 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
         />
       </div>
         {
-          focus && document.body.contains(anchorEl) && <Popper
+          focus && <Popper
             id={`MediaSingle_Popover_${id}`}
-            open={Boolean(anchorEl)}
             anchorEl={anchorEl}
-            disablePortal={true}
-            style={{zIndex: 1}}
           >
             <LayoutPopover layout={layout} onLayoutChange={onLayoutChange}/>
           </Popper>
