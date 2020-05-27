@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {Resizable} from 're-resizable';
-import AngleBlueDot from "./AngleBlueDot";
+import { Resizable } from 're-resizable';
+import AngleBlueDot from './AngleBlueDot';
 import Image from './Image';
+import { draggingDot as zIndex } from '../../../zIndex';
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,28 +16,28 @@ const handleStyles = {
         height: 7,
         bottom: -3,
         right: -3,
-        zIndex: 3
+        zIndex
     },
     topRight: {
         width: 7,
         height: 7,
         top: -3,
         right: -3,
-        zIndex: 3
+        zIndex
     },
     topLeft: {
         width: 7,
         height: 7,
         top: -3,
         left: -3,
-        zIndex: 3
+        zIndex
     },
     bottomLeft: {
         width: 7,
         height: 7,
         bottom: -3,
         left: -3,
-        zIndex: 3
+        zIndex
     },
 };
 

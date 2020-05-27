@@ -15,13 +15,14 @@ import PopoverManager from './PopoverManager';
 import normaliseValue from './normaliseValue';
 import ProseMirrorStyle from './ProseMirrorStyle';
 import nodeViews from './nodeViews';
+import { toolbar } from './zIndex';
 
 const Toolbar = styled.div`
   padding: 4px 8px 4px 14px;
   position: sticky;
   top: 0;
   background-color: white;
-  z-index: 1;
+  z-index: ${toolbar};
   width: 100%;
   flex-wrap: nowrap;
   overflow-x: auto;
