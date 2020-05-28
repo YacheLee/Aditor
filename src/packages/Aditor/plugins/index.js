@@ -1,8 +1,8 @@
-import {history} from 'prosemirror-history';
-import {keymap} from 'prosemirror-keymap';
-import {baseKeymap} from 'prosemirror-commands';
-import {dropCursor} from "prosemirror-dropcursor";
-import {gapCursor} from 'prosemirror-gapcursor';
+import { history } from 'prosemirror-history';
+import { keymap } from 'prosemirror-keymap';
+import { baseKeymap } from 'prosemirror-commands';
+import { dropCursor } from 'prosemirror-dropcursor';
+import { GapCursorKeymapPlugin, GapCursorPlugin } from './GapCursorPlugin';
 import UndoPlugin from './UndoPlugin';
 import RedoPlugin from './RedoPlugin';
 import BoldPlugin from './BoldPlugin';
@@ -15,7 +15,7 @@ import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
 import MediaSinglePlugin from './MediaSinglePlugin';
 import SelectionPlugin from './SelectionPlugin';
-import HighlightPlugin from "./HighlightPlugin/HighlightPlugin";
+import HighlightPlugin from './HighlightPlugin/HighlightPlugin';
 
 function plugins(toolbarDom) {
     return [
@@ -25,7 +25,9 @@ function plugins(toolbarDom) {
         history(),
         keymap(baseKeymap),
         dropCursor(),
-        gapCursor(),
+        GapCursorPlugin(),
+        GapCursorKeymapPlugin(),
+        GapCursorKeymapPlugin(),
         UndoPlugin(toolbarDom),
         RedoPlugin(toolbarDom),
         HeadingPlugin(toolbarDom),

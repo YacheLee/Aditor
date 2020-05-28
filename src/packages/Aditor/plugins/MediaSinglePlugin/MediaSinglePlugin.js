@@ -1,5 +1,4 @@
-import {Plugin, PluginKey} from 'prosemirror-state';
-import isSelectingMediaSingle from "./isSelectingMediaSingle";
+import { Plugin, PluginKey } from 'prosemirror-state';
 
 const key = new PluginKey('MediaSinglePlugin');
 
@@ -9,9 +8,9 @@ function MediaSinglePlugin() {
         props: {
             handleDOMEvents: {
                 keydown: function (editorView, event) {
-                    if(isSelectingMediaSingle(editorView.state.selection)) {
-                        event.preventDefault();
-                    }
+                    // if(isSelectingMediaSingle(editorView.state.selection)) {
+                    //     event.preventDefault();
+                    // }
                 },
             }
         }
