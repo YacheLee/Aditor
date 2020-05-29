@@ -69,15 +69,17 @@ function toDOM(view, getPos){
     const isMediaSingleView = dom.classList.contains('mediaSingleView-content-wrap');
     if(isMediaSingleView){
       const mediaSingleDom = dom.querySelector('img');
-      const style = window.getComputedStyle(mediaSingleDom);
 
-      const {left, right} = mediaSingleDom.getBoundingClientRect();
-      gapCursorElement.style.height = `${measureHeight(style)}px`;
+      const {left, width, height} = mediaSingleDom.getBoundingClientRect();
+      gapCursorElement.style.width = `${width}px`;
+      gapCursorElement.style.height = `${height}px`;
       if(isLeftCursor(side)){
         gapCursorElement.style.left = `${left-3}px`;
+        gapCursorElement.style.borderLeft = `solid 1px`;
       }
       else{
-        gapCursorElement.style.left = `${right+1}px`;
+        gapCursorElement.style.borderRight = `solid 1px`;
+        gapCursorElement.style.left = `${left+3}px`;
       }
     }
   }

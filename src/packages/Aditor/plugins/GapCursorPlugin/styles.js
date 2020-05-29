@@ -17,7 +17,6 @@ export const gapCursorStyles = css`
   .ProseMirror {
     &.ProseMirror-focused ${gapCursor} {
       display: block;
-      border: solid 1px red;
       pointer-events: none;
     }
     
