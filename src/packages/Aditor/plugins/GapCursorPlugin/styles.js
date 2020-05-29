@@ -1,10 +1,21 @@
+import { css, keyframes } from 'styled-components';
+
 export const className = "ProseMirror-gapcursor"
 export const gapCursor = `.${className}`;
 const prosemirrorwidget = '.ProseMirror-widget';
 const wrapLeft = '[layout="wrap-left"]';
 const wrapRight = '[layout="wrap-right"]';
 
-export const gapCursorStyles = `
+const gapCursorBlink = keyframes`
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+`;
+
+export const gapCursorStyles = css`
   /* =============== GAP CURSOR ================== */
   .ProseMirror {
     ${gapCursor} {
@@ -21,6 +32,7 @@ export const gapCursorStyles = `
       }
 
       & span::after {
+        animation: 1s ${gapCursorBlink} step-end infinite;
         border-left: 1px solid;
         content: '';
         display: block;
@@ -57,6 +69,7 @@ export const gapCursorStyles = `
     }
     &.ProseMirror-focused ${gapCursor} {
       display: block;
+      border-color: transparent;
     }
   }
 
