@@ -15,8 +15,8 @@ function MediaSingleReactView({id, focus, src, title, onLayoutChange, width: _wi
     setAnchorEl(mediaRef.current);
   }, [mediaRef]);
 
-  return <div id={id} style={getStyle(layout)} className="media-single">
-    <div onMouseDown={e => {
+  return <div id={id} style={getStyle(layout)}>
+    <div className="media-single" onMouseDown={e => {
       if (isMouseDownEventFromResize(e)) {
         e.preventDefault();
       }

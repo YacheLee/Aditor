@@ -18,10 +18,13 @@ const gapCursorBlink = keyframes`
 export const gapCursorStyles = css`
   /* =============== GAP CURSOR ================== */
   .ProseMirror {
+    &.ProseMirror-focused ${gapCursor} {
+      display: block;
+      border-color: transparent;
+    }
+    
     ${gapCursor} {
-      display: none;
-      pointer-events: none;
-      position: relative;
+      position: absolute;
 
       & span {
         caret-color: transparent;
@@ -41,10 +44,7 @@ export const gapCursorStyles = css`
         height: 100%;
       }
       &.-left span::after {
-        left: -3px;
-      }
-      &.-right span::after {
-        right: -3px;
+        left: -40px;
       }
       & span[layout='full-width'],
       & span[layout='wide'] {
@@ -66,10 +66,6 @@ export const gapCursorStyles = css`
       &:first-child + span + blockquote {
         margin-top: 0;
       }
-    }
-    &.ProseMirror-focused ${gapCursor} {
-      display: block;
-      border-color: transparent;
     }
   }
 
