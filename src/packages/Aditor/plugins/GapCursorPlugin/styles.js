@@ -20,11 +20,12 @@ export const gapCursorStyles = css`
   .ProseMirror {
     &.ProseMirror-focused ${gapCursor} {
       display: block;
-      border-color: transparent;
     }
     
     ${gapCursor} {
       position: absolute;
+      display: none;
+      pointer-events: none;
 
       & span {
         caret-color: transparent;
