@@ -1,4 +1,5 @@
 export const moveLeft = makeKeyMapWithCommon('Move left', 'ArrowLeft');
+export const moveRight = makeKeyMapWithCommon('Move right', 'ArrowRight');
 
 function makeKeyMapWithCommon(description, common){
   const windows = common.replace(/Mod/i, 'Ctrl');

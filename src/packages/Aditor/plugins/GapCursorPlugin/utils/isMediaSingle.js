@@ -1,12 +1,11 @@
-function isMediaSingle(node){
-  if (!node) {
+function isMediaSingle(mediaSingleNode){
+  if (!mediaSingleNode) {
     return false;
   }
-  const firstChild = node.firstChild;
   return (
-    !!firstChild &&
-    firstChild.nodeType === Node.ELEMENT_NODE &&
-    firstChild.classList.contains('media-single')
+    !!mediaSingleNode &&
+    mediaSingleNode.nodeType === Node.ELEMENT_NODE &&
+    mediaSingleNode.classList.contains('media-single')
   );
 }
 

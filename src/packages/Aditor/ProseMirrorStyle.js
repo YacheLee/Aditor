@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { gapCursorStyles } from './plugins/GapCursorPlugin/styles';
 
 const ProseMirrorStyle = styled.div`
   .ProseMirror {
@@ -204,47 +205,7 @@ const ProseMirrorStyle = styled.div`
   .ProseMirror-icon span {
     vertical-align: text-top;
   }
-  .ProseMirror-gapcursor {
-    display: none;
-    pointer-events: none;
-    position: absolute;
-  }
-
-  .ProseMirror-gapcursor:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -2px;
-    width: 20px;
-    border-top: 1px solid black;
-    animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
-  }
-
-  @keyframes ProseMirror-cursor-blink {
-    to {
-      visibility: hidden;
-    }
-  }
-
-  .ProseMirror-focused .ProseMirror-gapcursor {
-    display: block;
-  }
-  /* Add space around the hr to make clicking it easier */
-
-  .ProseMirror-example-setup-style hr {
-    padding: 2px 10px;
-    border: none;
-    margin: 1em 0;
-  }
-
-  .ProseMirror-example-setup-style hr:after {
-    content: '';
-    display: block;
-    height: 1px;
-    background-color: silver;
-    line-height: 2px;
-  }
-
+  
   .ProseMirror ul,
   .ProseMirror ol {
     padding-left: 30px;
@@ -255,10 +216,6 @@ const ProseMirrorStyle = styled.div`
     border-left: 3px solid #eee;
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .ProseMirror-example-setup-style img {
-    cursor: default;
   }
 
   .ProseMirror-prompt {
@@ -347,5 +304,7 @@ const ProseMirrorStyle = styled.div`
   .ProseMirror p {
     margin-bottom: 1em;
   }
+  
+  ${gapCursorStyles}
 `;
 export default ProseMirrorStyle;

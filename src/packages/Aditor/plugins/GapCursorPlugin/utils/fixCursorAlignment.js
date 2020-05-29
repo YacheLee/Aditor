@@ -5,9 +5,10 @@ import isMediaSingle from './isMediaSingle';
 import getDomNodeVerticalMargin from './getDomNodeVerticalMargin';
 import isNodeViewWrapper from './isNodeViewWrapper';
 import getBreakoutModeFromTargetNode from './getBreakoutModeFromTargetNode';
+import { className } from '../styles';
 
 function fixCursorAlignment(editorView) {
-  const { state: { selection, schema }, domAtPos, } = editorView;
+  const { state: { selection }, domAtPos, } = editorView;
 
   if (!(selection instanceof GapCursorSelection)) {
     return;
@@ -32,8 +33,9 @@ function fixCursorAlignment(editorView) {
   );
 
   const gapCursorRef = editorView.dom.querySelector(
-    '.ProseMirror-gapcursor span',
+    `.${className} span`,
   );
+
   if (!gapCursorRef) {
     return;
   }
@@ -45,9 +47,11 @@ function fixCursorAlignment(editorView) {
 
   const previousSibling = gapCursorParentNodeRef.previousSibling;
   const isTargetNodeMediaSingle = isMediaSingle(targetNodeRef);
+
   const isMediaWithWrapping =
     isTargetNodeMediaSingle &&
     /wrap-[right|left]/i.test(targetNode.attrs.layout);
+
   const prevNodeMarginBottom = getDomNodeVerticalMargin(
     previousSibling,
     'bottom',

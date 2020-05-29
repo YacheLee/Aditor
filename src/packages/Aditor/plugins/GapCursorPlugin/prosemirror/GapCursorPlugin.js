@@ -4,7 +4,9 @@ import { Decoration, DecorationSet } from 'prosemirror-view';
 import Side from '../Side';
 import setGapCursorAtPos from '../utils/setGapCursorAtPos';
 import GapCursorSelection from '../gapCursorSelection';
-import fixCursorAlignment from '../utils/fixCursorAlignment';
+import isIgnoredClick from '../utils/isIgnoredClick';
+import getBreakoutModeFromTargetNode from '../utils/getBreakoutModeFromTargetNode';
+import toDOM from '../utils/toDOM';
 
 export const JSON_ID = 'gapcursor';
 export const key = new PluginKey('GapCursorPlugin');
@@ -12,42 +14,28 @@ export const key = new PluginKey('GapCursorPlugin');
 function MyPlugin() {
   return new Plugin({
     key,
-    view(){
-      return {
-        update(editorView) {
-          if (
-            editorView.state.selection instanceof GapCursorSelection &&
-            editorView.hasFocus()
-          ) {
-            fixCursorAlignment(editorView);
-          }
-        },
-      };
-    },
     props: {
       decorations({ doc, selection }) {
         if (selection instanceof GapCursorSelection) {
           const { $from, side } = selection;
-          const node = document.createElement('span');
-          node.className = `ProseMirror-gapcursor ${
-            side === Side.LEFT ? '-left' : '-right'
-          }`;
-          node.appendChild(document.createElement('span'));
 
           // render decoration DOM node always to the left of the target node even if selection points to the right
           // otherwise positioning of the right gap cursor is a nightmare when the target node has a nodeView with vertical margins
           let position = selection.head;
-          if (side === Side.RIGHT && $from.nodeBefore) {
+          const isRightCursor = side === Side.RIGHT;
+          if (isRightCursor && $from.nodeBefore) {
             const nodeBeforeStart = findPositionOfNodeBefore(selection);
             if (typeof nodeBeforeStart === 'number') {
               position = nodeBeforeStart;
             }
           }
 
+          const node = isRightCursor ? $from.nodeBefore : $from.nodeAfter;
+          const breakoutMode = node && getBreakoutModeFromTargetNode(node);
           return DecorationSet.create(doc, [
-            Decoration.widget(position, node, {
-              key: `${JSON_ID}-${side}`,
-              side: -1,
+            Decoration.widget(position, toDOM, {
+              key: `${JSON_ID}-${side}-${breakoutMode}`,
+              side: breakoutMode ? -1 : 0,
             }),
           ]);
         }
@@ -60,18 +48,26 @@ function MyPlugin() {
         if ($anchor.pos === $head.pos && GapCursorSelection.valid($head)) {
           return new GapCursorSelection($head);
         }
+        return;
       },
 
-      handleClick(editorView, position, event){
-        const posAtCoords = editorView.posAtCoords({
+      handleClick(view, position, event){
+        const posAtCoords = view.posAtCoords({
           left: event.clientX,
           top: event.clientY,
         });
 
-        if (posAtCoords && posAtCoords.inside !== position) {
+        // this helps to ignore all of the clicks outside of the parent (e.g. nodeView controls)
+        if (
+          posAtCoords &&
+          posAtCoords.inside !== position &&
+          !isIgnoredClick(event.target)
+        ) {
+          // max available space between parent and child from the left side in px
+          // this ensures the correct side of the gap cursor in case of clicking in between two block nodes
           const leftSideOffsetX = 20;
           const side = event.offsetX > leftSideOffsetX ? Side.RIGHT : Side.LEFT;
-          return setGapCursorAtPos(position, side)(editorView.state, editorView.dispatch);
+          return setGapCursorAtPos(position, side)(view.state, view.dispatch);
         }
         return false;
       }

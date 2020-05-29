@@ -27,7 +27,6 @@ function plugins(toolbarDom) {
         dropCursor(),
         GapCursorPlugin(),
         GapCursorKeymapPlugin(),
-        GapCursorKeymapPlugin(),
         UndoPlugin(toolbarDom),
         RedoPlugin(toolbarDom),
         HeadingPlugin(toolbarDom),

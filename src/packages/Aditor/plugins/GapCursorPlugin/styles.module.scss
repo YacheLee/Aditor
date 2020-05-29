@@ -1,0 +1,44 @@
+.gapcursor{
+  @keyframes slidein {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  display: none;
+  pointer-events: none;
+  position: relative;
+
+  span {
+    caret-color: transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  span::after {
+    animation-name: slidein;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: step-end;
+    border-left: 1px solid;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+
+  &.left span::after {
+    left: -3px;
+  }
+
+  &.right span::after {
+    right: -3px;
+  }
+}

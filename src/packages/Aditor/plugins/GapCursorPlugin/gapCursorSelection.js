@@ -8,6 +8,7 @@ import { JSON_ID } from './prosemirror/GapCursorPlugin';
 class GapCursorSelection extends Selection{
   constructor($pos, side = Side.LEFT) {
     super($pos, $pos);
+    this.side = side;
   }
 
   static valid($pos) {
