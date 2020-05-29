@@ -60,8 +60,9 @@ function shouldHandleMediaGapCursor(dir, state,){
       if (
         maybeMedia &&
         maybeMedia.type === mediaSingle &&
-        (maybeMedia.attrs.layout === 'wrap-right' ||
-          maybeMedia.attrs.layout === 'wrap-left')
+        (maybeMedia.attrs.layout === 'right' ||
+          maybeMedia.attrs.layout === 'center' ||
+          maybeMedia.attrs.layout === 'left')
       ) {
         return false;
       }
