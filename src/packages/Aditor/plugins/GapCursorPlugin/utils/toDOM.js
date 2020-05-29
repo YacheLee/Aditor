@@ -58,32 +58,30 @@ function mutateElementStyle(gapCursorElem, dom, style, side){
 
 function toDOM(view, getPos){
   const selection = view.state.selection;
-  const { $from, side } = selection;
-  const isRightCursor = side === Side.RIGHT;
+  const { side } = selection;
   const nodeStart = getPos();
   const dom = view.nodeDOM(nodeStart);
 
-  const element = document.createElement('span');
-  element.className = `ProseMirror-gapcursor ${
-    isRightCursor ? '-right' : '-left'
-  }`;
-  element.appendChild(document.createElement('span'));
+  const gapCursorElement = document.createElement('span');
+  gapCursorElement.className = 'ProseMirror-gapcursor';
 
-  if (dom instanceof HTMLElement && element.firstChild) {
+  if (dom instanceof HTMLElement) {
     const isMediaSingleView = dom.classList.contains('mediaSingleView-content-wrap');
     if(isMediaSingleView){
-      const gapCursor = element.firstChild;
       const mediaSingleDom = dom.querySelector('img');
       const style = window.getComputedStyle(mediaSingleDom);
 
-      const {left} = mediaSingleDom.getBoundingClientRect();
-      gapCursor.style.height = `${measureHeight(style)}px`;
+      const {left, right} = mediaSingleDom.getBoundingClientRect();
+      gapCursorElement.style.height = `${measureHeight(style)}px`;
       if(isLeftCursor(side)){
-        gapCursor.style.left = `${left}px`;
+        gapCursorElement.style.left = `${left-3}px`;
+      }
+      else{
+        gapCursorElement.style.left = `${right+1}px`;
       }
     }
   }
-  return element;
+  return gapCursorElement;
 }
 
 export default toDOM;
