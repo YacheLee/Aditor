@@ -2,6 +2,7 @@ import GapCursorSelection from './gapCursorSelection';
 
 class GapBookmark {
   constructor(pos) {
+    this.pos = pos;
   }
 
   map(mapping) {
