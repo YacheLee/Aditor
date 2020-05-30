@@ -48,10 +48,7 @@ function SelectionPlugin() {
             return {
                 update(editorView){
                     const {from, to } = editorView.state.selection;
-                    //If the selection is the same, do not notify our subscribers
-                    if(pluginState.from !== from && pluginState.to !== to){
-                      pluginState.notifyNewSelection(from, to);
-                    }
+                    pluginState.notifyNewSelection(from, to);
                 }
             };
         }
