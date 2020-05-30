@@ -68,18 +68,21 @@ function toDOM(view, getPos){
   if (dom instanceof HTMLElement) {
     const isMediaSingleView = dom.classList.contains('mediaSingleView-content-wrap');
     if(isMediaSingleView){
-      const mediaSingleDom = dom.querySelector('img');
+      const mediaSingleDom = dom.querySelector('.media-single');
 
       const {left, width, height} = mediaSingleDom.getBoundingClientRect();
+
+      gapCursorElement.border = 'solid 1px red';
       gapCursorElement.style.width = `${width}px`;
       gapCursorElement.style.height = `${height}px`;
+
       if(isLeftCursor(side)){
         gapCursorElement.style.left = `${left-3}px`;
         gapCursorElement.style.borderLeft = `solid 1px`;
       }
       else{
-        gapCursorElement.style.borderRight = `solid 1px`;
         gapCursorElement.style.left = `${left+3}px`;
+        gapCursorElement.style.borderRight = `solid 1px`;
       }
     }
   }
