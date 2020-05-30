@@ -44,9 +44,8 @@ function shouldHandleMediaGapCursor(dir, state,){
         media &&
         media.type.name === "mediaSingle" &&
         (
-          media.attrs.layout === 'left' ||
-          media.attrs.layout === 'center' ||
-          media.attrs.layout === 'right'
+          media.attrs.layout === 'wrap-left' ||
+          media.attrs.layout === 'wrap-right'
         )
       ) {
         return false;
@@ -62,9 +61,8 @@ function shouldHandleMediaGapCursor(dir, state,){
       if (
         maybeMedia &&
         maybeMedia.type.name === 'mediaSingle' &&
-        (maybeMedia.attrs.layout === 'right' ||
-          maybeMedia.attrs.layout === 'center' ||
-          maybeMedia.attrs.layout === 'left')
+        (maybeMedia.attrs.layout === 'wrap-right' ||
+          maybeMedia.attrs.layout === 'wrap-left')
       ) {
         return false;
       }
