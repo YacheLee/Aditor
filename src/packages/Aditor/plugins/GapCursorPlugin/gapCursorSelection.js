@@ -9,6 +9,7 @@ class GapCursorSelection extends Selection{
   constructor($pos, side = Side.LEFT) {
     super($pos, $pos);
     this.side = side;
+    this.visible = false;
   }
 
   static valid($pos) {
