@@ -1,4 +1,5 @@
 import Side from '../Side';
+import cumulativeOffset from './cumulativeOffset';
 
 function isLeftCursor(side){
   return side === Side.LEFT;
@@ -70,9 +71,9 @@ function toDOM(view, getPos){
     if(isMediaSingleView){
       const mediaSingleDom = dom.querySelector('.media-single');
 
-      const {left, width, height} = mediaSingleDom.getBoundingClientRect();
+      const {width, height} = mediaSingleDom.getBoundingClientRect();
+      const {left} = cumulativeOffset(mediaSingleDom);
 
-      gapCursorElement.border = 'solid 1px red';
       gapCursorElement.style.width = `${width}px`;
       gapCursorElement.style.height = `${height}px`;
 
@@ -80,6 +81,7 @@ function toDOM(view, getPos){
         gapCursorElement.style.left = `${left-3}px`;
         gapCursorElement.style.borderLeft = `solid 1px`;
       }
+
       else{
         gapCursorElement.style.left = `${left+3}px`;
         gapCursorElement.style.borderRight = `solid 1px`;
