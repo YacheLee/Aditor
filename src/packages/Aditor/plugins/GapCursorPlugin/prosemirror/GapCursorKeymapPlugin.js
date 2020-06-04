@@ -1,9 +1,10 @@
 import { PluginKey } from 'prosemirror-state';
 import { keymap } from 'prosemirror-keymap';
 import bindKeymapWithCommand from '../bindKeymapWithCommand';
-import { moveDown, moveLeft, moveRight, moveUp } from '../keymaps';
+import { backspace, deleteKey, moveDown, moveLeft, moveRight, moveUp } from '../keymaps';
 import Direction from '../Direction';
 import arrow from '../arrow';
+import deleteNode from '../utils/deleteNode';
 
 export const key = new PluginKey('GapCursorKeymapPlugin');
 
@@ -37,7 +38,20 @@ function MyPlugin() {
       },
       map,
     );
-  })
+  });
+
+  //if the current cursor is gap cursor, and press whitespace, we need to enter to the next line
+  bindKeymapWithCommand(
+    backspace.common,
+    deleteNode(Direction.BACKWARD),
+    map,
+  );
+
+  bindKeymapWithCommand(
+    deleteKey.common,
+    deleteNode(Direction.FORWARD),
+    map,
+  );
 
   return keymap(map);
 }

@@ -2,6 +2,8 @@ export const moveUp = makeKeyMapWithCommon('Move up', 'ArrowUp');
 export const moveDown = makeKeyMapWithCommon('Move down', 'ArrowDown');
 export const moveLeft = makeKeyMapWithCommon('Move left', 'ArrowLeft');
 export const moveRight = makeKeyMapWithCommon('Move right', 'ArrowRight');
+export const backspace = makeKeyMapWithCommon('Backspace', 'Backspace');
+export const deleteKey = makeKeyMapWithCommon('Delete', 'Delete');
 
 function makeKeyMapWithCommon(description, common){
   const windows = common.replace(/Mod/i, 'Ctrl');
