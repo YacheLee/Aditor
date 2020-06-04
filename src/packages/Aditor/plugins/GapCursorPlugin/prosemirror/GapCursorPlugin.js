@@ -5,7 +5,6 @@ import Side from '../Side';
 import setGapCursorAtPos from '../utils/setGapCursorAtPos';
 import GapCursorSelection from '../gapCursorSelection';
 import isIgnoredClick from '../utils/isIgnoredClick';
-import getBreakoutModeFromTargetNode from '../utils/getBreakoutModeFromTargetNode';
 import toDOM from '../utils/toDOM';
 
 export const JSON_ID = 'gapcursor';
