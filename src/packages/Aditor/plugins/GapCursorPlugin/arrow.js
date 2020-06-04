@@ -5,6 +5,9 @@ import shouldHandleMediaGapCursor from './shouldHandleMediaGapCursor';
 import { findDomRefAtPos } from 'prosemirror-utils';
 import isValidTargetNode from '../GapCursorPlugin/utils/isValidTargetNode';
 import Side from '../GapCursorPlugin/Side';
+import atTheBeginningOfDoc from './utils/atTheBeginningOfDoc';
+import isTextBlockNearPos from './utils/isTextBlockNearPos';
+import atTheEndOfDoc from './utils/atTheEndOfDoc';
 
 const ZeroWidthSpace = '\u200b';
 

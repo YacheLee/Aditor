@@ -1,3 +1,5 @@
+export const moveUp = makeKeyMapWithCommon('Move up', 'ArrowUp');
+export const moveDown = makeKeyMapWithCommon('Move down', 'ArrowDown');
 export const moveLeft = makeKeyMapWithCommon('Move left', 'ArrowLeft');
 export const moveRight = makeKeyMapWithCommon('Move right', 'ArrowRight');
 
