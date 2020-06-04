@@ -66,10 +66,12 @@ function Aditor({id, defaultValue, onChange, onSelect}) {
                     _editorView.updateState(newState);
 
                     const data = newState.toJSON();
-                    if (transaction.docChanged) {
+                    if (transaction.docChanged && onChange) {
                         onChange(data.doc.content);
                     }
-                    onSelect(data.selection);
+                    if(onSelect){
+                      onSelect(data.selection);
+                    }
                 }
             });
             setEditorView(_editorView);
