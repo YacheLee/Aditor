@@ -31,11 +31,11 @@ function MyPlugin() {
           }
 
           const node = isRightCursor ? $from.nodeBefore : $from.nodeAfter;
-          const breakoutMode = node && getBreakoutModeFromTargetNode(node);
+          const layout = node && node.attrs.layout;
+
           return DecorationSet.create(doc, [
             Decoration.widget(position, toDOM, {
-              key: `${JSON_ID}-${side}-${breakoutMode}`,
-              side: breakoutMode ? -1 : 0,
+              key: `${JSON_ID}-${side}-${layout}`,
             }),
           ]);
         }
