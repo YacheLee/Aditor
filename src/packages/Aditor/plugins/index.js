@@ -15,7 +15,7 @@ import LinkPlugin from './LinkPlugin';
 import CursorPlugin from './CursorPlugin';
 import MediaSinglePlugin from './MediaSinglePlugin';
 import SelectionPlugin from './SelectionPlugin';
-import HighlightPlugin from './HighlightPlugin/HighlightPlugin';
+import HighlightPlugin from './HighlightPlugin';
 
 function plugins(toolbarDom) {
     return [
