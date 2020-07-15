@@ -16,6 +16,7 @@ import CursorPlugin from './CursorPlugin';
 import MediaSinglePlugin from './MediaSinglePlugin';
 import SelectionPlugin from './SelectionPlugin';
 import HighlightPlugin from './HighlightPlugin';
+import ImagePlugin from './ImagePlugin';
 
 function plugins(toolbarDom) {
     return [
@@ -37,6 +38,7 @@ function plugins(toolbarDom) {
         LinkPlugin(toolbarDom),
         TextColorPlugin(toolbarDom),
         MediaSinglePlugin(toolbarDom),
+        ImagePlugin(toolbarDom),
     ];
 }
 
