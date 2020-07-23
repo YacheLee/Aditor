@@ -31,9 +31,9 @@ function ImagePlugin() {
                 height: 150
               });
 
+              const {pos} = editorView.posAtCoords({left: event.clientX, top: event.clientY});
               const mediaSingleNode = state.schema.nodes.mediaSingle.createChecked(attrs, mediaNode);
-
-              editorView.dispatch(safeInsert(mediaSingleNode, state.selection.$to.pos)(state.tr).scrollIntoView());
+              editorView.dispatch(safeInsert(mediaSingleNode, pos)(state.tr).scrollIntoView());
             }
             return true;
           }
