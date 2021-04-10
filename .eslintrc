@@ -3,10 +3,7 @@
   "plugins": ["import-order-autofix"],
   "extends": [
     "standard",
-    "standard-react",
-    "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react"
+    "standard-react"
   ],
   "env": {
     "node": true
