@@ -11,49 +11,57 @@ const Paper = styled(_Paper)`
   display: flex;
   align-items: center;
   padding: 0 6px;
+`;
 
-  .global {
+const LeftContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+`;
+
+const MiddleContainer = styled.div`
+  height: 30px;
+  display: flex;
+  align-items: center;
+`;
+
+const HyperlinkElement = styled.a`
+  width: 160px;
+  height: 18px;
+  user-select: none;
+  display: inline-block;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 13px;
+
+  color: rgb(17, 85, 204);
+  cursor: pointer;
+`;
+
+const RightContainer = styled.div`
+  width: 90px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  span {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
-  }
 
-  a {
-    user-select: none;
-    display: inline-block;
-    width: 160px;
-    max-width: 400px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-weight: 500;
-    text-decoration: none;
-
-    color: rgb(17, 85, 204);
-    cursor: pointer;
-  }
-
-  .tools {
-    user-select: none;
-    width: 90px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.06);
-        border-radius: 50%;
-        cursor: pointer;
-      }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.06);
+      border-radius: 50%;
+      cursor: pointer;
     }
   }
 `;
@@ -61,15 +69,21 @@ const Paper = styled(_Paper)`
 function LinkPopover({ url, onCopyLink, onEditLink, onRemoveLink }) {
   return (
     <Paper>
-      <span className='global'>
+      <LeftContainer>
         <AiOutlineGlobal />
-      </span>
-      <Tooltip title={url}>
-        <a target='_blank' rel='noopener noreferrer' href={url}>
-          {url}
-        </a>
-      </Tooltip>
-      <span className='tools'>
+      </LeftContainer>
+      <MiddleContainer>
+        <Tooltip title={url}>
+          <HyperlinkElement
+            target='_blank'
+            rel='noopener noreferrer'
+            href={url}
+          >
+            {url}
+          </HyperlinkElement>
+        </Tooltip>
+      </MiddleContainer>
+      <RightContainer>
         <Tooltip title='Copy link' onClick={onCopyLink}>
           <span>
             <FaRegCopy />
@@ -85,7 +99,7 @@ function LinkPopover({ url, onCopyLink, onEditLink, onRemoveLink }) {
             <FaUnlink />
           </span>
         </Tooltip>
-      </span>
+      </RightContainer>
     </Paper>
   );
 }
