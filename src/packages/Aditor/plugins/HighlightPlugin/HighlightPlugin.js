@@ -14,7 +14,7 @@ function getDecoration(from, to) {
   );
 }
 
-function MyPlugin() {
+function HighlightPlugin() {
   return new Plugin({
     key,
     state: {
@@ -65,4 +65,4 @@ function MyPlugin() {
   });
 }
 
-export default MyPlugin;
+export default HighlightPlugin;

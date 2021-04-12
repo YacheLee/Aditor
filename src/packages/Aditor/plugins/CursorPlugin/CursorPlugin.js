@@ -32,7 +32,7 @@ function getNodeSpellCheckDecoration(doc, position) {
   return decoration;
 }
 
-function MyPlugin() {
+function CursorPlugin() {
   return new Plugin({
     key: pluginKey,
     state: {
@@ -86,4 +86,4 @@ function MyPlugin() {
   });
 }
 
-export default MyPlugin;
+export default CursorPlugin;
