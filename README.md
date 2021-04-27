@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Aditor defaultValue={value} onChange={value=>{
+      <Aditor id="aditor" defaultValue={value} onChange={value=>{
         setValue(value);
       }} />
       {JSON.stringify(value)}
