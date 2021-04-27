@@ -7,6 +7,7 @@
 ## Install
 
 ```bash
+npm install --save styled-components
 npm install --save aditor
 
 ```
